@@ -21,9 +21,9 @@ const config = {
     rates: './src/js/rates.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist/'),
     filename: '[name].js',
-    publicPath: './'
+    publicPath: '/static/'
   },
   resolve: {
     modules: [
@@ -36,7 +36,6 @@ const config = {
     compress: true,
     writeToDisk: true,
     open: true,
-
   },
   module: {
     rules: [
@@ -64,13 +63,8 @@ const config = {
         ]
       },
       {
-        test: /\.js$/,
-        use: { loader: "babel-loader" },
-        exclude: /node_modules/
-      },
-      {
         test: /\.css$/i,
-        use: [(isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'postcss-loader']
+        use: [(isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader']
       },
       {
         test: /\.(png|jpg|gif|ico|svg)$/i,
@@ -97,12 +91,11 @@ const config = {
         use: [
           {
             loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/',
-            esModule: false,
-          }
-
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+              esModule: false,
+            }
           }
         ]
       },
@@ -110,7 +103,7 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css'
+      filename: 'css/style.[contenthash].css'
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
@@ -180,6 +173,5 @@ const config = {
 };
 
 module.exports = () => {
-
-    return config
+  return config
 };
