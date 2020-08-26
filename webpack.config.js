@@ -21,7 +21,7 @@ const config = {
     rates: './src/js/rates.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist/'),
+    path: path.resolve(__dirname, '..', 'myoffice', 'static'),
     filename: '[name].js',
     publicPath: '/static/'
   },
@@ -32,7 +32,7 @@ const config = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, '..', 'myoffice', 'static'),
     compress: true,
     writeToDisk: true,
     open: true,
