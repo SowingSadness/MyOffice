@@ -46,12 +46,9 @@ const config = {
             loader: (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
           },
           {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'resolve-url-loader',
+            loader: 'css-loader',
             options: {
-              keepQuery: true
+              url: true
             }
           },
           {
@@ -73,8 +70,8 @@ const config = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              publicPath: 'img',
-              outputPath: 'img',
+              publicPath: 'images',
+              outputPath: 'images',
               useRelativePath: true,
               esModule: false,
             }
