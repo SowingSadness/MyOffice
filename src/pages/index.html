@@ -14,46 +14,82 @@
         <header class="header">
             <div class="header__upper-menu">
                 <a href="index.html" class="header__logo">
-                    <img alt="лого сайта" class="header__logo-image" src="<%=require('src/images/logo3.png')%>">
+                    <img alt="лого сайта" class="header__logo-image" src="images/logo3.png">
                     <p  class="header__logo-text">мой офис</p>
                 </a>
-                <img class="burger-menu__button" src="<%=require('src/images/open-menu.svg')%>" alt="скрытое меню">
-                    <nav class="burger-menu">
-                        <ul class="burger-menu__list">
-                            <li class="burger-menu__element">
-                                <a class="nav-bar__link nav-bar__link_mini" href="tel: +7 (843) 202-21-40">
-                                    +7 (843) 202-21-40
-                                </a>
-                            </li>
-                            <li class="burger-menu__element">
-                                <a class="nav-bar__link nav-bar__link_mini nav-bar__link_start" href="#">Начать работу</a>
-                            </li>
-                            <li class="burger-menu__element">
-                                <a class="nav-bar__link nav-bar__link_mini nav-bar__link_lk" href="#">Личный кабинет</a>
-                            </li>
-                            <li class="burger-menu__element">
-                                <a class="nav-bar__link nav-bar__link_mini" href="about.html">О нас</a>
-                            </li>
-                            <li class="burger-menu__element">
-                                <a class="nav-bar__link nav-bar__link_mini" href="rates.html">Тарифы</a>
-                            </li>
-                            <li class="burger-menu__element">
-                                <a class="nav-bar__link nav-bar__link_mini" href="advantages.html">Возможности</a>
-                            </li>
-                            <li class="burger-menu__element">
-                                <a class="nav-bar__link nav-bar__link_mini" href="partners.html">Партнёрам</a>
-                            </li>
-                            <li class="burger-menu__element">
-                                <a class="nav-bar__link nav-bar__link_mini" href="support.html">Инструкции и поддержка</a>
-                            </li>
-                            <li class="burger-menu__element">
-                                <a class="nav-bar__link nav-bar__link_mini" href="questions.html">Частые вопросы</a>
-                            </li>
-                        </ul>
-                    </nav>
+                <img class="burger-menu__button" src="images/open-menu.svg" alt="скрытое меню">
+                <nav class="burger-menu">
+                    <ul class="burger-menu__list">
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="tel: +7 (843) 202-21-40">
+                                +7 (843) 202-21-40
+                            </a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a href="lk.html" class="header__user-box header__user-box_burger">
+                                <div class="header__image-box header__image-box_burger">
+                                    <img class="header__user-icon" src="images/user.svg">
+                                </div>
+                                <p class="header__user header__user_burger">Сергей Иванов</p>
+                            </a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="about.html">О нас</a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="rates.html">Тарифы</a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="advantages.html">Возможности</a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="partners.html">Партнёрам</a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="support.html">Инструкции и поддержка</a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="questions.html">Частые вопросы</a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="lkProgram.html">Партнёрская программа</a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="lkCompany.html">Настройки компании</a>
+                        </li>
+                        <li class="burger-menu__element">
+                            <a class="nav-bar__link nav-bar__link_mini" href="lkProfile.html">Настройки профиля</a>
+                        </li>
+                        <li class="burger-menu__element burger-menu__element_exit">
+                            <a class="nav-bar__link nav-bar__link_mini" href="index.html">
+                                Выход
+                            </a>
+                            <img class="header__exit-icon header__exit-icon_burger" src="images/exit.svg">
+                        </li>
+                    </ul>
+                </nav>
                 <a href="tel: +7 (843) 202-21-40" class="header__phone">+7 (843) 202-21-40</a>
-                <button class="header__start-button">Начать работу</button>
-                <button class="header__lk-button">Личный кабинет</button>
+                <div class="header__lk-container">
+                    <div class="header__info-container">
+                        <div class="header__row-container">
+                            <p class="header__balance-text">Баланс:</p>
+                            <p class="header__balance-text header__balance-text_bold">3 000 руб.</p>
+                        </div>
+                        <div class="header__row-container">
+                            <p class="header__balance-text">Оплачено до:</p>
+                            <p class="header__balance-text header__balance-text_bold">20.05.2020</p>
+                        </div>
+                    </div>
+                    <a href="lk.html" class="header__user-box">
+                        <div class="header__image-box">
+                            <img class="header__user-icon" src="images/user.svg">
+                        </div>
+                        <p class="header__user">Сергей Иванов</p>
+                    </a>
+                    <a href="index.html">
+                        <img class="header__exit-icon" src="images/exit.svg">
+                    </a>
+                </div>
             </div>
             <nav class="nav-bar">
                 <ul class="nav-bar__list">
@@ -74,6 +110,22 @@
                     </li>
                     <li class="nav-bar__element">
                         <a class="nav-bar__link" href="questions.html">Частые вопросы</a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="nav-bar nav-bar_lk">
+                <ul class="nav-bar__list">
+                    <li class="nav-bar__element">
+                        <a class="nav-bar__link nav-bar__link_lk  nav-bar__link_active" href="lk.html">Личный кабинет</a>
+                    </li>
+                    <li class="nav-bar__element">
+                        <a class="nav-bar__link nav-bar__link_lk" href="lkProgram.html">Партнёрская программа</a>
+                    </li>
+                    <li class="nav-bar__element">
+                        <a class="nav-bar__link nav-bar__link_lk" href="lkCompany.html">Настройки компании</a>
+                    </li>
+                    <li class="nav-bar__element">
+                        <a class="nav-bar__link nav-bar__link_lk" href="lkProfile.html">Настройки профиля</a>
                     </li>
                 </ul>
             </nav>

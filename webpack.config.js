@@ -44,6 +44,21 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg|gif|ico|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              publicPath: '/static/images/',
+              outputPath: '/images/',
+              useRelativePath: false,
+              esModule: false,
+            }
+          }
+        ]
+      },
+      {
         test: /\.scss$/i,
         use: [
           {
@@ -66,26 +81,6 @@ const config = {
       {
         test: /\.css$/i,
         use: [(isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader']
-      },
-      {
-        test: /\.(png|jpg|gif|ico|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              publicPath: 'images',
-              outputPath: 'images',
-              useRelativePath: true,
-              esModule: false,
-            }
-          },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-            }
-          },
-        ]
       },
       {
         test: /\.(eot|ttf|woff|woff2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
