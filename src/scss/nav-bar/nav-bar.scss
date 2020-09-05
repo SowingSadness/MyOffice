@@ -1,12 +1,16 @@
 .nav-bar {
-  padding: 20px 230px;
+  padding: 20px;
   background-color: $color-background-blue;
-
+  &_lk {
+    background: $color-white;
+    padding: 20px 200px;
+  }
   &__list {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0;
+    margin: 0 auto;
+    max-width: 1060px;
     padding: 0;
   }
   &__link {
@@ -20,6 +24,16 @@
     color: $color-white;
     cursor: pointer;
     transition: opacity .2s linear;
+    &_lk {
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 22px;
+      color: $color-gray--d10;
+    }
+    &_active {
+      font-weight: bold;
+      border-bottom: 3px solid #3686D7;
+    }
     &_mini {
       color: $color-gray--d10;
       font-weight: bold;
@@ -40,6 +54,9 @@
 @media screen and (min-width: $screen-w--xxl) {
   .nav-bar {
       padding: 20px 250px;
+    &_lk {
+      padding: 20px 200px;
+    }
   }
 }
 @media screen and (max-width: $screen-w--l) {

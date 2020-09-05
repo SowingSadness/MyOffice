@@ -102,6 +102,13 @@
     z-index: 0;
   }
 }
+@media screen and (min-width: 1930px) {
+  .cloud {
+    &__2 {
+      display: none;
+    }
+  }
+}
 @media screen and (max-width: 1440px) {
   .cloud {
     &__2 {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Сайт компании Мой Офис">
@@ -26,7 +26,7 @@
                         </a>
                     </li>
                     <li class="burger-menu__element">
-                        <a class="nav-bar__link nav-bar__link_mini" href="#">Начать работу</a>
+                        <a class="nav-bar__link nav-bar__link_mini nav-bar__link_start" href="#">Начать работу</a>
                     </li>
                     <li class="burger-menu__element">
                         <a class="nav-bar__link nav-bar__link_mini nav-bar__link_lk" href="#">Личный кабинет</a>
@@ -35,7 +35,7 @@
                         <a class="nav-bar__link nav-bar__link_mini" href="about.html">О нас</a>
                     </li>
                     <li class="burger-menu__element">
-                        <a class="nav-bar__link nav-bar__link_mini" href="#">Тарифы</a>
+                        <a class="nav-bar__link nav-bar__link_mini" href="rates.html">Тарифы</a>
                     </li>
                     <li class="burger-menu__element">
                         <a class="nav-bar__link nav-bar__link_mini" href="advantages.html">Возможности</a>
@@ -61,7 +61,7 @@
                     <a class="nav-bar__link" href="about.html">О нас</a>
                 </li>
                 <li class="nav-bar__element">
-                    <a class="nav-bar__link">Тарифы</a>
+                    <a class="nav-bar__link" href="rates.html">Тарифы</a>
                 </li>
                 <li class="nav-bar__element">
                     <a class="nav-bar__link" href="advantages.html">Возможности</a>
@@ -137,11 +137,17 @@
                 <h2 class="page-title page-title_very-mini">Сервис «Мой офис» включает:</h2>
                 <div class="include-block__lists">
                     <ul class="include-block__list">
-                        <li class="include-block__element include-block__element_w-icon">Использование пакета программ:</li>
-                        <li class="include-block__element">&bull; 1С: Бухгалтерия предприятия</li>
-                        <li class="include-block__element">&bull; 1С: Зарплата и&nbsp;управление персоналом</li>
-                        <li class="include-block__element">&bull; 1С: Управление торговлей</li>
-                        <li class="include-block__element">&bull; 1С: Управление небольшой фирмой</li>
+                        <li class="include-block__element include-block__element_w-icon">
+                            Использование пакета программ:
+                            <div class="include-block__container">
+                                <p class="include-block__element">&bull; 1С: Бухгалтерия предприятия</p>
+                                <p class="include-block__element">&bull; 1С: Зарплата и&nbsp;управление персоналом</p>
+                                <p class="include-block__element">&bull; 1С: Управление торговлей</p>
+                                <p class="include-block__element">&bull; 1С: Управление небольшой фирмой</p>
+                                <p class="include-block__element">&bull; 1С: Садовод</p>
+                            </div>
+                        </li>
+
                     </ul>
                     <ul class="include-block__list">
                         <li class="include-block__element include-block__element_w-icon">Регулярное обновление программ 1С</li>
@@ -210,18 +216,20 @@
                             </div>
                         </div>
                         <div class="calculate-block__bottom-block">
-                            <div class="calculate-block__column-1">
+                            <div class="calculate-block__row-bottom">
                                 <p class="calculate-block__text calculate-block__text_bottom">Стоимость:</p>
-                                <p class="calculate-block__text calculate-block__text_bottom">Скидка:</p>
-                                <p class="calculate-block__text calculate-block__text_bold">итоговая стоимость:</p>
-                            </div>
-                            <div class="calculate-block__column-2">
                                 <p class="calculate-block__text calculate-block__text_bottom calculate-block__text_cost">
                                     11 880 руб.
                                 </p>
+                            </div>
+                            <div class="calculate-block__row-bottom">
+                                <p class="calculate-block__text calculate-block__text_bottom">Скидка:</p>
                                 <p class="calculate-block__text calculate-block__text_bottom calculate-block__text_discount">
                                     - 1 188 руб.
                                 </p>
+                            </div>
+                            <div class="calculate-block__row-bottom">
+                                <p class="calculate-block__text calculate-block__text_bold">итоговая стоимость:</p>
                                 <p class="calculate-block__text calculate-block__text_bottom calculate-block__text_total">
                                     10 692 руб.
                                 </p>
@@ -363,7 +371,7 @@
                 <h3 class="footer-text-block__title">Компания</h3>
                 <ul class="footer-text-block__list">
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">Тарифы</a>
+                        <a class="footer-text-block__link" href="rates.html">Тарифы</a>
                     </li>
                     <li class="footer-text-block__element">
                         <a class="footer-text-block__link" href="about.html">О нас</a>
@@ -372,7 +380,7 @@
                         <a class="footer-text-block__link" href="advantages.html">Возможности</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">Партнёрам</a>
+                        <a class="footer-text-block__link" href="partners.html">Партнёрам</a>
                     </li>
                 </ul>
             </div>
@@ -380,19 +388,19 @@
                 <h3 class="footer-text-block__title">Продукты</h3>
                 <ul class="footer-text-block__list">
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Бухгалтерия предприятия</a>
+                        <a class="footer-text-block__link" href="advantages.html#accounting">1С: Бухгалтерия предприятия</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Зарплата и управление персоналом</a>
+                        <a class="footer-text-block__link" href="advantages.html#salary">1С: Зарплата и управление персоналом</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Управление торговлей</a>
+                        <a class="footer-text-block__link" href="advantages.html#trading">1С: Управление торговлей</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Управление нашей фирмой</a>
+                        <a class="footer-text-block__link" href="advantages.html#firm">1С: Управление нашей фирмой</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Садовод</a>
+                        <a class="footer-text-block__link" href="advantages.html#garden">1С: Садовод</a>
                     </li>
                 </ul>
             </div>
@@ -507,26 +515,30 @@
     <div class="modal modal_plug">
         <div class="popup popup_reg">
             <span class="popup__close popup__close_plug"></span>
-            <h2 class="popup__title popup__title_reg">Стать партнёром</h2>
-            <form class="popup__form popup__form_reg">
-                <label class="popup__label popup__label_reg">
+            <h2 class="popup__title popup__title_plug">Подключение к «Мой офис»</h2>
+            <form class="popup__form popup__form_plug">
+                <label class="popup__label popup__label_plug">
                     Как вас зовут?*
-                    <input class="popup__input popup__input_reg">
+                    <input class="popup__input popup__input_plug">
                 </label>
-                <label class="popup__label popup__label_reg">
+                <label class="popup__label popup__label_plug">
                     Ваш e-mail*
-                    <input class="popup__input popup__input_reg">
+                    <input class="popup__input popup__input_plug">
+                </label>
+                <label class="popup__label popup__label_plug">
+                    Придумайте логин
+                    <input class="popup__input popup__input_plug">
                 </label>
                 <label>
-                    <input class="popup__captcha popup__captcha_reg" placeholder="Тут встраивается ReCaptcha">
+                    <input class="popup__captcha popup__captcha_plug" placeholder="Тут встраивается ReCaptcha">
                 </label>
-                <p class="popup__under-text popup__under-text_reg">
+                <p class="popup__under-text popup__under-text_plug">
                     Нажимая кнопку “Отправить” вы даёте согласие на обработку персональных данных в соответствии с
-                    <a href="policy.html" class="popup__under-text popup__under-text_reg">
+                    <a href="policy.html" class="popup__under-text popup__under-text_plug">
                         Политикой конфиденциальности
                     </a>
                 </p>
-                <button class="popup__button popup__button_plug">Отправить</button>
+                <button class="popup__button popup__button_plug">Зарегистрироваться</button>
             </form>
         </div>
     </div>

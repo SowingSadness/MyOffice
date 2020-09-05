@@ -5,6 +5,10 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  &_program {
+    background: none;
+    padding: 0;
+  }
   &:last-child {
     margin-bottom: 0;
   }
@@ -13,6 +17,22 @@
     &_active {
       display: block;
     }
+    &_price-active {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 12px 12px 12px 80px;
+    }
+    &_border {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);;
+    }
+  }
+  &__row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
   }
   &__title {
     font-family: $font-family--montserrat;
@@ -22,6 +42,11 @@
     line-height: 20px;
     color: $color-dark-blue;
     margin: 0;
+    &_program {
+      font-size: 20px;
+      line-height: 24px;
+      align-self: center;
+    }
   }
   &__panel {
     display: flex;
@@ -31,6 +56,38 @@
       content: url("~src/images/+.svg");
       float: left;
       margin-right: 20px;
+    }
+    &_program {
+      padding: 12px;
+      width: 399px;
+      &:before {
+        content: url("~src/images/arrowAcc.svg");
+        transform: rotate(-90deg);
+      }
+    }
+    &_text {
+      padding: 12px 12px 12px 20px;
+      margin-bottom: 12px;
+      background: #EDF6FF;
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      &:before {
+        margin-right: 26px;
+        float: left;
+        content: url("~src/images/rightAcc.svg");
+        transform: rotate(-90deg);
+      }
+    }
+    &_border {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    &_active-program {
+      margin-bottom: 0;
+      &:before {
+        transform: none;
+      }
     }
     &_active {
       &:before {
@@ -47,5 +104,114 @@
     line-height: 20px;
     color: $color-dark-blue;
     margin: 16px 0 0 0;
+    &_price {
+      font-size: 18px;
+      line-height: 22px;
+      color: #125A00;
+      margin: 0;
+      text-align: right;
+      width: 33%;
     }
+    &_price {
+      width: 33%;
+    }
+    &_pay {
+      color: #990000;
+    }
+    &_date {
+      font-size: 18px;
+      line-height: 22px;
+      color: $color-gray--d10;
+      margin: 0 0 0 0;
+        &:before {
+          content: url("~src/images/unList.svg");
+          position: absolute;
+          top:-15px;
+          left: -20px;
+      }
+    }
+    &_description {
+      margin: 0;
+      width: 50%;
+    }
+    &_program {
+      font-size: 18px;
+      line-height: 22px;
+      color: $color-gray--d10;
+      margin: 0;
+    }
+    }
+}
+@media screen and (max-width: 900px) {
+  .accordion {
+    &__text {
+      &_lk {
+        width: 100%;
+      }
+      &_date {
+        &:before {
+          left: -30px;
+          top: -13px;
+        }
+      }
+    }
+    &__panel {
+      &_border {
+        padding: 15px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .accordion {
+    &__panel {
+      &_program {
+        width: 250px;
+      }
+    }
+    &__text {
+      &_date {
+        margin: 0 0 15px 0;
+      }
+      &_price {
+        text-align: left;
+      }
+      &_description {
+        margin: 0 0 15px 0;
+      }
+    }
+    &__row {
+      &_lk {
+        flex-direction: column;
+        margin-bottom: 40px;
+      }
+    }
+    &__text {
+      &_date {
+        margin-right: 40px;
+      }
+    }
+
+  }
+}
+@media screen and (max-width: 425px) {
+  .accordion {
+    &__panel {
+      &_program {
+        width: 200px;
+      }
+      &_border {
+        padding: 10px;
+        &:before {
+          transform: none;
+        }
+      }
+    }
+    &__text {
+      width: initial;
+      &_date {
+        margin-right: 10px;
+      }
+    }
+  }
 }

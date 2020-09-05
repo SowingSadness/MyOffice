@@ -1,0 +1,107 @@
+.transactions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 855px;
+  margin: 22px auto 0 auto;
+  &__transactions {
+    font-family: $font-family--montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-gray--d10;
+  }
+  &__text {
+    font-family: $font-family--montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-gray--d10;
+    margin: 0 56px 0 0;
+  }
+  &__label {
+    font-family: $font-family--montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: $color-gray--d10;
+    margin: 0 8px 0 0;
+  }
+  &__button {
+    padding: 10px 40px;
+    margin-left: 54px;
+    background: #3685D7;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    cursor: pointer;
+    border: 0;
+    min-height: 40px;
+    max-width: 200px;
+    font-family: $font-family--montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: $color-white;
+    transition: all .2s linear;
+    &:hover {
+      background: $color-white;
+      color: $color-dark-blue;
+      border: 0 solid $color-background-blue;
+      transition: all .2s linear;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__input {
+    font-family: $font-family--montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: $color-dark-blue;
+    margin-right: 20px;
+    background: #EDF6FF;
+    border: 1px solid #C8E3FF;
+    box-sizing: border-box;
+    max-width: 120px;
+    border-radius: 3px;
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .transactions {
+    flex-direction: column;
+    align-items: center;
+    &__text {
+      margin: 0 0 10px 0;
+    }
+    &__button {
+      margin: 0;
+    }
+    &__input {
+      margin: 0 0 10px 0;
+      &:last-of-type {
+        margin: 0 0 20px 0;
+      }
+    }
+    &__label {
+      margin: 0 0 10px 0;
+    }
+  }
+}
+@media screen and (max-width: 425px) {
+  .transactions {
+    &__text {
+      text-align: center;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 .header {
   background: $color-white;
   position: relative;
-  z-index: 10;
+  z-index: 8;
   &__logo {
     display: flex;
     flex-direction: row;
@@ -45,10 +45,98 @@
     }
   }
   &__upper-menu {
-    padding: 20px 180px;
+    padding: 20px;
+    max-width: 1140px;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+  &__lk-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 580px;
+    width: 50%;
+  }
+  &__info-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__row-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    &:last-child {
+      margin: 0;
+    }
+  }
+  &__user-icon {
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 5px;
+    left: 7px;
+  }
+  &__exit-icon {
+    &_burger {
+      margin-left: 10px;
+    }
+  }
+  &__user-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    &_burger {
+      justify-content: start;
+    }
+  }
+  &__image-box {
+    background: #3685D7;
+    border-radius: 50%;
+    width: 30px;
+    margin-right: 18px;
+    height: 30px;
+    position: relative;
+    &_burger {
+      margin-right: 10px;
+    }
+  }
+  &__user {
+    font-family: $font-family--montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: $color-gray--d10;
+    margin: 0;
+    &_burger {
+      font-weight: bold;
+    }
+  }
+  &__balance-text {
+    font-family: $font-family--montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: $color-gray--d10;
+    margin: 0 11px 0 0;
+    min-width: 99px;
+    &:last-child {
+      margin: 0;
+    }
+    &_bold {
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 18px;
+      text-align: left;
+      color: $color-dark-blue;
+    }
   }
   &__start-button {
     padding: 12px;
@@ -102,13 +190,6 @@
     }
   }
 }
-@media screen and (min-width: $screen-w--xxl) {
-  .header {
-    &__upper-menu {
-      padding: 20px 200px;
-    }
-  }
-}
 @media screen and (max-width: $screen-w--l) {
   .header {
     &__upper-menu {
@@ -122,6 +203,9 @@
     &__phone,
     &__lk-button,
     &__start-button {
+      display: none;
+    }
+    &__lk-container {
       display: none;
     }
   }
