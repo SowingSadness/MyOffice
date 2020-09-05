@@ -20,8 +20,26 @@
     background: #F9FCFF;
     position: relative;
   }
+  &_lk {
+    background: #f8f8f8;
+    padding: 45px 50px 275px 50px;
+  }
   &_rates {
     background: linear-gradient(180deg, #FAFCFF 0%, #EDF6FF 39.06%, #FAFCFF 96.35%);
     position: relative;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .main {
+    &_lk {
+      padding: 50px 50px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .main {
+    &_lk {
+      padding: 50px 15px;
+    }
   }
 }

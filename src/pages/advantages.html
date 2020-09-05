@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Сайт компании Мой Офис">
@@ -26,7 +26,7 @@
                         </a>
                     </li>
                     <li class="burger-menu__element">
-                        <a class="nav-bar__link nav-bar__link_mini" href="#">Начать работу</a>
+                        <a class="nav-bar__link nav-bar__link_mini nav-bar__link_start" href="#">Начать работу</a>
                     </li>
                     <li class="burger-menu__element">
                         <a class="nav-bar__link nav-bar__link_mini nav-bar__link_lk" href="#">Личный кабинет</a>
@@ -35,13 +35,13 @@
                         <a class="nav-bar__link nav-bar__link_mini" href="about.html">О нас</a>
                     </li>
                     <li class="burger-menu__element">
-                        <a class="nav-bar__link nav-bar__link_mini" href="#">Тарифы</a>
+                        <a class="nav-bar__link nav-bar__link_mini" href="rates.html">Тарифы</a>
                     </li>
                     <li class="burger-menu__element">
                         <a class="nav-bar__link nav-bar__link_mini" href="advantages.html">Возможности</a>
                     </li>
                     <li class="burger-menu__element">
-                        <a class="nav-bar__link nav-bar__link_mini" href="#">Партнёрам</a>
+                        <a class="nav-bar__link nav-bar__link_mini" href="partners.html">Партнёрам</a>
                     </li>
                     <li class="burger-menu__element">
                         <a class="nav-bar__link nav-bar__link_mini" href="support.html">Инструкции и поддержка</a>
@@ -61,13 +61,13 @@
                     <a class="nav-bar__link" href="about.html">О нас</a>
                 </li>
                 <li class="nav-bar__element">
-                    <a class="nav-bar__link">Тарифы</a>
+                    <a class="nav-bar__link" href="rates.html">Тарифы</a>
                 </li>
                 <li class="nav-bar__element">
                     <a class="nav-bar__link" href="advantages.html">Возможности</a>
                 </li>
                 <li class="nav-bar__element">
-                    <a class="nav-bar__link">Партрнёрам</a>
+                    <a class="nav-bar__link" href="partners.html">Партрнёрам</a>
                 </li>
                 <li class="nav-bar__element">
                     <a class="nav-bar__link" href="support.html">Инструкции и поддержка</a>
@@ -94,7 +94,7 @@
                 В&nbsp;пакет входят сервисы:
             </p>
         </section>
-        <section class="advantages-section advantages-section_accounting">
+        <section id="accounting" class="advantages-section advantages-section_accounting">
             <img alt="бухгалтерия" class="advantages-section__image" src="<%=require('src/images/accounting.png')%>">
             <div class="ac-block">
                 <h2 class="ac-block__title">1с бухгалтерия</h2>
@@ -110,10 +110,14 @@
                     поддержка пользователей в&nbsp;сочетании с&nbsp;высоким комфортом работы.
                 </p>
                 <ul class="ac-block__list">
-                    <li class="ac-block__element">Складской учёт</li>
-                    <li class="ac-block__element">Учёт заработной платы</li>
-                    <li class="ac-block__element">Учёт торговых операций</li>
-                    <li class="ac-block__element">Учёт производства</li>
+                    <ul class="ac-block__container">
+                        <li class="ac-block__element">Складской учёт</li>
+                        <li class="ac-block__element">Учёт торговых операций</li>
+                    </ul>
+                    <ul class="ac-block__container">
+                        <li class="ac-block__element">Учёт заработной платы</li>
+                        <li class="ac-block__element">Учёт производства</li>
+                    </ul>
                     <li class="ac-block__element">Ведение учета нескольких организаций в одной базе</li>
                     <li class="ac-block__element">Поддержка разных систем налогообложения – ОСНО, УСН, ЕНВД</li>
                     <li class="ac-block__element">Учет основных средств и нематериальных активов</li>
@@ -125,7 +129,7 @@
                 <button class="ac-block__button">Запустить программу</button>
             </div>
         </section>
-        <section class="advantages-section advantages-section_left">
+        <section id="salary" class="advantages-section advantages-section_left">
             <div class="ac-block ac-block_left">
                 <h2 class="ac-block__title">1С Зарплата и управление персоналом</h2>
                 <p class="ac-block__description">
@@ -145,7 +149,7 @@
             </div>
                 <img alt="бухгалтерия" class="advantages-section__image_left" src="<%=require('src/images/salary.png')%>">
         </section>
-        <section class="advantages-section advantages-section_control">
+        <section id="trading" class="advantages-section advantages-section_control">
             <img alt="бухгалтерия" class="advantages-section__image" src="<%=require('src/images/control.png')%>">
             <div class="ac-block">
                 <h2 class="ac-block__title">1С Управление торговлей</h2>
@@ -171,7 +175,7 @@
                 <button class="ac-block__button">Запустить программу</button>
             </div>
         </section>
-        <section class="advantages-section advantages-section_left">
+        <section id="firm" class="advantages-section advantages-section_left">
             <div class="ac-block ac-block_left">
                 <h2 class="ac-block__title">1С управление нашей фирмой</h2>
                 <p class="ac-block__description">
@@ -191,7 +195,7 @@
             </div>
             <img alt="бухгалтерия" class="advantages-section__image_left" src="<%=require('src/images/firm.png')%>">
         </section>
-        <section class="advantages-section advantages-section_sadovod">
+        <section id="garden" class="advantages-section advantages-section_sadovod">
             <img alt="бухгалтерия" class="advantages-section__image" src="<%=require('src/images/sadovodIMG.png')%>">
             <div class="ac-block">
                 <h2 class="ac-block__title">1С САДОВОД</h2>
@@ -207,10 +211,14 @@
                     бухгалтерского учета и&nbsp;проста в&nbsp;использовании.
                 </p>
                 <ul class="ac-block__list">
-                    <li class="ac-block__element">Учёт участков</li>
-                    <li class="ac-block__element">Учёт электроэнергии и водоснабжения</li>
-                    <li class="ac-block__element">Взносы садоводов</li>
-                    <li class="ac-block__element">Учёт банковских и кассовых операций</li>
+                    <ul class="ac-block__container">
+                        <li class="ac-block__element ac-block__element_no-margin">Учёт участков</li>
+                        <li class="ac-block__element ac-block__element_no-margin">Взносы садоводов</li>
+                    </ul>
+                    <ul class="ac-block__container ac-block__container_garden">
+                        <li class="ac-block__element ac-block__element_no-margin">Учёт электроэнергии и водоснабжения</li>
+                        <li class="ac-block__element ac-block__element_no-margin">Учёт банковских и кассовых операций</li>
+                    </ul>
                     <li class="ac-block__element">Учёт заработной платы и персонифицированный учёт</li>
                 </ul>
                 <button class="ac-block__button">Запустить программу</button>
@@ -222,13 +230,13 @@
             <h2 class="additional__title">дополнительные возможности</h2>
             <ul class="additional__grid">
                 <li class="additional-card">
-                    <img class="additional-card__icon" src="<%=require('src/images/spark.svg')%>">
+                    <img class="additional-card__icon" src="<%=require('src/images/contragent.svg')%>">
                     <div class="additional-card__text-block">
-                        <h3 class="additional-card__title">1с спарк</h3>
+                        <h3 class="additional-card__title">1с Контрагент</h3>
                         <p class="additional-card__description">
-                            Оценка надежности и&nbsp;мониторинг контрагентов в&nbsp;программах
-                            1С&nbsp;для принятия взвешенных решений о&nbsp;
-                            сотрудничестве и&nbsp;минимизации налоговых рисков</p>
+                            Автоматическое заполнение реквизитов контрагентов
+                            в&nbsp;различных документах и&nbsp;быстрая проверка информации о&nbsp;контрагентах
+                        </p>
                     </div>
                 </li>
                 <li class="additional-card">
@@ -242,13 +250,13 @@
                     </div>
                 </li>
                 <li class="additional-card">
-                    <img class="additional-card__icon" src="<%=require('src/images/contragent.svg')%>">
+                    <img class="additional-card__icon" src="<%=require('src/images/spark.svg')%>">
                     <div class="additional-card__text-block">
-                        <h3 class="additional-card__title">1с Контрагент</h3>
+                        <h3 class="additional-card__title">1с спарк</h3>
                         <p class="additional-card__description">
-                            Автоматическое заполнение реквизитов контрагентов
-                            в&nbsp;различных документах и&nbsp;быстрая проверка информации о&nbsp;контрагентах
-                        </p>
+                            Оценка надежности и&nbsp;мониторинг контрагентов в&nbsp;программах
+                            1С&nbsp;для принятия взвешенных решений о&nbsp;
+                            сотрудничестве и&nbsp;минимизации налоговых рисков</p>
                     </div>
                 </li>
                 <li class="additional-card">
@@ -297,7 +305,7 @@
                 <h3 class="footer-text-block__title">Компания</h3>
                 <ul class="footer-text-block__list">
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">Тарифы</a>
+                        <a class="footer-text-block__link" href="rates.html">Тарифы</a>
                     </li>
                     <li class="footer-text-block__element">
                         <a class="footer-text-block__link" href="about.html">О нас</a>
@@ -306,7 +314,7 @@
                         <a class="footer-text-block__link" href="advantages.html">Возможности</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">Партнёрам</a>
+                        <a class="footer-text-block__link" href="partners.html">Партнёрам</a>
                     </li>
                 </ul>
             </div>
@@ -314,19 +322,19 @@
                 <h3 class="footer-text-block__title">Продукты</h3>
                 <ul class="footer-text-block__list">
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Бухгалтерия предприятия</a>
+                        <a class="footer-text-block__link" href="advantages.html#accounting">1С: Бухгалтерия предприятия</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Зарплата и управление персоналом</a>
+                        <a class="footer-text-block__link" href="advantages.html#salary">1С: Зарплата и управление персоналом</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Управление торговлей</a>
+                        <a class="footer-text-block__link" href="advantages.html#trading">1С: Управление торговлей</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Управление нашей фирмой</a>
+                        <a class="footer-text-block__link" href="advantages.html#firm">1С: Управление нашей фирмой</a>
                     </li>
                     <li class="footer-text-block__element">
-                        <a class="footer-text-block__link" href="#">1С: Садовод</a>
+                        <a class="footer-text-block__link" href="advantages.html#garden">1С: Садовод</a>
                     </li>
                 </ul>
             </div>
@@ -474,7 +482,7 @@
     </div>
     <div class="modal modal_begin">
         <div class="popup popup_start">
-            <span class="popup__close popup__close_start"></span>
+            <span class="popup__close popup__close_begin"></span>
             <h2 class="popup__title popup__title_start">Начать работу</h2>
             <p class="popup__description popup__description_start">
                 Для начала работы необходимо зарегистрироваться.

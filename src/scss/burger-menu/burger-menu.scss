@@ -28,6 +28,11 @@
     &:last-child {
       margin-bottom: 0;
     }
+    &_exit {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 }
 @media screen and (min-width: 950px) {

@@ -3,11 +3,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
+  z-index: 11;
   background-color: white;
   border-radius: 0.5rem;
   padding: 55px;
   width: 460px;
+  &_delete-success {
+    height: 280px;
+  }
+  &_success {
+    height: 460px;
+  }
   &__under-text {
     font-family: $font-family--montserrat;
     font-style: normal;
@@ -73,8 +79,31 @@
     line-height: 20px;
     color: $color-gray--d10;
     margin-bottom: 14px;
+    &_edit-employee {
+      margin-bottom: 30px;
+    }
+    &_new-employee {
+      margin-bottom: 30px;
+    }
     &_recovery {
       margin-bottom: 40px;
+    }
+  }
+  &__tech-support {
+    font-family: $font-family--montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: $color-gray--d10;
+    margin: 0 auto 31px auto;
+    word-break: break-word;
+    &_title {
+      text-transform: uppercase;
+      font-weight: 600;
+      color: $color-dark-blue;
+      margin: 0 0 9px 0;
     }
   }
   &__description {
@@ -101,6 +130,9 @@
     line-height: 24px;
     text-align: center;
     color: $color-dark-blue;
+    &_plug {
+      max-width: 304px;
+    }
     &:after {
       content: "";
       display: block;
@@ -108,6 +140,30 @@
       margin: 0 auto;
       padding-top: 19px;
       border-bottom: 4px solid #ff9700;
+    }
+    &_delete-employee {
+      font-family: $font-family--montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: center;
+      color: #001C46;
+      margin-bottom: 46px;
+    }
+    &_delete-success {
+      margin: auto;
+      padding-top: 150px;
+      &:after {
+        display: none;
+      }
+    }
+    &_success {
+      margin: auto;
+      padding-top: 40%;
+      &:after {
+        display: none;
+      }
     }
     &_reg {
       margin-bottom: 22px;
@@ -119,6 +175,14 @@
     &_reset {
       padding-top: 90px;
     }
+    &_tech-support {
+      max-width: initial;
+    }
+  }
+  &__button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   &__input {
     background: #EDF6FF;
@@ -154,6 +218,9 @@
     &_reg {
       margin: 14px 0 14px 0;
     }
+    &_plug {
+      margin: 16px 0 14px 0;
+    }
   }
   &__button {
     background: #3685D7;
@@ -171,12 +238,46 @@
     padding: 16px 32px;
     border: 0;
     cursor: pointer;
+    &_cancel {
+      border: 2px solid #3685D7;
+      box-sizing: border-box;
+      border-radius: 5px;
+      background: $color-white;
+      color: $color-dark-blue;
+    }
+    &_delete-employee {
+      margin-right: 30px;
+    }
+    &:focus {
+      outline: none;
+    }
   }
 }
 @media screen and (max-width: $screen-w--xs) {
   .popup {
     padding: 25px;
     width: 380px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .popup {
+    &__title {
+      &_success {
+        padding-top: 60%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .popup {
+    &__button-container {
+      flex-direction: column;
+    }
+    &__button {
+      &_delete-employee {
+        margin: 0 0 18px 0;
+      }
+    }
   }
 }
 @media screen and (max-width: 460px) {

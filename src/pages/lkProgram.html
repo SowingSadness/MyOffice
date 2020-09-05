@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Сайт компании Мой Офис">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<%=require('src/images/logo.svg')%>">
+    <title>Мой Офис</title>
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.scss %>">
+</head>
+<body>
+<div class="page">
+    <header class="header">
+        <div class="header__upper-menu">
+            <a href="index.html" class="header__logo">
+                <img alt="лого сайта" class="header__logo-image" src="<%=require('src/images/logo3.png')%>">
+                <p  class="header__logo-text">мой офис</p>
+            </a>
+            <img class="burger-menu__button" src="<%=require('src/images/open-menu.svg')%>" alt="скрытое меню">
+            <nav class="burger-menu">
+                <ul class="burger-menu__list">
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="tel: +7 (843) 202-21-40">
+                            +7 (843) 202-21-40
+                        </a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a href="lk.html" class="header__user-box header__user-box_burger">
+                            <div class="header__image-box header__image-box_burger">
+                                <img class="header__user-icon" src="<%=require('src/images/user.svg')%>">
+                            </div>
+                            <p class="header__user header__user_burger">Сергей Иванов</p>
+                        </a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="about.html">О нас</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="rates.html">Тарифы</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="advantages.html">Возможности</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="partners.html">Партнёрам</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="support.html">Инструкции и поддержка</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="questions.html">Частые вопросы</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini nav-bar__link_active" href="lkProgram.html">Партнёрская программа</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="lkCompany.html">Настройки компании</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="lkProfile.html">Настройки профиля</a>
+                    </li>
+                    <li class="burger-menu__element burger-menu__element_exit">
+                        <a class="nav-bar__link nav-bar__link_mini" href="index.html">
+                            Выход
+                        </a>
+                        <img class="header__exit-icon header__exit-icon_burger" src="<%=require('src/images/exit.svg')%>">
+                    </li>
+                </ul>
+            </nav>
+            <a href="tel: +7 (843) 202-21-40" class="header__phone">+7 (843) 202-21-40</a>
+            <div class="header__lk-container">
+                <div class="header__info-container">
+                    <div class="header__row-container">
+                        <p class="header__balance-text">Баланс:</p>
+                        <p class="header__balance-text header__balance-text_bold">3 000 руб.</p>
+                    </div>
+                    <div class="header__row-container">
+                        <p class="header__balance-text">Оплачено до:</p>
+                        <p class="header__balance-text header__balance-text_bold">20.05.2020</p>
+                    </div>
+                </div>
+                <a href="lk.html" class="header__user-box">
+                    <div class="header__image-box">
+                        <img class="header__user-icon" src="<%=require('src/images/user.svg')%>">
+                    </div>
+                    <p class="header__user">Сергей Иванов</p>
+                </a>
+                <a href="index.html">
+                    <img class="header__exit-icon" src="<%=require('src/images/exit.svg')%>">
+                </a>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <ul class="nav-bar__list">
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="about.html">О нас</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="rates.html">Тарифы</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="advantages.html">Возможности</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="partners.html">Партрнёрам</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="support.html">Инструкции и поддержка</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="questions.html">Частые вопросы</a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="nav-bar nav-bar_lk">
+            <ul class="nav-bar__list">
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link nav-bar__link_lk" href="lk.html">Личный кабинет</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link nav-bar__link_lk nav-bar__link_active" href="lkProgram.html">Партнёрская программа</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link nav-bar__link_lk" href="lkCompany.html">Настройки компании</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link nav-bar__link_lk" href="lkProfile.html">Настройки профиля</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main main_lk">
+        <section class="lk-program">
+            <div class="profile-settings profile-settings_program">
+                <div class="profile-settings__title-wrapper">
+                    <h2 class="profile-settings__title">Условия партнёрской программы:</h2>
+                </div>
+                <div class="lk-program__wrapper">
+                    <p class="lk-program__description">
+                        Схема сотрудничества очень проста: вы&nbsp;приводите к&nbsp;нам клиентов,
+                        а&nbsp;мы&nbsp;выплачиваем вам&nbsp;10% от&nbsp;всех их&nbsp;платежей.
+                    </p>
+                    <p class="lk-program__description">
+                        Например, вы&nbsp;привели к&nbsp;нам 10&nbsp;клиентов,
+                        которые в&nbsp;сумме платят нам за&nbsp;использование сервиса 50&nbsp;000 руб./мес.
+                        В&nbsp;итоге вы&nbsp;получаете 5&nbsp;000 руб./мес.
+                    </p>
+                    <p class="lk-program__description">
+                        Сотрудничество с&nbsp;нами не&nbsp;ограничивается только привлечением клиентов.
+                        Мы&nbsp;готовы рассматривать любые предложения и&nbsp;варианты сотрудничества.
+                        Пишите нам: partners@moiofis.ru.
+                    </p>
+                </div>
+            </div>
+            <div class="profile-settings profile-settings_program">
+                <div class="profile-settings__title-wrapper">
+                    <h2 class="profile-settings__title">Ваше вознаграждение:</h2>
+                </div>
+                <div class="lk-program__wrapper lk-program__wrapper_sum">
+                    <p class="lk-program__description lk-program__description_bold">
+                        2 000 рублей
+                    </p>
+                    <button class="lk-program__button">Вывести средства</button>
+                </div>
+            </div>
+            <div class="profile-settings profile-settings_program profile-settings_clients">
+                <div class="profile-settings__title-wrapper">
+                    <h2 class="profile-settings__title">Список клиентов</h2>
+                </div>
+                <div class="lk-program__wrapper lk-program__wrapper_clients">
+                    <div class="lk-program__row">
+                        <p class="lk-program__title-element lk-program__title-element_hide">Клиент</p>
+                        <p class="lk-program__title-element">Логин</p>
+                    </div>
+                    <div class="lk-program__row lk-program__row_blue">
+                        <p class="lk-program__element lk-program__element_hide" title="Бердымухамедов Гурбангулы">
+                            Бердымухамедов Гурбангулы
+                        </p>
+                        <p class="lk-program__element" title="gurbanguliberdimuhamedov">
+                            @gurbanguliberdimuhamedov
+                        </p>
+                    </div>
+                    <div class="lk-program__row">
+                        <p class="lk-program__element lk-program__element_hide">Султанова Елена</p>
+                        <p class="lk-program__element">@sultanovaelena</p>
+                    </div>
+                    <button class="lk-program__clients-button">+ Клиент</button>
+                </div>
+            </div>
+            <div class="profile-settings profile-settings_program profile-settings_history">
+                <div class="profile-settings__title-wrapper">
+                    <h2 class="profile-settings__title">История выплат</h2>
+                </div>
+                <div class="lk-program__wrapper lk-program__wrapper_history">
+                    <div class="accordion accordion_program">
+                        <div class="accordion__panel accordion__panel_program">
+                            <h3 class="accordion__title accordion__title_program">2020</h3>
+                        </div>
+                        <div class="accordion__text-block accordion__text-block_program">
+                            <div class="accordion__panel_text">
+                                <p class="accordion__text accordion__text_program">
+                                    Май
+                                </p>
+                            </div>
+                            <div class="accordion__text-block">
+                                <div class="accordion__row">
+                                    <p class="accordion__text accordion__text_date">10.05</p>
+                                    <p class="accordion__text accordion__text_price">1 000 руб.</p>
+                                </div>
+                                <div class="accordion__row">
+                                    <p class="accordion__text accordion__text_date">10.05</p>
+                                    <p class="accordion__text accordion__text_price">1 000 руб.</p>
+                                </div>
+                            </div>
+                            <div class="accordion__panel_text">
+                                <p class="accordion__text accordion__text_program">
+                                    Февраль
+                                </p>
+                            </div>
+                            <div class="accordion__text-block">
+                                <div class="accordion__row">
+                                    <p class="accordion__text accordion__text_date">10.05</p>
+                                    <p class="accordion__text accordion__text_price">1 000 руб.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <a href="index.html" class="footer__logo">
+            <img alt="лого сайта" class="footer__logo-image" src="<%=require('src/images/logo3.png')%>">
+            <p class="footer__logo-text">мой офис</p>
+        </a>
+        <div class="footer__4-blocks">
+            <div class="footer-text-block">
+                <h3 class="footer-text-block__title">Контакты</h3>
+                <ul class="footer-text-block__list">
+                    <li class="footer-text-block__element">
+                        <img class="footer-text-block__icon"
+                             alt="иконка телефона"
+                             src="<%=require('src/images/phone.svg')%>">
+                        <a class="footer-text-block__link" href="tel: +7 (843) 202-21-40">
+                            +7 (843) 202-21-40
+                        </a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <img class="footer-text-block__icon" alt="иконка почты" src="<%=require('src/images/mail.svg')%>">
+                        <a class="footer-text-block__link" href="mailto: support@moiofis.ru">support@moiofis.ru</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <img class="footer-text-block__icon" alt="иконка метки" src="<%=require('src/images/marker.svg')%>">
+                        <a class="footer-text-block__link" href="https://yandex.ru/maps/-/CCQlQNquKA" target="_blank">
+                            г. Казань, ул. Юлиуса Фучика, дом № 90А, помещение 419-420
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-text-block">
+                <h3 class="footer-text-block__title">Компания</h3>
+                <ul class="footer-text-block__list">
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="rates.html">Тарифы</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="about.html">О нас</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html">Возможности</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="partners.html">Партнёрам</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-text-block">
+                <h3 class="footer-text-block__title">Продукты</h3>
+                <ul class="footer-text-block__list">
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#accounting">1С: Бухгалтерия предприятия</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#salary">1С: Зарплата и управление персоналом</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#trading">1С: Управление торговлей</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#firm">1С: Управление нашей фирмой</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#garden">1С: Садовод</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-text-block">
+                <h3 class="footer-text-block__title">Поддержка</h3>
+                <ul class="footer-text-block__list">
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="questions.html">Часто задаваемы вопросы</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="support.html">Инструкции</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul class="footer__bottom-block">
+            <li class="footer__bottom-block-element">
+                <p class="footer__bottom-link">&copy; Все права защищены</p>
+            </li>
+            <li class="footer__bottom-block-element">
+                <a href="policy.html" class="footer__bottom-link">Политика конфиденциальности</a>
+            </li>
+            <li class="footer__bottom-block-element">
+                <a href="#" class="footer__bottom-link">Временные файлы cookies</a>
+            </li>
+        </ul>
+    </footer>
+    <div class="modal modal_lk">
+        <div class="popup popup_lk">
+            <span class="popup__close popup__close_lk"></span>
+            <h2 class="popup__title popup__title_lk">Войти в личный кабинет</h2>
+            <form class="popup__form popup__form_lk">
+                <label class="popup__label popup__label_lk">
+                    Логин
+                    <input class="popup__input popup__input_lk">
+                </label>
+                <label class="popup__label popup__label_lk">
+                    Пароль
+                    <input type="password" class="popup__input popup__input_lk">
+                    <a href="#" class="popup__link">Забыли?</a>
+                </label>
+                <label>
+                    <input class="popup__captcha" placeholder="Тут встраивается ReCaptcha">
+                </label>
+                <button class="popup__button popup__button_lk">Войти</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal_reg">
+        <div class="popup popup_reg">
+            <span class="popup__close popup__close_reg"></span>
+            <h2 class="popup__title popup__title_reg">Регистрация</h2>
+            <form class="popup__form popup__form_reg">
+                <label class="popup__label popup__label_reg">
+                    Как вас зовут?*
+                    <input class="popup__input popup__input_reg">
+                </label>
+                <label class="popup__label popup__label_reg">
+                    Ваш e-mail*
+                    <input class="popup__input popup__input_reg">
+                </label>
+                <label class="popup__label popup__label_reg">
+                    Придумайте логин*
+                    <input class="popup__input popup__input_reg">
+                </label>
+                <label>
+                    <input class="popup__captcha popup__captcha_reg" placeholder="Тут встраивается ReCaptcha">
+                </label>
+                <p class="popup__under-text popup__under-text_reg">
+                    Нажимая кнопку “Отправить” вы даёте согласие на обработку персональных данных в соответствии с
+                    <a href="policy.html" class="popup__under-text popup__under-text_reg">
+                        Политикой конфиденциальности
+                    </a>
+                </p>
+                <button class="popup__button popup__button_reg">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal_thanks">
+        <div class="popup popup_thanks">
+            <span class="popup__close popup__close_thanks"></span>
+            <h2 class="popup__title popup__title_thanks">Спасибо за регистрацию</h2>
+            <p class="popup__under-text popup__under-text_thanks">
+                Мы отправили на ваш e-mail данные для входа в систему.
+            </p>
+        </div>
+    </div>
+    <div class="modal modal_recovery">
+        <div class="popup popup_recovery">
+            <span class="popup__close popup__close_recovery"></span>
+            <h2 class="popup__title popup__title_recovery">Восстановление пароля</h2>
+            <p class="popup__under-text popup__under-text_recovery">
+                Введите ваш e-mail. На указанный адрес мы вышлем вам данные для восстановления пароля.
+            </p>
+            <form class="popup__form popup__form_recovery">
+                <label class="popup__label popup__label_recovery">
+                    <input class="popup__input popup__input_recovery">
+                </label>
+                <button class="popup__button popup__button_recovery">Восстановить</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal_reset">
+        <div class="popup popup_reset">
+            <span class="popup__close popup__close_reset"></span>
+            <h2 class="popup__title popup__title_reset">Пароль сброшен</h2>
+            <p class="popup__under-text popup__under-text_reset">
+                На ваш e-mail мы отправили данные для восстановления пароля
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

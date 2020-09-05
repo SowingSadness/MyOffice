@@ -41,7 +41,7 @@
     margin: 0 33px 0 0;
     max-width: 236px;
     &_bottom {
-      margin: 0 0 18px 0;
+      margin: 0;
     }
     &_bold {
       font-weight: 600;
@@ -64,6 +64,11 @@
     padding: 15px;
     max-height: 53px;
     box-sizing: border-box;
+    &_lk {
+      padding: 13px;
+      max-width: 154px;
+      margin-right: 12px;
+    }
   }
   &__minus {
     background: #3685D7;
@@ -73,14 +78,15 @@
     margin-right: 33px;
     position: relative;
     cursor: pointer;
+    &_lk {
+      background: #84B7EA;
+      margin: 0;
+    }
     &:last-child {
       margin-right: 0;
     }
   }
   &__bottom-block {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     margin: 23px 0 35px 0;
     padding-top: 16px;
     border-top: 2px solid rgba(255, 151, 0, 0.4);
@@ -96,6 +102,9 @@
     color: $color-dark-blue;
     margin: 0 33px 0 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    &_lk {
+      margin: 0 17px 0 17px;
+    }
   }
   &__minus-icon {
     position: absolute;
@@ -108,10 +117,29 @@
       left: 5px;
     }
   }
+  &__row-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 0 18px 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
 }
 @media screen and (max-width: 1100px){
   .calculate-block {
     margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .calculate-block {
+    &__count-block {
+      &_lk {
+        margin: 0 0 15px 0;
+      }
+    }
   }
 }
 @media screen and (max-width: 475px) {
@@ -122,6 +150,9 @@
     }
     &__text {
       margin: 0 0 15px 0;
+      &_bottom {
+        margin: 0;
+      }
     }
   }
 }

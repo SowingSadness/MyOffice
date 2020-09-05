@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Сайт компании Мой Офис">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<%=require('src/images/logo.svg')%>">
+    <title>Мой Офис</title>
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.scss %>">
+</head>
+<body>
+<div class="page">
+    <header class="header">
+        <div class="header__upper-menu">
+            <a href="index.html" class="header__logo">
+                <img alt="лого сайта" class="header__logo-image" src="<%=require('src/images/logo3.png')%>">
+                <p  class="header__logo-text">мой офис</p>
+            </a>
+            <img class="burger-menu__button" src="<%=require('src/images/open-menu.svg')%>" alt="скрытое меню">
+            <nav class="burger-menu">
+                <ul class="burger-menu__list">
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="tel: +7 (843) 202-21-40">
+                            +7 (843) 202-21-40
+                        </a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a href="lk.html" class="header__user-box header__user-box_burger">
+                            <div class="header__image-box header__image-box_burger">
+                                <img class="header__user-icon" src="<%=require('src/images/user.svg')%>">
+                            </div>
+                            <p class="header__user header__user_burger">Сергей Иванов</p>
+                        </a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="about.html">О нас</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="rates.html">Тарифы</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="advantages.html">Возможности</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="partners.html">Партнёрам</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="support.html">Инструкции и поддержка</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="questions.html">Частые вопросы</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="lkProgram.html">Партнёрская программа</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="lkCompany.html">Настройки компании</a>
+                    </li>
+                    <li class="burger-menu__element">
+                        <a class="nav-bar__link nav-bar__link_mini" href="lkProfile.html">Настройки профиля</a>
+                    </li>
+                    <li class="burger-menu__element burger-menu__element_exit">
+                        <a class="nav-bar__link nav-bar__link_mini" href="index.html">
+                            Выход
+                        </a>
+                        <img class="header__exit-icon header__exit-icon_burger" src="<%=require('src/images/exit.svg')%>">
+                    </li>
+                </ul>
+            </nav>
+            <a href="tel: +7 (843) 202-21-40" class="header__phone">+7 (843) 202-21-40</a>
+            <div class="header__lk-container">
+                <div class="header__info-container">
+                    <div class="header__row-container">
+                        <p class="header__balance-text">Баланс:</p>
+                        <p class="header__balance-text header__balance-text_bold">3 000 руб.</p>
+                    </div>
+                    <div class="header__row-container">
+                        <p class="header__balance-text">Оплачено до:</p>
+                        <p class="header__balance-text header__balance-text_bold">20.05.2020</p>
+                    </div>
+                </div>
+                <a href="lk.html" class="header__user-box">
+                    <div class="header__image-box">
+                        <img class="header__user-icon" src="<%=require('src/images/user.svg')%>">
+                    </div>
+                    <p class="header__user">Сергей Иванов</p>
+                </a>
+                <a href="index.html">
+                    <img class="header__exit-icon" src="<%=require('src/images/exit.svg')%>">
+                </a>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <ul class="nav-bar__list">
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="about.html">О нас</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="rates.html">Тарифы</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="advantages.html">Возможности</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="partners.html">Партрнёрам</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="support.html">Инструкции и поддержка</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link" href="questions.html">Частые вопросы</a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="nav-bar nav-bar_lk">
+            <ul class="nav-bar__list">
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link nav-bar__link_lk  nav-bar__link_active" href="lk.html">Личный кабинет</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link nav-bar__link_lk" href="lkProgram.html">Партнёрская программа</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link nav-bar__link_lk" href="lkCompany.html">Настройки компании</a>
+                </li>
+                <li class="nav-bar__element">
+                    <a class="nav-bar__link nav-bar__link_lk" href="lkProfile.html">Настройки профиля</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main main_lk">
+        <section class="lk">
+            <div class="lk__upper-block">
+                <div class="lk__left">
+                    <div class="profile-settings profile-settings_lk">
+                        <div class="profile-settings__title-wrapper">
+                            <h2 class="profile-settings__title">Оплата</h2>
+                        </div>
+                        <div class="lk__wrapper">
+                            <div class="lk__row">
+                                <p class="lk__little-text">Период оплаты:</p>
+                                <select class="lk__select">
+                                    <option value="1 месяц" class="lk__option">1 месяц</option>
+                                    <option selected class="lk__option">3 месяца</option>
+                                    <option class="lk__option">6 месяцев</option>
+                                    <option class="lk__option">Произвольный период</option>
+                                </select>
+                            </div>
+                            <div class="lk__row">
+                                <p class="lk__little-text">К оплате:</p>
+                                <p class="lk__little-text">1 000 руб.</p>
+                            </div>
+                            <div class="lk__row">
+                                <p class="lk__little-text">Скидка:</p>
+                                <p class="lk__little-text">900 руб.</p>
+                            </div>
+                            <div class="lk__row">
+                                <p class="lk__little-text lk__little-text_bold">Итого к оплате:</p>
+                                <p class="lk__little-text">100 руб.</p>
+                            </div>
+                            <div class="lk__row">
+                                <button class="lk__button lk__button_pay">Оплатить онлайн</button>
+                                <button class="lk__button lk__button_download">Скачать счёт</button>
+                            </div>
+                            <p class="lk__little-text lk__little-text_under">
+                                Для оформления возврата необходимо написать на e-mail: support@moiofis.ru
+                            </p>
+                        </div>
+                    </div>
+                    <div class="profile-settings profile-settings_lk profile-settings_add">
+                        <div class="profile-settings__title-wrapper">
+                            <h2 class="profile-settings__title">Дополнительные услуги</h2>
+                        </div>
+                        <div class="lk__wrapper">
+                            <p class="lk__description">Период оплаты дополнительных услуг — 1 год</p>
+                            <div class="lk__row lk__row_blue lk__row_padding">
+                                <p class="lk__little-text lk__little-text_icon">1С Контрагент</p>
+                                <div class="lk__box">
+                                    <label class="lk__label">4 800 руб./год</label>
+                                    <input class="lk__checkbox" type="checkbox">
+                                </div>
+                            </div>
+                            <div class="lk__row lk__row_padding">
+                                <p class="lk__little-text lk__little-text_icon">1С Отчётность</p>
+                                <div class="lk__box">
+                                    <label class="lk__label">3 900 руб./год</label>
+                                    <input class="lk__checkbox" type="checkbox">
+                                </div>
+                            </div>
+                            <div class="lk__row lk__row_blue lk__row_padding">
+                                <p class="lk__little-text lk__little-text_icon">1С Спарк</p>
+                                <div class="lk__box">
+                                    <label class="lk__label">3 900 руб./год</label>
+                                    <input class="lk__checkbox" type="checkbox">
+                                </div>
+                            </div>
+                            <div class="lk__row lk__row_last">
+                                <p class="lk__little-text lk__little-text_bold">Итого к оплате:</p>
+                                <input class="lk__input" disabled placeholder="3 900 руб.">
+                            </div>
+                            <div class="lk__row lk__row_last">
+                                <button class="lk__button lk__button_pay">Оплатить онлайн</button>
+                                <button class="lk__button lk__button_download">Скачать счёт</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lk__right">
+                    <div class="profile-settings profile-settings_lk profile-settings_small">
+                        <div class="profile-settings__title-wrapper">
+                            <h2 class="profile-settings__title">Начало работы</h2>
+                        </div>
+                        <div class="lk__wrapper">
+                            <div class="lk__row lk__row_start">
+                                <p class="lk__little-text lk__little-text_start">
+                                    Для начала работы скачайте программу и запустите её:
+                                </p>
+                                <button class="lk__button lk__button__get-program">Скачать программу</button>
+                            </div>
+                            <a class="lk__link" href="#">Данные для техподдержки 1С:</a>
+                        </div>
+                    </div>
+                    <div class="profile-settings profile-settings_lk profile-settings_rates">
+                        <div class="profile-settings__title-wrapper">
+                            <h2 class="profile-settings__title">Мой тариф</h2>
+                        </div>
+                        <div class="lk__wrapper lk__wrapper_rate">
+                            <p class="lk__little-text lk__little-text_bold-mini lk__little-text_bold">Основной тариф</p>
+                            <div class="lk__row lk__row_blue lk__row_padding">
+                                <p class="lk__little-text lk__little-text_no-margin">Текущий баланс:</p>
+                                <p class="lk__little-text lk__little-text_no-margin lk__little-text_bold">
+                                    3 000 руб.
+                                </p>
+                            </div>
+                            <div class="lk__row lk__row_padding">
+                                <p class="lk__little-text lk__little-text_no-margin">Подключено сотрудников:</p>
+                                <p class="lk__little-text lk__little-text_no-margin i lk__little-text_bold">
+                                    2
+                                </p>
+                            </div>
+                            <div class="lk__row lk__row_blue lk__row_padding">
+                                <p class="lk__little-text lk__little-text_no-margin">Дисковое пространство:</p>
+                                <p class="lk__little-text lk__little-text_no-margin  lk__little-text_bold">
+                                    2 Гб
+                                </p>
+                            </div>
+                            <div class="lk__row lk__row_padding lk__row_add">
+                                <p class="lk__little-text lk__little-text_no-margin">Доступ оплачен до:</p>
+                                <p class="lk__little-text lk__little-text_no-margin lk__little-text_bold">
+                                    25.12.2020
+                                </p>
+                            </div>
+                            <p class="lk__little-text lk__little-text_bold-mini lk__little-text_bold">Дополнительные услуги</p>
+                            <div class="lk__row lk__row_padding lk__row_first">
+                                <p class=" lk__little-text  lk__little-text_bold lk__little-text_bold-mini lk__little-text_no-margin">Услуга:</p>
+                                <p class="lk__little-text lk__little-text_bold lk__little-text_bold-mini lk__little-text_no-margin">Доступно до:</p>
+                            </div>
+                            <div class="lk__row lk__row_blue lk__row_padding">
+                                <p class="lk__little-text_no-margin lk__little-text">1С Спарк</p>
+                                <p class="lk__little-text_no-margin lk__little-text">21.10.2020</p>
+                            </div>
+                            <div class="lk__row lk__row_padding">
+                                <p class="lk__little-text_no-margin lk__little-text">1С Отчётность</p>
+                                <p class="lk__little-text_no-margin lk__little-text">Не подключено</p>
+                            </div>
+                            <div class="lk__row lk__row_blue lk__row_padding">
+                                <p class="lk__little-text_no-margin lk__little-text">1С Контрагент</p>
+                                <p class="lk__little-text_no-margin lk__little-text">21.10.2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-settings profile-settings_row">
+                <div class="profile-settings__title-wrapper">
+                    <h2 class="profile-settings__title">Управление дисковым пространством</h2>
+                </div>
+                <div class="lk__wrapper lk__wrapper_control">
+                    <div class="control-lk">
+                        <div class="control-lk__engaged">
+                            <p class="control-lk__sign">Занято:</p>
+                            <p class="control-lk__sign control-lk__sign_bold">5 Гб</p>
+                        </div>
+                        <div class="control-lk__line">
+                            <div class="control-lk__line control-lk__line_blue"></div>
+                        </div>
+                        <div class="control-lk__row">
+                            <p class="control-lk__sign control-lk__sign_row">
+                                Дополнительное дисковое пространство
+                            </p>
+                            <div class="calculate-block__count-block calculate-block__count-block_lk">
+                                <div class="calculate-block__minus calculate-block__minus_lk">
+                                    <img class="calculate-block__minus-icon" src="<%=require('src/images/lineMinus.svg')%>">
+                                </div>
+                                <p class="calculate-block__number calculate-block__number_lk">5 Гб</p>
+                                <div class="calculate-block__minus calculate-block__minus_lk">
+                                    <img class="calculate-block__minus-icon" src="<%=require('src/images/lineMinus.svg')%>">
+                                    <img class="calculate-block__minus-icon_plus"
+                                         src="<%=require('src/images/lineMinus.svg')%>"
+                                    >
+                                </div>
+                            </div>
+                            <div class="control-lk__pay">
+                                <p class="control-lk__sign control-lk__sign_pay">Доплата:</p>
+                                <p class="control-lk__sign">95 руб./мес</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-settings profile-settings_row profile-settings_employees">
+                <div class="profile-settings__title-wrapper">
+                    <h2 class="profile-settings__title">Активные сотрудники</h2>
+                </div>
+                <div class="lk__wrapper lk__wrapper_employees-active">
+                    <div class="employees">
+                        <div class="employees__row employees__row_titles">
+                            <p class="employees__title">Сотрудник</p>
+                            <p class="employees__title employees__title_login">Логин</p>
+                            <p class="employees__title employees__title_email">E-mail</p>
+                        </div>
+                        <div class="employees__row">
+                            <p class="employees__text">Бердымухамедов Гурбангулы</p>
+                            <p class="employees__text employees__text_login">@berdimuhamedovgurbanguli</p>
+                            <p class="employees__text employees__text_email">berdimuhamedovgurbanguli@mail.ru</p>
+                            <div class="employees__icons">
+                                <img class="employees__icon employees__icon_stop" src="<%=require('src/images/stop.svg')%>">
+                                <img class="employees__icon employees__icon_edit" src="<%=require('src/images/edit.svg')%>">
+                                <img class="employees__icon employees__icon_delete" src="<%=require('src/images/delete.svg')%>">
+                            </div>
+                        </div>
+                        <div class="employees__row">
+                            <p class="employees__text">Бердымухамедов Гурбангулы</p>
+                            <p class="employees__text employees__text_login">@berdimuhamedovgurbanguli</p>
+                            <p class="employees__text employees__text_email">berdimuhamedovgurbanguli@mail.ru</p>
+                            <div class="employees__icons">
+                                <img class="employees__icon employees__icon_stop" src="<%=require('src/images/stop.svg')%>">
+                                <img class="employees__icon employees__icon_edit" src="<%=require('src/images/edit.svg')%>">
+                                <img class="employees__icon employees__icon_delete" src="<%=require('src/images/delete.svg')%>">
+                            </div>
+                        </div>
+                        <button class="employees__add-button">+ Сотрудник</button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-settings profile-settings_row profile-settings_employees">
+                <div class="profile-settings__title-wrapper">
+                    <h2 class="profile-settings__title">Отключенные сотрудники</h2>
+                </div>
+                <div class="lk__wrapper lk__wrapper_employees-deleted">
+                    <div class="employees">
+                        <div class="employees__row employees__row_titles employees__row_deleted">
+                            <p class="employees__title">Сотрудник</p>
+                            <p class="employees__title employees__title_login">Логин</p>
+                            <p class="employees__title employees__title_email">E-mail</p>
+                        </div>
+                        <div class="employees__row employees__row_deleted">
+                            <p class="employees__text" title="Бердымухамедов Гурбангулы">Бердымухамедов Гурбангулы</p>
+                            <p class="employees__text employees__text_login" title="@berdimuhamedovgurbanguli">@berdimuhamedovgurbanguli</p>
+                            <p class="employees__text employees__text_email" title="berdimuhamedovgurbanguli@mail.ru">
+                                berdimuhamedovgurbanguli@mail.ru
+                            </p>
+                            <a href="#" class="employees__restore">Восстановить</a>
+                        </div>
+                        <div class="employees__row employees__row_deleted">
+                            <p class="employees__text" title="Бердымухамедов Гурбангулы">Бердымухамедов Гурбангулы</p>
+                            <p class="employees__text employees__text_login" title="@berdimuhamedovgurbanguli">@berdimuhamedovgurbanguli</p>
+                            <p class="employees__text employees__text_email" title="berdimuhamedovgurbanguli@mail.ru">
+                                berdimuhamedovgurbanguli@mail.ru
+                            </p>
+                            <a href="#" class="employees__restore">Восстановить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-settings profile-settings_row">
+                <div class="profile-settings__title-wrapper">
+                    <h2 class="profile-settings__title">Транзакции</h2>
+                </div>
+                <div class="lk__wrapper lk__wrapper_employees-deleted">
+                    <div class="accordion__panel_text accordion__panel_border">
+                        <p class="accordion__text accordion__text_program accordion__text_lk">
+                            Просмотр транзакций за сегодня
+                        </p>
+                    </div>
+                    <div class="accordion__text-block accordion__text-block_border">
+                        <div class="accordion__row accordion__row_lk">
+                            <p class="accordion__text accordion__text_date">10:35</p>
+                            <p class="accordion__text accordion__text_description">Внесён платёж за май</p>
+                            <p class="accordion__text accordion__text_price">+ 1 000 руб.</p>
+                        </div>
+                        <div class="accordion__row accordion__row_lk">
+                            <p class="accordion__text accordion__text_date">12:35</p>
+                            <p class="accordion__text accordion__text_description">
+                                Оплата за пользователя @sultanovaelena
+                            </p>
+                            <p class="accordion__text accordion__text_price accordion__text_pay">- 35 руб.</p>
+                        </div>
+                    </div>
+                    <div class="transactions">
+                        <p class="transactions__text">Скачать детализацию счёта:</p>
+                        <label class="transactions__label">с</label>
+                        <input class="transactions__input">
+                        <label class="transactions__label">по</label>
+                        <input class="transactions__input">
+                        <button  class="transactions__button">Скачать отчёт</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <a href="index.html" class="footer__logo">
+            <img alt="лого сайта" class="footer__logo-image" src="<%=require('src/images/logo3.png')%>">
+            <p class="footer__logo-text">мой офис</p>
+        </a>
+        <div class="footer__4-blocks">
+            <div class="footer-text-block">
+                <h3 class="footer-text-block__title">Контакты</h3>
+                <ul class="footer-text-block__list">
+                    <li class="footer-text-block__element">
+                        <img class="footer-text-block__icon"
+                             alt="иконка телефона"
+                             src="<%=require('src/images/phone.svg')%>">
+                        <a class="footer-text-block__link" href="tel: +7 (843) 202-21-40">
+                            +7 (843) 202-21-40
+                        </a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <img class="footer-text-block__icon" alt="иконка почты" src="<%=require('src/images/mail.svg')%>">
+                        <a class="footer-text-block__link" href="mailto: support@moiofis.ru">support@moiofis.ru</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <img class="footer-text-block__icon" alt="иконка метки" src="<%=require('src/images/marker.svg')%>">
+                        <a class="footer-text-block__link" href="https://yandex.ru/maps/-/CCQlQNquKA" target="_blank">
+                            г. Казань, ул. Юлиуса Фучика, дом № 90А, помещение 419-420
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-text-block">
+                <h3 class="footer-text-block__title">Компания</h3>
+                <ul class="footer-text-block__list">
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="rates.html">Тарифы</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="about.html">О нас</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html">Возможности</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="partners.html">Партнёрам</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-text-block">
+                <h3 class="footer-text-block__title">Продукты</h3>
+                <ul class="footer-text-block__list">
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#accounting">1С: Бухгалтерия предприятия</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#salary">1С: Зарплата и управление персоналом</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#trading">1С: Управление торговлей</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#firm">1С: Управление нашей фирмой</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="advantages.html#garden">1С: Садовод</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-text-block">
+                <h3 class="footer-text-block__title">Поддержка</h3>
+                <ul class="footer-text-block__list">
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="questions.html">Часто задаваемы вопросы</a>
+                    </li>
+                    <li class="footer-text-block__element">
+                        <a class="footer-text-block__link" href="support.html">Инструкции</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul class="footer__bottom-block">
+            <li class="footer__bottom-block-element">
+                <p class="footer__bottom-link">&copy; Все права защищены</p>
+            </li>
+            <li class="footer__bottom-block-element">
+                <a href="policy.html" class="footer__bottom-link">Политика конфиденциальности</a>
+            </li>
+            <li class="footer__bottom-block-element">
+                <a href="#" class="footer__bottom-link">Временные файлы cookies</a>
+            </li>
+        </ul>
+    </footer>
+    <div class="modal modal_lk">
+        <div class="popup popup_lk">
+            <span class="popup__close popup__close_lk"></span>
+            <h2 class="popup__title popup__title_lk">Войти в личный кабинет</h2>
+            <form class="popup__form popup__form_lk">
+                <label class="popup__label popup__label_lk">
+                    Логин
+                    <input class="popup__input popup__input_lk">
+                </label>
+                <label class="popup__label popup__label_lk">
+                    Пароль
+                    <input type="password" class="popup__input popup__input_lk">
+                    <a href="#" class="popup__link">Забыли?</a>
+                </label>
+                <label>
+                    <input class="popup__captcha" placeholder="Тут встраивается ReCaptcha">
+                </label>
+                <button class="popup__button popup__button_lk">Войти</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal_reg">
+        <div class="popup popup_reg">
+            <span class="popup__close popup__close_reg"></span>
+            <h2 class="popup__title popup__title_reg">Регистрация</h2>
+            <form class="popup__form popup__form_reg">
+                <label class="popup__label popup__label_reg">
+                    Как вас зовут?*
+                    <input class="popup__input popup__input_reg">
+                </label>
+                <label class="popup__label popup__label_reg">
+                    Ваш e-mail*
+                    <input class="popup__input popup__input_reg">
+                </label>
+                <label class="popup__label popup__label_reg">
+                    Придумайте логин*
+                    <input class="popup__input popup__input_reg">
+                </label>
+                <label>
+                    <input class="popup__captcha popup__captcha_reg" placeholder="Тут встраивается ReCaptcha">
+                </label>
+                <p class="popup__under-text popup__under-text_reg">
+                    Нажимая кнопку “Отправить” вы даёте согласие на обработку персональных данных в соответствии с
+                    <a href="policy.html" class="popup__under-text popup__under-text_reg">
+                        Политикой конфиденциальности
+                    </a>
+                </p>
+                <button class="popup__button popup__button_reg">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal_thanks">
+        <div class="popup popup_thanks">
+            <span class="popup__close popup__close_thanks"></span>
+            <h2 class="popup__title popup__title_thanks">Спасибо за регистрацию</h2>
+            <p class="popup__under-text popup__under-text_thanks">
+                Мы отправили на ваш e-mail данные для входа в систему.
+            </p>
+        </div>
+    </div>
+    <div class="modal modal_recovery">
+        <div class="popup popup_recovery">
+            <span class="popup__close popup__close_recovery"></span>
+            <h2 class="popup__title popup__title_recovery">Восстановление пароля</h2>
+            <p class="popup__under-text popup__under-text_recovery">
+                Введите ваш e-mail. На указанный адрес мы вышлем вам данные для восстановления пароля.
+            </p>
+            <form class="popup__form popup__form_recovery">
+                <label class="popup__label popup__label_recovery">
+                    <input class="popup__input popup__input_recovery">
+                </label>
+                <button class="popup__button popup__button_recovery">Восстановить</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal_reset">
+        <div class="popup popup_reset">
+            <span class="popup__close popup__close_reset"></span>
+            <h2 class="popup__title popup__title_reset">Пароль сброшен</h2>
+            <p class="popup__under-text popup__under-text_reset">
+                На ваш e-mail мы отправили данные для восстановления пароля
+            </p>
+        </div>
+    </div>
+    <div class="modal modal_tech-support">
+        <div class="popup popup_tech-support">
+            <span class="popup__close popup__close_tech-support"></span>
+            <h2 class="popup__title popup__title_tech-support">Данные для техподдержки 1С</h2>
+            <p class="popup__tech-support popup__tech-support_title">
+                Логин в 1с:
+            </p>
+            <p class="popup__tech-support">
+                gurbalguli.berdimukhamedov.m6326@moiofis
+            </p>
+            <p class="popup__tech-support popup__tech-support_title">
+                Пароль:
+            </p>
+            <p class="popup__tech-support">
+                XMX2B60S
+            </p>
+            <p class="popup__tech-support">
+                Эти данные вам понадобятся для подтверждения легальности программ 1С
+            </p>
+        </div>
+    </div>
+    <div class="modal modal_edit-employee">
+        <div class="popup popup_edit-employee">
+            <span class="popup__close popup__close_edit-employee"></span>
+            <h2 class="popup__title popup__title_edit-employee">Редактирование данных сотрудника</h2>
+            <form class="popup__form popup__form_edit-employee">
+                <label class="popup__label popup__label_edit-employee">
+                    Имя сотрудника
+                    <input class="popup__input popup__input_edit-employee">
+                </label>
+                <label class="popup__label popup__label_edit-employee">
+                    E-mail
+                    <input class="popup__input popup__input_edit-employee">
+                </label>
+                <label class="popup__label popup__label_edit-employee">
+                    Новый пароль
+                    <input type="password" class="popup__input popup__input_edit-employee">
+                </label>
+                <button class="popup__button popup__button_edit-employee">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal_success">
+        <div class="popup popup_success">
+            <span class="popup__close popup__close_success"></span>
+            <h2 class="popup__title popup__title_success">Данные успешно сохранены!</h2>
+        </div>
+    </div>
+    <div class="modal modal_new-employee">
+        <div class="popup popup_new-employee">
+            <span class="popup__close popup__close_new-employee"></span>
+            <h2 class="popup__title popup__title_new-employee">Новый сотрудник</h2>
+            <form class="popup__form popup__form_new-employee">
+                <label class="popup__label popup__label_new-employee">
+                    Имя сотрудника
+                    <input class="popup__input popup__input_new-employee">
+                </label>
+                <label class="popup__label popup__label_new-employee">
+                    E-mail
+                    <input class="popup__input popup__input_new-employee">
+                </label>
+                <button class="popup__button popup__button_new-employee">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal_new-success">
+        <div class="popup popup_success">
+            <span class="popup__close popup__close_new-success"></span>
+            <h2 class="popup__title popup__title_success">Сотрудник успешно добавлен!</h2>
+        </div>
+    </div>
+    <div class="modal modal_delete-employee">
+        <div class="popup popup_delete-employee">
+            <span class="popup__close popup__close_delete-employee"></span>
+            <h2 class="popup__title popup__title_delete-employee">
+                Вы уверены, что хотите удалить сотрудника?
+            </h2>
+            <div class="popup__button-container">
+                <button class="popup__button popup__button_delete-employee">Удалить</button>
+                <button class="popup__button popup__button_cancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal_delete-success">
+        <div class="popup popup_delete-success">
+            <span class="popup__close popup__close_delete-success"></span>
+            <h2 class="popup__title popup__title_delete-success">Сотрудник удалён!</h2>
+        </div>
+    </div>
+</div>
+</body>
+</html>

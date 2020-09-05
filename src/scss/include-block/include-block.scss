@@ -20,6 +20,9 @@
       margin: 0;
     }
   }
+  &__container {
+    padding-left: 40px;
+  }
   &__element {
     font-family: $font-family--montserrat;
     font-style: normal;
