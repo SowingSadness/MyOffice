@@ -22,7 +22,8 @@ const config = {
     lkProfile: './src/js/lkProfile.js',
     lkCompany: './src/js/lkCompany.js',
     lkProgram: './src/js/lkProgram.js',
-    lk: './src/js/lk.js'
+    lk: './src/js/lk.js',
+    Header: './src/js/Html/Header.tsx'
   },
   output: {
     path: path.resolve(__dirname, '..', 'myoffice', 'static'),
@@ -30,10 +31,15 @@ const config = {
     publicPath: '/static/'
   },
   resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
     modules: [
       path.join(__dirname, '/'),
       'node_modules'
     ]
+  },
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM"
   },
   devServer: {
     contentBase: path.resolve(__dirname, '..', 'myoffice', 'static'),
@@ -43,6 +49,11 @@ const config = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: '/node_modules/',
+      },
       {
         test: /\.(png|jpg|gif|ico|svg)$/i,
         use: [
@@ -112,7 +123,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/pages/index.html',
       filename: 'index.html',
-      chunks: ['main']
+      chunks: ['main', 'Header']
     }),
     new HtmlWebpackPlugin({
       template: './src/pages/advantages.html',

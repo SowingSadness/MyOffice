@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "rootDirs": ["./src/"],
+        "outDir": "../myoffice/static/",
+        "noImplicitAny": true,
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true,
+        "types": ["@types/react"]
+    },
+    "include": [
+        "./src/js/"
+    ]
+}

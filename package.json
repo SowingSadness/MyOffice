@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/vladoskav/MyOffice",
   "devDependencies": {
+    "@types/react": "^16.9.49",
     "autoprefixer": "9.8.0",
     "cross-env": "7.0.2",
     "css-loader": "3.5.3",
@@ -33,7 +34,6 @@
     "image-webpack-loader": "6.0.0",
     "mini-css-extract-plugin": "0.9.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
-    "resolve-url-loader": "^3.1.1",
     "sass": "^1.26.9",
     "sass-loader": "^9.0.0",
     "style-loader": "1.2.1",
@@ -45,6 +45,9 @@
   "dependencies": {
     "flickity": "2.2.1",
     "normalize.css": "8.0.1",
-    "swiper": "^6.0.0"
+    "react": "^16.13.1",
+    "swiper": "^6.0.0",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2"
   }
 }
