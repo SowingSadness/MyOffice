@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const config = {
   entry: {
-    main: './src/js/index.js',
+    index: './src/js/index.js',
     advantages: './src/js/advantages.js',
     about: './src/js/about.js',
     questions: './src/js/questions.js',
@@ -49,11 +49,6 @@ const config = {
   },
   module: {
     rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: '/node_modules/',
-      },
       {
         test: /\.(png|jpg|gif|ico|svg)$/i,
         use: [
@@ -106,6 +101,11 @@ const config = {
           }
         ]
       },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: '/node_modules/',
+      },
     ]
   },
   plugins: [
@@ -123,7 +123,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/pages/index.html',
       filename: 'index.html',
-      chunks: ['main', 'Header']
+      chunks: ['index', 'Header']
     }),
     new HtmlWebpackPlugin({
       template: './src/pages/advantages.html',

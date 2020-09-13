@@ -3,6 +3,7 @@ import "normalize.css";
 import "src/scss/index.scss";
 import Swiper, { Navigation, Pagination } from "swiper";
 import Popup from "./popup";
+import "./indexController";
 
 // Свайпер
 Swiper.use([Navigation, Pagination]);
