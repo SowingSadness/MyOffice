@@ -44,8 +44,6 @@
   },
   "dependencies": {
     "@types/react-dom": "^16.9.8",
-    "flickity": "2.2.1",
-    "normalize.css": "8.0.1",
     "react": "^16.13.1",
     "swiper": "^6.0.0",
     "ts-loader": "^8.0.3",
