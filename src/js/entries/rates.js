@@ -1,9 +1,7 @@
-import "normalize.css";
-import "src/scss/advantages.scss";
+import include_me from "src/js/router";
+import "src/scss/rates.scss";
 import Popup from "./popup";
 
-
-// Селекторы
 
 const lkButton = document.querySelector('.header__lk-button');
 const burgerButton = document.querySelector('.burger-menu__button');
@@ -21,16 +19,14 @@ const popupLink = document.querySelector('.popup__link');
 const modalRec = document.querySelector('.modal_recovery');
 const recButton = document.querySelector('.popup__button_recovery');
 const modalReset = document.querySelector('.modal_reset');
-const modalBegin = document.querySelector('.modal_begin');
 const closeThanks = document.querySelector('.popup__close_thanks');
 const closeReset = document.querySelector('.popup__close_reset');
 const closeRec = document.querySelector('.popup__close_recovery');
 
-// Старт // Возможности
-const startProgram = document.querySelectorAll('.ac-block__button');
-const modalStart = document.querySelector('.modal_start');
-const closeStart = document.querySelector('.popup__close_start');
-const beginWork = document.querySelector('.additional__button');
+// Тарифы
+const toPlug = document.querySelectorAll('.rates__to-plug');
+const modalPlug = document.querySelector('.modal_plug');
+const closePlug = document.querySelector('.popup__close_plug');
 // Открытие личного кабинета
 const popupLk = new Popup(modalLk, popupCloseLk);
 
@@ -52,7 +48,6 @@ const lkStart = document.querySelector('.nav-bar__link_start');
 lkStart.addEventListener('click', () => {
     popupReg.open()
 });
-
 startWorkButton.addEventListener('click', () => {
     popupReg.open();
 
@@ -96,19 +91,38 @@ recButton.addEventListener('click', (event) => {
     popupReset.open();
     popupRec.close();
 });
+// Тарифы
+const popupPlug = new Popup(modalPlug, closePlug);
 
-// Запустить программу // Возможности
+toPlug.forEach((item) => {
+   item.addEventListener('click', () => {
+       popupPlug.open();
+   })
+});
 
-const popupStart = new Popup(modalStart, closeStart);
+// Прибавление и уменьшение числа
 
-startProgram.forEach((item) => {item.addEventListener('click', (event) => {
-    popupStart.open();
-});});
+const minusUp = document.querySelector('.calculate-block__minus_up');
+const plusUp = document.querySelector('.calculate-block__minus_plus-up');
+const numberUp = document.querySelector('.calculate-block__number');
+const countBlock = document.querySelector('.calculate-block__count-block');
+const numberDown = document.querySelector('.calculate-block__number_down');
+const minusDown = document.querySelector('.calculate-block__minus_down');
+const plusDown = document.querySelector('.calculate-block__minus_plus-down');
+const countBlockDown = document.querySelector('.calculate-block__count-block-down')
 
-const closeBegin = document.querySelector('.popup__close_begin');
-const popupBegin = new Popup(modalBegin, closeBegin);
+const countUp = (event, number, plus, minus) => {
+    if (event.target === minus && number.textContent > 0) {
+            number.textContent--
+    } else if (event.target === plus) {
+        number.textContent++
+    }
+};
 
-beginWork.addEventListener('click', () => {
+countBlock.addEventListener('click', (event) => {
+    countUp(event, numberUp, plusUp, minusUp)
+});
 
-    popupBegin.open();
+countBlockDown.addEventListener('click', (event) => {
+    countUp(event, numberDown, plusDown, minusDown)
 });

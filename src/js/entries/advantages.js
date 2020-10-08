@@ -1,7 +1,9 @@
-import "normalize.css";
-import "src/scss/policy.scss";
-
+import include_me from "src/js/router";
+import "src/scss/advantages.scss";
 import Popup from "./popup";
+
+
+// Селекторы
 
 const lkButton = document.querySelector('.header__lk-button');
 const burgerButton = document.querySelector('.burger-menu__button');
@@ -19,10 +21,16 @@ const popupLink = document.querySelector('.popup__link');
 const modalRec = document.querySelector('.modal_recovery');
 const recButton = document.querySelector('.popup__button_recovery');
 const modalReset = document.querySelector('.modal_reset');
+const modalBegin = document.querySelector('.modal_begin');
 const closeThanks = document.querySelector('.popup__close_thanks');
 const closeReset = document.querySelector('.popup__close_reset');
 const closeRec = document.querySelector('.popup__close_recovery');
 
+// Старт // Возможности
+const startProgram = document.querySelectorAll('.ac-block__button');
+const modalStart = document.querySelector('.modal_start');
+const closeStart = document.querySelector('.popup__close_start');
+const beginWork = document.querySelector('.additional__button');
 // Открытие личного кабинета
 const popupLk = new Popup(modalLk, popupCloseLk);
 
@@ -44,6 +52,7 @@ const lkStart = document.querySelector('.nav-bar__link_start');
 lkStart.addEventListener('click', () => {
     popupReg.open()
 });
+
 startWorkButton.addEventListener('click', () => {
     popupReg.open();
 
@@ -86,4 +95,20 @@ recButton.addEventListener('click', (event) => {
     event.preventDefault();
     popupReset.open();
     popupRec.close();
+});
+
+// Запустить программу // Возможности
+
+const popupStart = new Popup(modalStart, closeStart);
+
+startProgram.forEach((item) => {item.addEventListener('click', (event) => {
+    popupStart.open();
+});});
+
+const closeBegin = document.querySelector('.popup__close_begin');
+const popupBegin = new Popup(modalBegin, closeBegin);
+
+beginWork.addEventListener('click', () => {
+
+    popupBegin.open();
 });

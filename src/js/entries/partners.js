@@ -1,5 +1,5 @@
-import "normalize.css";
-import "src/scss/instructions.scss";
+import include_me from "src/js/router";
+import "src/scss/partners.scss";
 import Popup from "./popup";
 
 const lkButton = document.querySelector('.header__lk-button');
@@ -22,6 +22,10 @@ const closeThanks = document.querySelector('.popup__close_thanks');
 const closeReset = document.querySelector('.popup__close_reset');
 const closeRec = document.querySelector('.popup__close_recovery');
 
+// Партнерам
+const becomePartner = document.querySelector('.partners__button');
+const modalPartner = document.querySelector('.modal_partner');
+const closePartner = document.querySelector('.popup__close_partner');
 // Открытие личного кабинета
 const popupLk = new Popup(modalLk, popupCloseLk);
 
@@ -86,27 +90,11 @@ recButton.addEventListener('click', (event) => {
     popupReset.open();
     popupRec.close();
 });
-// Поддержка
-const getSupport = document.querySelector('.instructions__button');
-const modalQue = document.querySelector('.modal_question');
-const closeQue = document.querySelector('.popup__close_question');
-const modalThanksQue = document.querySelector('.modal_thanks-question');
-const confirmQue = document.querySelector('.popup__button_question');
 
-// Задать вопрос // поддержка
+// Партнеры
 
-const popupQuestion = new Popup(modalQue, closeQue);
+const popupPartner = new Popup(modalPartner, closePartner);
 
-getSupport.addEventListener('click', () => {
-    popupQuestion.open();
-});
-
-const closeThanksQue = document.querySelector('.popup__close_thanks-question');
-
-const popupThanksQuestion = new Popup(modalThanksQue, closeThanksQue);
-
-confirmQue.addEventListener('click', (event) => {
-    event.preventDefault();
-    popupThanksQuestion.open();
-    popupQuestion.close();
+becomePartner.addEventListener('click', () => {
+    popupPartner.open();
 });

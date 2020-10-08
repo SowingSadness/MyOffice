@@ -1,7 +1,9 @@
-import "normalize.css";
-import "src/scss/rates.scss";
+import include_me from "src/js/router";
+import "src/scss/questions.scss";
 import Popup from "./popup";
 
+// Селекторы
+const panel = document.querySelectorAll('.accordion__panel');
 
 const lkButton = document.querySelector('.header__lk-button');
 const burgerButton = document.querySelector('.burger-menu__button');
@@ -23,10 +25,6 @@ const closeThanks = document.querySelector('.popup__close_thanks');
 const closeReset = document.querySelector('.popup__close_reset');
 const closeRec = document.querySelector('.popup__close_recovery');
 
-// Тарифы
-const toPlug = document.querySelectorAll('.rates__to-plug');
-const modalPlug = document.querySelector('.modal_plug');
-const closePlug = document.querySelector('.popup__close_plug');
 // Открытие личного кабинета
 const popupLk = new Popup(modalLk, popupCloseLk);
 
@@ -91,41 +89,11 @@ recButton.addEventListener('click', (event) => {
     popupReset.open();
     popupRec.close();
 });
-// Тарифы
-const popupPlug = new Popup(modalPlug, closePlug);
 
-toPlug.forEach((item) => {
-   item.addEventListener('click', () => {
-       popupPlug.open();
-   })
-});
-
-// Прибавление и уменьшение числа
-
-const minusUp = document.querySelector('.calculate-block__minus_up');
-const plusUp = document.querySelector('.calculate-block__minus_plus-up');
-const numberUp = document.querySelector('.calculate-block__number');
-const countBlock = document.querySelector('.calculate-block__count-block');
-const numberDown = document.querySelector('.calculate-block__number_down');
-const minusDown = document.querySelector('.calculate-block__minus_down');
-const plusDown = document.querySelector('.calculate-block__minus_plus-down');
-const countBlockDown = document.querySelector('.calculate-block__count-block-down')
-
-const countUp = (event, number, plus, minus) => {
-    if (event.target === minus && number.textContent > 0) {
-            number.textContent--
-    } else if (event.target === plus) {
-        number.textContent++
-    }
-};
-
-countBlock.addEventListener('click', (event) => {
-    countUp(event, numberUp, plusUp, minusUp)
-});
-
-countBlockDown.addEventListener('click', (event) => {
-    countUp(event, numberDown, plusDown, minusDown)
-});
-
-
-
+for (let i = 0; i < panel.length; i++) {
+    panel[i].addEventListener('click', () => {
+        panel[i].nextElementSibling
+            .classList.toggle('accordion__text-block_active');
+        panel[i].classList.toggle('accordion__panel_active')
+    })
+}

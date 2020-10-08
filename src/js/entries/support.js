@@ -1,6 +1,5 @@
-import "normalize.css";
-import "src/scss/notFound.scss";
-
+import include_me from "src/js/router";
+import "src/scss/support.scss";
 import Popup from "./popup";
 
 const lkButton = document.querySelector('.header__lk-button');
@@ -22,6 +21,13 @@ const modalReset = document.querySelector('.modal_reset');
 const closeThanks = document.querySelector('.popup__close_thanks');
 const closeReset = document.querySelector('.popup__close_reset');
 const closeRec = document.querySelector('.popup__close_recovery');
+
+// Поддержка
+const getSupport = document.querySelector('.support__bottom-button');
+const modalQue = document.querySelector('.modal_question');
+const closeQue = document.querySelector('.popup__close_question');
+const modalThanksQue = document.querySelector('.modal_thanks-question');
+const confirmQue = document.querySelector('.popup__button_question');
 
 // Открытие личного кабинета
 const popupLk = new Popup(modalLk, popupCloseLk);
@@ -86,4 +92,22 @@ recButton.addEventListener('click', (event) => {
     event.preventDefault();
     popupReset.open();
     popupRec.close();
+});
+
+// Задать вопрос // поддержка
+
+const popupQuestion = new Popup(modalQue, closeQue);
+
+getSupport.addEventListener('click', () => {
+    popupQuestion.open();
+});
+
+const closeThanksQue = document.querySelector('.popup__close_thanks-question');
+
+const popupThanksQuestion = new Popup(modalThanksQue, closeThanksQue);
+
+confirmQue.addEventListener('click', (event) => {
+   event.preventDefault();
+   popupThanksQuestion.open();
+   popupQuestion.close();
 });

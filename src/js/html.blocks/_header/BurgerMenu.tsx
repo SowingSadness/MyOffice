@@ -1,7 +1,7 @@
-import * as React from 'react';
-import User from '../../Model/User';
+import React from "react";
+import User from "../../model/User";
 
-function NotLoginned(props: Readonly<{ user?: User }>): React.ReactElement {
+function NotLoginned(_: Readonly<{ user?: User }>): React.ReactElement {
     return <React.Fragment>
         <li className="burger-menu__element">
             <a className="nav-bar__link nav-bar__link_mini nav-bar__link_start" href="#">Начать работу</a>
@@ -12,14 +12,14 @@ function NotLoginned(props: Readonly<{ user?: User }>): React.ReactElement {
     </React.Fragment>;
 }
 
-function Loginned(props: Readonly<{ user?: User }>): React.ReactElement {
+function Loginned(props: Readonly<{ user: User }>): React.ReactElement {
     return <React.Fragment>
         <li className="burger-menu__element">
             <a href="lk.html" className="header__user-box header__user-box_burger">
                 <div className="header__image-box header__image-box_burger">
                     <img className="header__user-icon" src="images/user.svg" />
                 </div>
-                <p className="header__user header__user_burger">Сергей Иванов</p>
+                <p className="header__user header__user_burger">{ props.user.name }</p>
             </a>
         </li>
     </React.Fragment>;

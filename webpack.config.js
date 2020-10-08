@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -7,28 +8,37 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const isDev = process.env.NODE_ENV === 'development';
 
 const config = {
+  mode: 'development',
   entry: {
-    index: './src/js/index.js',
-    advantages: './src/js/advantages.js',
-    about: './src/js/about.js',
-    questions: './src/js/questions.js',
-    support: './src/js/support.js',
-    notFound: './src/js/notFound.js',
-    serverError: './src/js/serverError.js',
-    policy: './src/js/policy.js',
-    instructions: './src/js/instructions.js',
-    partners: './src/js/partners.js',
-    rates: './src/js/rates.js',
-    lkProfile: './src/js/lkProfile.js',
-    lkCompany: './src/js/lkCompany.js',
-    lkProgram: './src/js/lkProgram.js',
-    lk: './src/js/lk.js',
-    Header: './src/js/Html/Header.tsx'
+    index: './src/js/entries/index.js',
+    advantages: './src/js/entries/advantages.js',
+    about: './src/js/entries/about.js',
+    questions: './src/js/entries/questions.js',
+    support: './src/js/entries/support.js',
+    notFound: './src/js/entries/notFound.js',
+    serverError: './src/js/entries/serverError.js',
+    policy: './src/js/entries/policy.js',
+    instructions: './src/js/entries/instructions.js',
+    partners: './src/js/entries/partners.js',
+    rates: './src/js/entries/rates.js',
+    lkProfile: './src/js/entries/lkProfile.js',
+    lkCompany: './src/js/entries/lkCompany.js',
+    lkProgram: './src/js/entries/lkProgram.js',
+    lk: './src/js/entries/lk.js',
+    router: './src/js/router.ts'
   },
   output: {
     path: path.resolve(__dirname, '..', 'myoffice', 'static'),
     filename: '[name].js',
     publicPath: '/static/'
+  },
+  //devtool: 'source-map',
+  optimization: {
+    namedModules: true,
+    namedChunks: true,
+    splitChunks: {
+      chunks: 'async'
+    }
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],

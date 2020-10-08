@@ -1,16 +1,12 @@
-import "normalize.css";
-import "src/scss/about.scss";
+import include_me from "src/js/router";
+import "src/scss/lkProgram.scss";
 import Popup from "./popup";
 
-const lkButton = document.querySelector('.header__lk-button');
+// Селекторы
+
 const burgerButton = document.querySelector('.burger-menu__button');
 const burgerMenu = document.querySelector('.burger-menu');
 const main = document.querySelector('.main');
-const modalLk = document.querySelector('.modal_lk');
-const popupCloseLk = document.querySelector('.popup__close_lk');
-const lkLink = document.querySelector('.nav-bar__link_lk');
-const startWorkButton = document.querySelector('.header__start-button');
-const modalReg = document.querySelector('.modal_reg');
 const popupCloseReg = document.querySelector('.popup__close_reg');
 const confirmButton = document.querySelector('.popup__button_reg');
 const thanksPopup = document.querySelector('.modal_thanks');
@@ -21,33 +17,6 @@ const modalReset = document.querySelector('.modal_reset');
 const closeThanks = document.querySelector('.popup__close_thanks');
 const closeReset = document.querySelector('.popup__close_reset');
 const closeRec = document.querySelector('.popup__close_recovery');
-
-// Открытие личного кабинета
-const popupLk = new Popup(modalLk, popupCloseLk);
-
-
-lkButton.addEventListener('click', () => {
-    popupLk.open();
-});
-
-lkLink.addEventListener('click', () => {
-    popupLk.open();
-    burgerMenu.classList.remove('burger-menu_opened');
-
-});
-
-// Открытие регистрации
-const popupReg = new Popup(modalReg, popupCloseReg);
-
-const lkStart = document.querySelector('.nav-bar__link_start');
-lkStart.addEventListener('click', () => {
-    popupReg.open()
-});
-
-startWorkButton.addEventListener('click', () => {
-    popupReg.open();
-
-});
 
 // Открытие мобильного меню
 
@@ -87,3 +56,19 @@ recButton.addEventListener('click', (event) => {
     popupReset.open();
     popupRec.close();
 });
+
+// Аккордион
+const panel = document.querySelectorAll('.accordion__panel');
+const nextPanel = document.querySelectorAll('.accordion__panel_text');
+
+const accordion = (panel, mix) => {
+    for (let i = 0; i < panel.length; i++) {
+        panel[i].addEventListener('click', () => {
+            panel[i].nextElementSibling
+                .classList.toggle(`accordion__text-block_${mix}`);
+
+            panel[i].classList.toggle('accordion__panel_active-program')
+        })
+}};
+accordion(panel, "active");
+accordion(nextPanel, "price-active");

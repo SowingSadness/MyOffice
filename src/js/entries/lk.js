@@ -1,4 +1,5 @@
-import "normalize.css";
+
+import "../router";
 import "src/scss/lk.scss";
 import Popup from "./popup";
 

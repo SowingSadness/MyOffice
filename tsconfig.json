@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
-        "rootDirs": ["./src/"],
+        "rootDirs": ["./src/js"],
         "outDir": "../myoffice/static/",
+        "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
-        "module": "es6",
-        "target": "es5",
+        "module": "esnext",
+        "target": "es6",
         "jsx": "react",
         "allowJs": true,
-        "types": ["@types/react"]
+        "types": ["@types/react", "@types/requirejs"]
     },
     "include": [
         "./src/js/"

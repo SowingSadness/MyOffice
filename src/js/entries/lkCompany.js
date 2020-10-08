@@ -1,17 +1,14 @@
-import "normalize.css";
-import "src/scss/partners.scss";
+
+import include_me from "src/js/router";
+import "src/scss/lkCompany.scss";
 import Popup from "./popup";
 
-const lkButton = document.querySelector('.header__lk-button');
+// Селекторы
+
+
 const burgerButton = document.querySelector('.burger-menu__button');
 const burgerMenu = document.querySelector('.burger-menu');
 const main = document.querySelector('.main');
-const modalLk = document.querySelector('.modal_lk');
-const popupCloseLk = document.querySelector('.popup__close_lk');
-const lkLink = document.querySelector('.nav-bar__link_lk');
-const startWorkButton = document.querySelector('.header__start-button');
-const modalReg = document.querySelector('.modal_reg');
-const popupCloseReg = document.querySelector('.popup__close_reg');
 const confirmButton = document.querySelector('.popup__button_reg');
 const thanksPopup = document.querySelector('.modal_thanks');
 const popupLink = document.querySelector('.popup__link');
@@ -21,37 +18,6 @@ const modalReset = document.querySelector('.modal_reset');
 const closeThanks = document.querySelector('.popup__close_thanks');
 const closeReset = document.querySelector('.popup__close_reset');
 const closeRec = document.querySelector('.popup__close_recovery');
-
-// Партнерам
-const becomePartner = document.querySelector('.partners__button');
-const modalPartner = document.querySelector('.modal_partner');
-const closePartner = document.querySelector('.popup__close_partner');
-// Открытие личного кабинета
-const popupLk = new Popup(modalLk, popupCloseLk);
-
-
-lkButton.addEventListener('click', () => {
-    popupLk.open();
-});
-
-lkLink.addEventListener('click', () => {
-    popupLk.open();
-    burgerMenu.classList.remove('burger-menu_opened');
-
-});
-
-// Открытие регистрации
-const popupReg = new Popup(modalReg, popupCloseReg);
-
-const lkStart = document.querySelector('.nav-bar__link_start');
-lkStart.addEventListener('click', () => {
-    popupReg.open()
-});
-startWorkButton.addEventListener('click', () => {
-    popupReg.open();
-
-});
-
 // Открытие мобильного меню
 
 burgerButton.addEventListener('click', () => {
@@ -89,12 +55,4 @@ recButton.addEventListener('click', (event) => {
     event.preventDefault();
     popupReset.open();
     popupRec.close();
-});
-
-// Партнеры
-
-const popupPartner = new Popup(modalPartner, closePartner);
-
-becomePartner.addEventListener('click', () => {
-    popupPartner.open();
 });

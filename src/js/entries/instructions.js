@@ -1,32 +1,6 @@
-
-import "normalize.css";
-import "src/scss/index.scss";
-import Swiper, { Navigation, Pagination } from "swiper";
+import include_me from "src/js/router";
+import "src/scss/instructions.scss";
 import Popup from "./popup";
-import "./indexController";
-
-// Свайпер
-Swiper.use([Navigation, Pagination]);
-
-const mySwiper = new Swiper('.swiper-container', {
-    // Optional parameters
-    direction: 'horizontal',
-    slidesPerView: "auto",
-    slidesPerColumn: 1,
-    centeredSlides: true,
-
-    pagination: {
-        el: '.swiper-pagination',
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    scrollbar: {
-        el: '.swiper-scrollbar',
-    },
-});
-// Селекторы
 
 const lkButton = document.querySelector('.header__lk-button');
 const burgerButton = document.querySelector('.burger-menu__button');
@@ -47,8 +21,7 @@ const modalReset = document.querySelector('.modal_reset');
 const closeThanks = document.querySelector('.popup__close_thanks');
 const closeReset = document.querySelector('.popup__close_reset');
 const closeRec = document.querySelector('.popup__close_recovery');
-const rentStart = document.querySelector('.rent__try-button');
-const startNow = document.querySelector('.start-work__button');
+
 // Открытие личного кабинета
 const popupLk = new Popup(modalLk, popupCloseLk);
 
@@ -67,19 +40,9 @@ lkLink.addEventListener('click', () => {
 const popupReg = new Popup(modalReg, popupCloseReg);
 
 const lkStart = document.querySelector('.nav-bar__link_start');
-
-startNow.addEventListener('click', () => {
-    popupReg.open()
-});
-
-rentStart.addEventListener('click', () => {
-    popupReg.open()
-});
-
 lkStart.addEventListener('click', () => {
     popupReg.open()
 });
-
 startWorkButton.addEventListener('click', () => {
     popupReg.open();
 
@@ -88,7 +51,7 @@ startWorkButton.addEventListener('click', () => {
 // Открытие мобильного меню
 
 burgerButton.addEventListener('click', () => {
-        burgerMenu.classList.toggle('burger-menu_opened');
+    burgerMenu.classList.toggle('burger-menu_opened');
 
 });
 main.addEventListener('click', () => {
@@ -122,4 +85,28 @@ recButton.addEventListener('click', (event) => {
     event.preventDefault();
     popupReset.open();
     popupRec.close();
+});
+// Поддержка
+const getSupport = document.querySelector('.instructions__button');
+const modalQue = document.querySelector('.modal_question');
+const closeQue = document.querySelector('.popup__close_question');
+const modalThanksQue = document.querySelector('.modal_thanks-question');
+const confirmQue = document.querySelector('.popup__button_question');
+
+// Задать вопрос // поддержка
+
+const popupQuestion = new Popup(modalQue, closeQue);
+
+getSupport.addEventListener('click', () => {
+    popupQuestion.open();
+});
+
+const closeThanksQue = document.querySelector('.popup__close_thanks-question');
+
+const popupThanksQuestion = new Popup(modalThanksQue, closeThanksQue);
+
+confirmQue.addEventListener('click', (event) => {
+    event.preventDefault();
+    popupThanksQuestion.open();
+    popupQuestion.close();
 });
