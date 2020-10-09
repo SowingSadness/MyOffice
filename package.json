@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/vladoskav/MyOffice",
   "devDependencies": {
-    "@types/react": "^16.9.49",
     "autoprefixer": "9.8.0",
     "cross-env": "7.0.2",
     "css-loader": "3.5.3",
@@ -43,7 +42,9 @@
     "webpack-md5-hash": "0.0.6"
   },
   "dependencies": {
+    "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
+    "@types/requirejs": "^2.1.32",
     "react": "^16.13.1",
     "swiper": "^6.0.0",
     "ts-loader": "^8.0.3",
