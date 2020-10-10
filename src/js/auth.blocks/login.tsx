@@ -37,7 +37,8 @@ export default class Login extends React.Component<IProps, IState> {
     }
 
     login(e: React.MouseEvent) {
-        this.props.onLogined(new User('Random user', '+7' + Math.floor(Math.random() * 1000000000)));
+        const phone = '+7' + Math.floor(Math.random() * 1000000000);
+        this.props.onLogined(new User(`User ${phone}`, phone));
         this.close();
     }
 

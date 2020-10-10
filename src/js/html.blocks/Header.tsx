@@ -18,7 +18,7 @@ export default function Header(props: Readonly<{ user?: User }>): React.ReactEle
             </a>
             <img className="burger-menu__button" src="images/open-menu.svg" alt="скрытое меню" />
             <BurgerMenu user={user} />
-            <a href={user.phone} className="header__phone">{user.phone}</a>
+            <a href="tel: +7 (843) 202-21-40" className="header__phone">+7 (843) 202-21-40</a>
             {Right}
         </div>
         <MainMenu />
