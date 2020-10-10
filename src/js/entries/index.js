@@ -1,8 +1,6 @@
-
-
 import "src/scss/index.scss";
 import Swiper, { Navigation, Pagination } from "swiper";
-import Index from "src/js/index.blocks";
+import Index from "src/js/page.blocks/index";
 import include_me from "src/js/router";
 
 include_me(Index);

@@ -2,7 +2,6 @@ import React from "react";
 import { render } from "react-dom";
 import Header from './html.blocks/header';
 import { Page } from "./page.blocks";
-import "./index.blocks";
 
 
 export default function include_me(Body: React.ComponentClass | React.FunctionComponent) {
