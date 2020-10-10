@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import Header from './html.blocks/Header';
+import Header from './html.blocks/header';
 import { Page } from "./page.blocks";
 import "./index.blocks";
 

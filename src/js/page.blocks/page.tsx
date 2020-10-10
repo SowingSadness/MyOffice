@@ -1,5 +1,5 @@
 import React from "react";
-import type Header from "../html.blocks/Header";
+import type Header from "../html.blocks/header";
 import User from "src/js/model/User";
 
 type TProps = {

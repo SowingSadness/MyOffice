@@ -3,14 +3,14 @@ import ModalRegister from "./register.modal";
 import ModalThanks from "./thanks.modal";
 
 interface IProps {
-    open: Number
+    open: number
 }
 interface IState {
     showed: boolean
     registered: boolean
 }
 
-export default class RegisterFetch extends React.Component<IProps, IState> {
+export default class Register extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = { showed: Boolean(props.open), registered: false };
