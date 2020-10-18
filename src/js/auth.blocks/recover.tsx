@@ -1,6 +1,6 @@
 import React from "react";
 import User from "../model/User";
-import ModalRecovery, { TModalMode } from "./Recovery.modal";
+import ModalRecovery, { TModalMode } from "./recovery.modal";
 
 interface IProps {
     open: number
