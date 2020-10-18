@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 
+export type TModalMode = 'hide' | 'recovery' | 'reset';
 interface IProps {
-    mode: 'hide' | 'recovery' | 'reset';
+    mode: TModalMode;
     onRecover?: (e: React.MouseEvent) => void
     onClose?: () => void
 }
 
-export default function ModalRecovery(props: Readonly<IProps>): React.ReactElement | string {
+export default function ModalRecovery(props: Readonly<IProps>): React.ReactElement {
     switch (props.mode) {
         case 'recovery':
             return <Recovery onRecover={props.onRecover} />;
         case 'reset':
             return <Reset onClick={props.onClose} />;
         default:
-            return '';
+            return <div></div>;
     };
 }
 

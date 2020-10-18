@@ -1,24 +1,24 @@
 import React from "react";
 import User from "../model/User";
-import ModalRecovery from "./Recovery.modal";
+import ModalRecovery, { TModalMode } from "./Recovery.modal";
 
 interface IProps {
     open: number
 }
 interface IState {
-    showed: boolean
+    mode: TModalMode
     recovered: boolean
 }
 
 export default class Recover extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
-        this.state = { showed: Boolean(props.open), recovered: false };
+        this.state = { mode: 'hide', recovered: false };
         this.close = this.close.bind(this);
     }
 
     shouldComponentUpdate(nextProps: IProps, nextState: IState) {
-        if (nextState.showed !== this.state.showed) {
+        if (nextState.mode !== this.state.mode) {
             return true;
         }
 
@@ -35,18 +35,18 @@ export default class Recover extends React.Component<IProps, IState> {
     }
 
     recover(e: React.MouseEvent) {
-        this.close();
+        this.setState({ mode: 'reset' });
     }
 
     close() {
-        this.setState({ showed: false });
+        this.setState({ mode: 'hide' });
     }
 
     render() {
-        if (!this.state.showed) {
-            return '';
+        if (this.state.mode === 'hide') {
+            return <div></div>;
         }
 
-        return <ModalRecovery showed={this.state.showed} onClose={this.close} onRecovery={this.recover} />;
+        return <ModalRecovery mode={this.state.mode} onClose={this.close} onRecover={this.recover} />;
     }
 }

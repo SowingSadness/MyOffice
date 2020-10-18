@@ -4,7 +4,8 @@ import User from "src/js/model/User";
 
 type TProps = {
     Header: typeof Header,
-    Body: React.ComponentClass | React.FunctionComponent
+    Body: React.ComponentClass | React.FunctionComponent,
+    Footer: React.FunctionComponent
 };
 
 export default function Page(props: Readonly<TProps>): React.ReactElement {
@@ -13,5 +14,6 @@ export default function Page(props: Readonly<TProps>): React.ReactElement {
             <props.Header user={ undefined } />
         </div>
         <props.Body />
+        <props.Footer />
     </div>;
 }

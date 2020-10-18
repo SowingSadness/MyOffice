@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RegUser from '../model/RegUser';
+import RegUser from '../model/UserReg';
 
 interface IProps {
     validate?: string
