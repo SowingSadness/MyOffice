@@ -1,12 +1,15 @@
 export default class User {
-    balance: number = 0;
-
     constructor(
         public name = '<user>',
-        public phone = '+7912345678') {
+        public balance: number = 0,
+        public actualDate?: number) {
     }
 
     getDateDiscard() {
-        return '01.01.2021';
+        if (!this.actualDate) {
+            this.actualDate = Date.now();
+        }
+
+        return new Date(this.actualDate).toLocaleDateString();
     }
 }

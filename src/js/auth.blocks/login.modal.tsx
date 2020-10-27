@@ -22,6 +22,7 @@ export default function ModalLogin(props: Readonly<IProps>): React.ReactElement 
         <div className="popup popup_lk">
             <span className="popup__close popup__close_lk" onClick={ props.onClose }></span>
             <h2 className="popup__title popup__title_lk">Войти в личный кабинет</h2>
+            <span className="popup__title">{ props.validate }</span>
             <form className="popup__form popup__form_lk">
                 <label className="popup__label popup__label_lk">
                     Логин

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import BurgerMenu from './_header/BurgerMenu';
 import MainMenu from './_header/MainMenu';
 import type User from  '../model/User';
+import * as auth from 'src/js/auth.blocks/auth';
 import Register from 'src/js/auth.blocks/register';
 import Login from 'src/js/auth.blocks/login';
 
 export default function Header(props: Readonly<{ user?: User }>): React.ReactElement {
     const [user, setUser] = useState(props.user);
     const Right = user ? <Loginned user={user} /> :
-        <NotLoginned user={user} onLogined={setUser} />;
+        <NotLoginned onLogined={setUser} />;
 
     return <header className="header">
         <div className="header__upper-menu">
@@ -25,7 +26,7 @@ export default function Header(props: Readonly<{ user?: User }>): React.ReactEle
     </header>;
 }
 
-function NotLoginned(props: Readonly<{ user?: User, onLogined: (user: User) => void }>): React.ReactElement {
+function NotLoginned(props: Readonly<{ onLogined: (user: User) => void }>): React.ReactElement {
     const [register, openRegister] = useState(0);
     const [login, openLogin] = useState(0);
 
@@ -45,7 +46,8 @@ function NotLoginned(props: Readonly<{ user?: User, onLogined: (user: User) => v
     </React.Fragment>;
 }
 
-function Loginned(props: Readonly<{ user: User  }>): React.ReactElement {
+function Loginned(props: Readonly<{ user: User }>): React.ReactElement {
+
     return <React.Fragment>
         <div className="header__lk-container">
             <div className="header__info-container">
@@ -65,7 +67,7 @@ function Loginned(props: Readonly<{ user: User  }>): React.ReactElement {
                 <p className="header__user">{ props.user.name }</p>
             </a>
             <a href="index.html">
-                <img className="header__exit-icon" src="images/exit.svg" />
+                <img className="header__exit-icon" src="images/exit.svg" onClick={ auth.logout } />
             </a>
         </div>
     </React.Fragment>;
