@@ -1,4 +1,5 @@
 import React from "react";
+import RegUser from "../model/UserReg";
 import ModalRegister from "./register.modal";
 import ModalThanks from "./thanks.modal";
 
@@ -6,6 +7,7 @@ interface IProps {
     open: number
 }
 interface IState {
+    validate: string
     showed: boolean
     registered: boolean
 }
@@ -13,7 +15,7 @@ interface IState {
 export default class Register extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
-        this.state = { showed: Boolean(props.open), registered: false };
+        this.state = { showed: Boolean(props.open), registered: false, validate: '' };
         this.register = this.register.bind(this);
         this.close = this.close.bind(this);
     }
@@ -43,9 +45,30 @@ export default class Register extends React.Component<IProps, IState> {
         this.setState({showed: false, registered: false});
     }
 
-    register(e: React.MouseEvent) {
+    register(e: React.MouseEvent, model: RegUser) {
         e.preventDefault();
-        this.setState({registered: true});
+
+        let param = {
+            "method": "register",
+            "params": {
+                "name": model.name,
+                "email": model.email,
+                "login": model.login,
+                "phone": model.phone,
+                "refer": ""
+            }
+        };
+
+        fetch('/rpc', {
+            method: 'POST',
+            body: JSON.stringify(param)
+        }).then((response) => response.json()).then((data: any) => {
+            if (!data.result) {
+                this.setState({ validate: data?.error?.message })
+                return;
+            }
+            this.setState({ registered: true });
+        });
     }
 
     render() {
@@ -57,6 +80,7 @@ export default class Register extends React.Component<IProps, IState> {
             return <ModalThanks onClose={this.close} />;
         }
 
-        return <ModalRegister showed={this.state.showed} onClose={this.close} onRegister={this.register} /> ;
+        return <ModalRegister showed={ this.state.showed } validate={ this.state.validate }
+            onClose={ this.close } onRegister={ this.register } />;
     }
 }

@@ -1,4 +1,6 @@
 export default class RegUser {
+    public phone: string = '+7123456789';
+
     constructor(
         public login = '',
         public name = '',

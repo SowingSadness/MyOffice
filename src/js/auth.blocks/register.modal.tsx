@@ -9,29 +9,37 @@ interface IProps {
 }
 
 export default function ModalRegister(props: Readonly<IProps>): React.ReactElement {
-    const [model, setUser] = useState(new RegUser());
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [login, setLogin] = useState('');
 
     let styles = ["modal modal_reg"];
     if (props.showed) {
-        styles.push("modal_show")
+        styles.push("modal_show");
     }
+
+    const validate = props.validate ? <span className="popup__title">{ props.validate }</span> : '';
 
     return <div className={ styles.join(" ") }>
         <div className="popup popup_reg">
             <span className="popup__close popup__close_reg" onClick={ props.onClose }></span>
             <h2 className="popup__title popup__title_reg">Регистрация</h2>
+            { validate }
             <form className="popup__form popup__form_reg">
                 <label className="popup__label popup__label_reg">
                     Как вас зовут?*
-                    <input className="popup__input popup__input_reg" value={model.name} onChange={(e) => { model.setName(e.target.value); setUser(model); }} />
+                    <input className="popup__input popup__input_reg" value={ name }
+                        onChange={ (e) => setName(e.target.value) } />
                 </label>
                 <label className="popup__label popup__label_reg">
                     Ваш e-mail*
-                    <input className="popup__input popup__input_reg" value={model.email} onChange={(e) => model.setEmail(e.target.value)} />
+                    <input className="popup__input popup__input_reg" value={ email }
+                        onChange={ (e) => setEmail(e.target.value) } />
                 </label>
                 <label className="popup__label popup__label_reg">
                     Придумайте логин*
-                    <input className="popup__input popup__input_reg" value={model.login} onChange={(e) => model.setLogin(e.target.value)} />
+                    <input className="popup__input popup__input_reg" value={ login }
+                        onChange={ (e) => setLogin(e.target.value) } />
                 </label>
                 <label>
                     <input className="popup__captcha popup__captcha_reg"
@@ -44,7 +52,7 @@ export default function ModalRegister(props: Readonly<IProps>): React.ReactEleme
                 </a>
                 </p>
                 <button className="popup__button popup__button_reg"
-                    onClick={(e) => props.onRegister(e, model)}>Зарегистрироваться</button>
+                    onClick={ (e) => props.onRegister(e, new RegUser(login, name, email))}>Зарегистрироваться</button>
             </form>
         </div>
     </div>;
