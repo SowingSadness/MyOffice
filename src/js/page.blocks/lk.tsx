@@ -1,4 +1,5 @@
 import React from "react";
+import Begin from "./lk/begin";
 
 export default function LK(): React.ReactElement {
     return <main className="main main_lk">
@@ -79,20 +80,9 @@ export default function LK(): React.ReactElement {
                     </div>
                 </div>
                 <div className="lk__right">
-                    <div className="profile-settings profile-settings_lk profile-settings_small">
-                        <div className="profile-settings__title-wrapper">
-                            <h2 className="profile-settings__title">Начало работы</h2>
-                        </div>
-                        <div className="lk__wrapper">
-                            <div className="lk__row lk__row_start">
-                                <p className="lk__little-text lk__little-text_start">
-                                    Для начала работы скачайте программу и запустите её:
-                                    </p>
-                                <button className="lk__button lk__button__get-program">Скачать программу</button>
-                            </div>
-                            <a className="lk__link" href="#">Данные для техподдержки 1С:</a>
-                        </div>
-                    </div>
+
+                    <Begin />
+
                     <div className="profile-settings profile-settings_lk profile-settings_rates">
                         <div className="profile-settings__title-wrapper">
                             <h2 className="profile-settings__title">Мой тариф</h2>
