@@ -25,7 +25,7 @@ export function set(user: User) {
     }
     authUser = user;
     Cookie.setObject({
-        "auth.name": user.name,
+        "auth.name": user.login,
         "auth.balance": user.balance,
         "auth.actualDate": user.actualDate,
     });

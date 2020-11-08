@@ -19,7 +19,7 @@ function Loginned(props: Readonly<{ user: User }>): React.ReactElement {
                 <div className="header__image-box header__image-box_burger">
                     <img className="header__user-icon" src="images/user.svg" />
                 </div>
-                <p className="header__user header__user_burger">{ props.user.name }</p>
+                <p className="header__user header__user_burger">{ props.user.login }</p>
             </a>
         </li>
     </React.Fragment>;

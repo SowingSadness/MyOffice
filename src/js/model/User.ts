@@ -1,6 +1,6 @@
 export default class User {
     constructor(
-        public name = '<user>',
+        public login = '<user>',
         public balance: number = 0,
         public actualDate?: number) {
     }

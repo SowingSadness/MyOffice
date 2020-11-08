@@ -64,7 +64,7 @@ function Loginned(props: Readonly<{ user: User }>): React.ReactElement {
                 <div className="header__image-box">
                     <img className="header__user-icon" src="images/user.svg" />
                 </div>
-                <p className="header__user">{ props.user.name }</p>
+                <p className="header__user">{ props.user.login }</p>
             </a>
             <a href="index.html">
                 <img className="header__exit-icon" src="images/exit.svg" onClick={ auth.logout } />

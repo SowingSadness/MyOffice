@@ -1,37 +1,35 @@
 import React, { useState } from "react";
 import ModalWindow, { createSignal, IModalProps } from "../../html.blocks/modal";
 
-function TechSupport(props: IModalProps) {
+
+function TechSupport(props: IProps & IModalProps) {
     return <div className="popup popup_tech-support">
         <span className="popup__close popup__close_tech-support" onClick={ props.onClose }></span>
         <h2 className="popup__title popup__title_tech-support">Данные для техподдержки 1С</h2>
         <p className="popup__tech-support popup__tech-support_title">
             Логин в 1с:
-            </p>
-        <p className="popup__tech-support">
-            gurbalguli.berdimukhamedov.m6326@moiofis
-            </p>
+        </p>
+        <p className="popup__tech-support">{ props.SupportLogin }</p>
         <p className="popup__tech-support popup__tech-support_title">
             Пароль:
-            </p>
-        <p className="popup__tech-support">
-            XMX2B60S
-            </p>
+        </p>
+        <p className="popup__tech-support">{ props.SupportPass }</p>
         <p className="popup__tech-support">
             Эти данные вам понадобятся для подтверждения легальности программ 1С
-            </p>
+        </p>
     </div>;
 }
 
 interface IProps {
-    "1CSupportLogin"?: string
-    "1CSupportPass"?: string
+    "SupportLogin"?: string
+    "SupportPass"?: string
 }
 
 export default function Begin(props: Readonly<IProps>): React.ReactElement {
     const [showSupp, setSuppShow] = useState(0);
 
-    const hadlerSupportInfo = () => {
+    const hadlerSupportInfo = (e: React.MouseEvent) => {
+        e.preventDefault();
         setSuppShow(createSignal());
     };
 
@@ -48,6 +46,6 @@ export default function Begin(props: Readonly<IProps>): React.ReactElement {
             </div>
             <a className="lk__link" href="#" onClick={ hadlerSupportInfo }>Данные для техподдержки 1С:</a>
         </div>
-        <ModalWindow content={ TechSupport } openSignal={ showSupp } />
+        <ModalWindow<IProps & IModalProps> content={ TechSupport } openSignal={ showSupp } options={ props } />
     </div>;
 }
