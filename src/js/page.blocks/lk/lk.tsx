@@ -1,32 +1,42 @@
 import React from "react";
-import Begin from "./begin";
-import PaymentList from "./payment";
+import Support from "./supp";
+import PaymentController from "./payment.controller";
+import AddServicesController from "./addservices.controller";
 import Emploies from "./emploies";
-import MyTariff from "./tariff";
-import Transactions from "./transactions";
+import MyTariff, { IData as ITariffProps } from "./tariff";
+// import TransactionsController from "./transactions.controller";
 
-export default function LK(props: any): React.ReactElement {
+export interface ILoginProps {
+    login: string
+}
+
+export interface ISupportResp {
+    "1CSupportLogin": string
+    "1CSupportPass": string
+}
+
+interface IProps {
+    data: ILoginProps & ITariffProps & ISupportResp
+}
+
+export default function LK(props: IProps): React.ReactElement {
     return <main className="main main_lk">
         <section className="lk">
             <div className="lk__upper-block">
                 <div className="lk__left">
-
-                    <PaymentList payTariff={ props.data.payTariff } payServices={ props.data.payServices } />
-
+                    <PaymentController login={ props.data.login } />
+                    <AddServicesController login={ props.data.login } />
                 </div>
 
                 <div className="lk__right">
-
-                    <Begin SupportLogin={ props.data["1CSupportLogin"] } SupportPass={ props.data["1CSupportPass"] } />
-
+                    <Support SupportLogin={ props.data["1CSupportLogin"] } SupportPass={ props.data["1CSupportPass"] } />
                     <MyTariff data={ props.data } />
-
                 </div>
             </div>
 
-            <Emploies />
+            {/* <Emploies /> */}
 
-            <Transactions todayTransactions={ props.data.todayTransactions } />
+            {/* <TransactionsController login={ props.data.login } /> */}
         </section>
     </main>;
 }

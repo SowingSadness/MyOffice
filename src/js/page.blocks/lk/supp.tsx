@@ -25,7 +25,7 @@ interface IProps {
     "SupportPass"?: string
 }
 
-export default function Begin(props: Readonly<IProps>): React.ReactElement {
+export default function Support(props: Readonly<IProps>): React.ReactElement {
     const [showSupp, setSuppShow] = useState(0);
 
     const hadlerSupportInfo = (e: React.MouseEvent) => {

@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+
+export interface IData {
+    "name": string
+    "email": string
+    "phone": string
+    "tariffName": string
+    "balance": string
+    "dailyPaid": string
+    "users": number
+    "DiskSpace": string
+    "paidUntil": string
+    "addServices": {
+        "service": string
+        "paidUntil": string
+    }[]
+}
 
 interface IProps {
-    data: {
-        "name": string
-        "email": string
-        "phone": string
-        "tariffName": string
-        "balance": string
-        "dailyPaid": string
-        "users": number
-        "DiskSpace": string
-        "paidUntil": string
-        "addServices": {
-            "service": string
-            "paidUntil": string
-        }[]
-    }
+    data: IData
 }
 
 export default function MyTariff(props: Readonly<IProps>): React.ReactElement {
