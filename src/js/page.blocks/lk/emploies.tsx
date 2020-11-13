@@ -44,7 +44,7 @@ export default function Emploies(props: { title: string, actions: Partial<IActio
     return <React.Fragment>
         <div className="profile-settings profile-settings_row profile-settings_employees">
             <div className="profile-settings__title-wrapper">
-                <h2 className="profile-settings__title">Активные сотрудники</h2>
+                <h2 className="profile-settings__title">{ props.title }</h2>
             </div>
             <div className="lk__wrapper lk__wrapper_employees-active">
                 <div className="employees">
