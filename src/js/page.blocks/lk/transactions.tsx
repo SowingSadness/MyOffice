@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 
+export interface ITransaction {
+    "dateTime": string
+    "desc": string
+    "summ": string
+    "type": string
+}
+
 interface IProps {
-    todayTransactions: {
-        dateTime: string
-        desc: string
-        type: string
-        summ: string
-    }[]
+    data: {
+        todayTransactions: ITransaction[]
+    }
 }
 
 const classArrowActive = " accordion__panel_active-program";
@@ -31,7 +35,7 @@ export default function Transactions(props: IProps): React.ReactElement {
                 </p>
             </div>
             <div className="accordion__text-block_border accordion__text-block_price-active" style={ listStyle }>
-                { props.todayTransactions.map((item, index) => {
+                { props.data.todayTransactions.map((item, index) => {
                     return <div className="accordion__row accordion__row_lk" key={ index }>
                         <p className="accordion__text accordion__text_date">{ item.dateTime }</p>
                         <p className="accordion__text accordion__text_description">{ item.desc }</p>

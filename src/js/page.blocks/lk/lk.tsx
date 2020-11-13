@@ -2,9 +2,9 @@ import React from "react";
 import Support from "./supp";
 import PaymentController from "./payment.controller";
 import AddServicesController from "./addservices.controller";
-import Emploies from "./emploies";
+import EmploiesController from "./emploies.controller";
 import MyTariff, { IData as ITariffProps } from "./tariff";
-// import TransactionsController from "./transactions.controller";
+import TransactionsController from "./transactions.controller";
 
 export interface ILoginProps {
     login: string
@@ -34,9 +34,9 @@ export default function LK(props: IProps): React.ReactElement {
                 </div>
             </div>
 
-            {/* <Emploies /> */}
+            <EmploiesController login={ props.data.login } />
 
-            {/* <TransactionsController login={ props.data.login } /> */}
+            <TransactionsController login={ props.data.login } />
         </section>
     </main>;
 }
