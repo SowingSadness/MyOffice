@@ -7,11 +7,11 @@ export interface IEmployee {
 }
 
 export interface IActions {
-    add: () => Promise<IEmployee>
-    edit: (employee: IEmployee) => Promise<IEmployee>
-    dismiss: (employee: IEmployee) => Promise<IEmployee>
-    enable: (employee: IEmployee) => Promise<IEmployee>
-    disable: (employee: IEmployee) => Promise<IEmployee>
+    add: () => void
+    edit: (employee: IEmployee) => void
+    dismiss: (employee: IEmployee) => void
+    enable: (employee: IEmployee) => void
+    disable: (employee: IEmployee) => void
 }
 
 const actionEdit = () => <img className="employees__icon employees__icon_edit" src={ require('src/images/edit.svg') } />;

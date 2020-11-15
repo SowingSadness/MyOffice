@@ -36,7 +36,7 @@ export default function ModalWindow<T extends IModalProps>(props: Readonly<IProp
     let onClose = function (e: React.SyntheticEvent) {
         setVisible(false);
         if (inOnClose) {
-            inOnClose(e);
+            inOnClose.apply(undefined, arguments);
         }
     };
     if (options) {

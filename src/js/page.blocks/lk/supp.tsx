@@ -33,6 +33,8 @@ export default function Support(props: Readonly<IProps>): React.ReactElement {
         setSuppShow(createSignal());
     };
 
+    const SuppLink = props.SupportLogin ? <a className="lk__link" href="#" onClick={ hadlerSupportInfo }>Данные для техподдержки 1С:</a> : '';
+
     return <div className="profile-settings profile-settings_lk profile-settings_small">
         <div className="profile-settings__title-wrapper">
             <h2 className="profile-settings__title">Начало работы</h2>
@@ -44,7 +46,7 @@ export default function Support(props: Readonly<IProps>): React.ReactElement {
                 </p>
                 <button className="lk__button lk__button__get-program">Скачать программу</button>
             </div>
-            <a className="lk__link" href="#" onClick={ hadlerSupportInfo }>Данные для техподдержки 1С:</a>
+            { SuppLink }
         </div>
         <ModalWindow<IProps & IModalProps> content={ TechSupport } openSignal={ showSupp } options={ props } />
     </div>;
