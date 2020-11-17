@@ -2,17 +2,7 @@ import React from "react";
 import Request from '../../transport/request';
 import PaymentAddServices, { IService } from './addservices';
 
-const emptyData = [
-    {
-        "name": "1C Контрагент",
-        "price": 4800,
-        "comment": "Заполнение данных контрагентов по ИНН"
-    },
-    {
-        "name": "1C Отчетность",
-        "price": 3900,
-        "comment": "Сдача отчетности в электронном виде прямо из 1С"
-    }
+const emptyData: IService[] = [
 ];
 
 interface IResponse {

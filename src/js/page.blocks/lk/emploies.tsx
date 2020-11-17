@@ -6,18 +6,28 @@ export interface IEmployee {
     login: string
 }
 
+type TAction = (employee: IEmployee) => void;
 export interface IActions {
     add: () => void
-    edit: (employee: IEmployee) => void
-    dismiss: (employee: IEmployee) => void
-    enable: (employee: IEmployee) => void
-    disable: (employee: IEmployee) => void
+    edit: TAction
+    dismiss: TAction
+    enable: TAction
+    disable: TAction
 }
 
-const actionEdit = () => <img className="employees__icon employees__icon_edit" src={ require('src/images/edit.svg') } />;
-const actionDismiss = () => <img className="employees__icon employees__icon_delete" src={ require('src/images/delete.svg') } />;
-const actionEnable = () => <a href="#" className="employees__restore">Восстановить</a>;
-const actionDisable = () => <img className="employees__icon employees__icon_stop" src={ require('src/images/stop.svg') } />;
+const actionEdit = (item: IEmployee, action: TAction) => <img className="employees__icon employees__icon_edit"
+    onClick={ () => action(item) }
+    src={ require('src/images/edit.svg') } />;
+const actionDismiss = (item: IEmployee, action: TAction) => <img className="employees__icon employees__icon_delete"
+    onClick={ () => action(item) }
+    src={ require('src/images/delete.svg') } />;
+const actionEnable = (item: IEmployee, action: TAction) => <a href="#" className="employees__restore"
+    onClick={ (e) => { e.preventDefault(); action(item); } } >
+        Восстановить
+    </a>;
+const actionDisable = (item: IEmployee, action: TAction) => <img className="employees__icon employees__icon_stop"
+    onClick={ () => action(item) }
+    src={ require('src/images/stop.svg') } />;
 
 export default function Emploies(props: { title: string, actions: Partial<IActions>, emploies: IEmployee[] }): React.ReactElement {
 
@@ -27,10 +37,10 @@ export default function Emploies(props: { title: string, actions: Partial<IActio
             <p className="employees__text employees__text_login">{ item.login }</p>
             <p className="employees__text employees__text_email">{ item.email }</p>
             <div className="employees__icons">
-                { props.actions.disable ? actionDisable : '' }
-                { props.actions.edit ? actionEdit : '' }
-                { props.actions.dismiss ? actionDismiss : '' }
-                { props.actions.enable ? actionEnable : '' }
+                { props.actions.disable ? actionDisable(item, props.actions.disable) : '' }
+                { props.actions.edit ? actionEdit(item, props.actions.edit) : '' }
+                { props.actions.dismiss ? actionDismiss(item, props.actions.dismiss) : '' }
+                { props.actions.enable ? actionEnable(item, props.actions.enable) : '' }
             </div>
         </div>
     });

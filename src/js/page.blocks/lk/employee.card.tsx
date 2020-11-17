@@ -8,7 +8,6 @@ export interface ITransaction {
 }
 
 export interface IModalEmployee {
-    login: string
     name: string
     email: string
     password?: string
@@ -21,7 +20,6 @@ export interface IProps {
 }
 
 export default function EmployeeCard(props: IProps): React.ReactElement {
-    const [login, setLogin] = useState<string>(props?.employee?.login);
     const [name, setName] = useState<string>(props?.employee?.name);
     const [email, setEmail] = useState<string>(props?.employee?.email);
     const [password, setPassword] = useState<string>('');
@@ -36,7 +34,7 @@ export default function EmployeeCard(props: IProps): React.ReactElement {
     const onClose = (e: React.SyntheticEvent) => {
         e.preventDefault();
         props?.onClose(e, {
-            login, name, email, password
+            name, email, password
         });
     };
 
@@ -44,12 +42,6 @@ export default function EmployeeCard(props: IProps): React.ReactElement {
         <span className="popup__close popup__close_new-employee" onClick={ props.onClose }></span>
         <h2 className="popup__title popup__title_new-employee">Новый сотрудник</h2>
         <form className="popup__form popup__form_new-employee">
-            <label className="popup__label popup__label_new-employee">
-                Логин
-                <input className="popup__input popup__input_new-employee"
-                    value={ login }
-                    onChange={ (e) => setLogin(e.target.value) } />
-            </label>
             <label className="popup__label popup__label_new-employee">
                 Имя сотрудника
                 <input className="popup__input popup__input_new-employee"

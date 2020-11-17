@@ -5,28 +5,19 @@ import LK from "./lk/lk";
 import { ILoginProps, ISupportResp } from './lk/lk';
 import { IData as ITariffProps } from './lk/tariff';
 
-const emptyData = {
-    "name": "Иванов Вася",
-    "email": "Buh1@v.ru",
-    "phone": "+79600368214",
-    "1CSupportLogin": "fedya",
-    "1CSupportPass": "232332f",
-    "tariffName": "Cтарт",
-    "balance": "950.30 руб.",
-    "dailyPaid": "25.00 руб.",
-    "users": 2,
-    "DiskSpace": "25 ГБ",
-    "paidUntil": "21.10.2020",
-    "addServices": [
-        {
-            "service": "1С Спарк",
-            "paidUntil": "31.12.2020"
-        },
-        {
-            "service": "1С Контрагент",
-            "paidUntil": "31.12.2020"
-        }
-    ]
+const emptyData: ITariffProps & ISupportResp = {
+    "name": "",
+    "email": "",
+    "phone": "",
+    "1CSupportLogin": undefined,
+    "1CSupportPass": undefined,
+    "tariffName": "",
+    "balance": "",
+    "dailyPaid": "",
+    "users": 0,
+    "DiskSpace": "",
+    "paidUntil": "",
+    "addServices": []
 }
 
 type IState = ILoginProps & ITariffProps & ISupportResp;
@@ -36,7 +27,7 @@ export default class LKController extends React.Component<{}, IState> {
         super(props);
         let login = auth.get().login;
         this.state = { login, ...emptyData };
-        this.collect(login)
+        this.collect(login);
     }
 
     collect(login: string) {
