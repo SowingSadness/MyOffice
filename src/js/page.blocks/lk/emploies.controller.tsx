@@ -75,7 +75,7 @@ export default class EmploiesController extends React.Component<{ login: string 
 
     enable(item: IEmployee): void {
         Request({
-            method: 'private_userOff',
+            method: 'private_userOn',
             params: {
                 "login": this.props.login,
                 "userLogin": item.login
@@ -88,7 +88,7 @@ export default class EmploiesController extends React.Component<{ login: string 
 
     disable(item: IEmployee): void {
         Request({
-            method: 'private_userOn',
+            method: 'private_userOff',
             params: {
                 "login": this.props.login,
                 "userLogin": item.login
