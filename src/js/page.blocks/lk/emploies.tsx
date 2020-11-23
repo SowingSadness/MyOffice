@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 export interface IEmployee {
+    login: string
     name: string
     email: string
-    login: string
 }
 
 type TAction = (employee: IEmployee) => void;

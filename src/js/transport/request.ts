@@ -23,6 +23,6 @@ export default function Request<T>(params: Record<string, unknown>) {
             return data.result;
         }
 
-        return Promise.reject(data.error);
+        return Promise.reject<IRpcErrorObject>(data.error);
     });
 }

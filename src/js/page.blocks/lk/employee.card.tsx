@@ -8,6 +8,7 @@ export interface ITransaction {
 }
 
 export interface IModalEmployee {
+    login?: string
     name: string
     email: string
     password?: string
@@ -20,6 +21,7 @@ export interface IProps {
 }
 
 export default function EmployeeCard(props: IProps): React.ReactElement {
+    const login = props?.employee?.login;
     const [name, setName] = useState<string>(props?.employee?.name);
     const [email, setEmail] = useState<string>(props?.employee?.email);
     const [password, setPassword] = useState<string>('');
@@ -34,7 +36,7 @@ export default function EmployeeCard(props: IProps): React.ReactElement {
     const onClose = (e: React.SyntheticEvent) => {
         e.preventDefault();
         props?.onClose(e, {
-            name, email, password
+            login, name, email, password
         });
     };
 
