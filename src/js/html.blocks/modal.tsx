@@ -69,9 +69,7 @@ export default class ModalWindow<T> extends React.Component<IProps<T & IModalPro
         }
         this.setState({ visible: false });
 
-        if (this.props.signal.props.onClose) {
-            this.props.signal.props.onClose.apply(undefined, arguments);
-        }
+        this.props.signal?.props?.onClose.apply(undefined, arguments);
     };
 
     render() {
