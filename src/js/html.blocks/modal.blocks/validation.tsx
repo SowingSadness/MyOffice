@@ -4,11 +4,11 @@ export interface IValidationProps {
     message: string
 }
 
-interface IProps extends IValidationProps {
+interface IProps {
     onClose: (e: React.SyntheticEvent) => void
 }
 
-export default function Validation(props: IProps) {
+export default function Validation(props: IValidationProps & IProps) {
     return <div className="popup popup_success">
         <span className="popup__close popup__close_new-success" onClick={ props.onClose }></span>
         <h2 className="popup__title popup__title_success">{ props.message }</h2>

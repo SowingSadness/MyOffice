@@ -1,6 +1,6 @@
 import React from "react";
 import Request from '../../transport/request';
-import ModalWindow, { createSignal } from "../../html.blocks/modal";
+import ModalWindow, { closeSignal, ISignal, openSignal } from "../../html.blocks/modal";
 import Validation, { IValidationProps } from "../../html.blocks/modal.blocks/validation";
 import Emploies, { IEmployee, IActions } from './emploies';
 import EmployeeCard, { IModalEmployee, IProps as IEmplCardProps } from './employee.card';
@@ -16,9 +16,9 @@ interface IState {
     isExecuteCommand: boolean
     active: IEmployee[]
     disabled: IEmployee[]
-    addModalSignal: number
-    editModalSignal: number
-    validationSignal: number
+    addModalSignal: ISignal<IEmplCardProps>
+    editModalSignal: ISignal<IEmplCardProps>
+    validationSignal: ISignal<IValidationProps>
     message: string
 }
 
@@ -29,9 +29,9 @@ export default class EmploiesController extends React.PureComponent<{ login: str
             isExecuteCommand: false,
             active: [],
             disabled: [],
-            addModalSignal: createSignal(false),
-            editModalSignal: createSignal(false),
-            validationSignal: createSignal(false),
+            addModalSignal: closeSignal(),
+            editModalSignal: closeSignal(),
+            validationSignal: closeSignal(),
             message: ''
         };
         this.add = this.add.bind(this);
@@ -40,6 +40,8 @@ export default class EmploiesController extends React.PureComponent<{ login: str
         this.disable = this.disable.bind(this);
         this.dismiss = this.dismiss.bind(this);
         this._modalAddEmplClose = this._modalAddEmplClose.bind(this);
+        this._modalEditEmplClose = this._modalEditEmplClose.bind(this);
+        this._modalValidateClose = this._modalValidateClose.bind(this);
         this.collect(props.login);
     }
 
@@ -73,11 +75,22 @@ export default class EmploiesController extends React.PureComponent<{ login: str
     }
 
     add(): void {
-        this.setState({ addModalSignal: createSignal() })
+        this.setState({
+            addModalSignal: openSignal({
+                onClose: this._modalAddEmplClose,
+                isEditPass: false
+            })
+        })
     }
 
     edit(item: IEmployee): void {
-        this.setState({ editModalSignal: createSignal() })
+        this.setState({
+            editModalSignal: openSignal<IEmplCardProps>({
+                employee: item,
+                onClose: this._modalEditEmplClose,
+                isEditPass: true
+            })
+        })
     }
 
     enable(item: IEmployee): void {
@@ -121,8 +134,16 @@ export default class EmploiesController extends React.PureComponent<{ login: str
                 "email": model.email
             }
         }).then((res) => {
-            this.setState({ addModalSignal: createSignal(false) });
+            this.setState({ addModalSignal: closeSignal() });
             this.collect(this.props.login);
+        }, (error) => {
+            this.setState({
+                addModalSignal: closeSignal(),
+                validationSignal: openSignal({
+                    message: error.message,
+                    onClose: this._modalValidateClose
+                })
+            });
         });
     }
 
@@ -141,33 +162,26 @@ export default class EmploiesController extends React.PureComponent<{ login: str
                 "pass": model.password
             }
         }).then((res) => {
-            this.setState({ addModalSignal: createSignal(false) });
+            this.setState({ editModalSignal: closeSignal() });
             this.collect(this.props.login);
         }, (error) => {
-            error.message
+            this.setState({
+                editModalSignal: closeSignal(),
+                validationSignal: openSignal({
+                    message: error.message,
+                    onClose: this._modalValidateClose
+                })
+            });
         });
     }
 
     _modalValidateClose(e: React.SyntheticEvent): void {
-
+        this.setState({
+            validationSignal: closeSignal()
+        });
     }
 
     render() {
-        const newUserOptions: IEmplCardProps = {
-            onClose: this._modalAddEmplClose,
-            isEditPass: false
-        }
-
-        const editUserOptions: IEmplCardProps = {
-            onClose: this._modalEditEmplClose,
-            isEditPass: true
-        }
-
-        const validateOptions = {
-            message: this.state.message,
-            onCloase: this._modalValidateClose
-        };
-
         const actions: Partial<IActions> = !this.state.isExecuteCommand ? {
             add: this.add,
             edit: this.edit,
@@ -183,14 +197,14 @@ export default class EmploiesController extends React.PureComponent<{ login: str
                 title="Активные сотрудники"
                 emploies={ this.state.active }
                 actions={ actions } />
-            <ModalWindow<IEmplCardProps> content={ EmployeeCard } options={ newUserOptions }
-                openSignal={ this.state.addModalSignal } />
+            <ModalWindow<IEmplCardProps> content={ EmployeeCard }
+                signal={ this.state.addModalSignal } />
 
-            <ModalWindow<IEmplCardProps> content={ EmployeeCard } options={ editUserOptions }
-                openSignal={ this.state.editModalSignal } />
+            <ModalWindow<IEmplCardProps> content={ EmployeeCard }
+                signal={ this.state.editModalSignal } />
 
-            <ModalWindow<IValidationProps> content={ Validation } options={ validateOptions }
-                openSignal={ this.state.validationSignal } />
+            <ModalWindow<IValidationProps> content={ Validation }
+                signal={ this.state.validationSignal } />
 
             <Emploies
                 title="Отключенные сотрудники"

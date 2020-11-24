@@ -1,65 +1,85 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
+
+
+export type ISignal<T = void> = IOpenSignal<T> | ICloseSignal
+
+export interface IOpenSignal<T = void> {
+    type: 'open'
+    props: T
+}
+
+export interface ICloseSignal {
+    type: 'close'
+}
+
+export function openSignal<T = void>(props?: T): IOpenSignal<T> {
+    return {
+        type: 'open',
+        props
+    };
+}
+
+export function closeSignal(): ICloseSignal {
+    return { type: 'close' };
+}
 
 export interface IModalProps {
     onClose?: (e: React.SyntheticEvent) => void;
 }
 
-interface IProps<TContentProps> {
-    content: React.ComponentClass<TContentProps> | React.FunctionComponent<TContentProps>,
-    options?: TContentProps,
-    openSignal: number
+interface IProps<T> {
+    content: React.ComponentClass<T> | React.FunctionComponent<T>,
+    signal: IOpenSignal<T> | ICloseSignal
 }
 
-interface IState {
+interface IState<T> {
     visible: boolean
 }
 
-export function createSignal(isVisible: boolean = true): number {
-    return !isVisible ? 0 : Math.random();
-}
-
-export default class ModalWindow<T> extends React.Component<IProps<T & IModalProps>, IState> {
-    private lastSignal: number;
-
+export default class ModalWindow<T> extends React.Component<IProps<T & IModalProps>, IState<T & IModalProps>> {
     constructor(props: Readonly<IProps<T & IModalProps>>) {
         super(props);
         this.state = {
-            visible: !!props.openSignal
+            visible: props.signal.type === "open",
         };
 
         this.onClose = this.onClose.bind(this);
     }
 
-    shouldComponentUpdate(nextProps: IProps<T & IModalProps>, nextState: IState) {
+    shouldComponentUpdate(nextProps: IProps<T & IModalProps>, nextState: IState<T & IModalProps>) {
         if (nextState.visible !== this.state.visible) {
             return true;
         }
 
-        const isNotSameSignal = nextProps.openSignal !== this.lastSignal;
-        this.lastSignal = nextProps.openSignal;
-        if (isNotSameSignal && Boolean(nextProps.openSignal) !== this.state.visible) {
-            this.setState({
-                visible: Boolean(nextProps.openSignal)
-            });
-            return true;
+        const isSameTypeSignal = nextProps.signal.type === this.props.signal.type;
+        if (isSameTypeSignal && nextProps.signal.type === "close") {
+            return false;
         }
 
-        return false;
+        this.setState({
+            visible: nextProps.signal.type === "open",
+        });
+
+        return true;
     }
 
     onClose(e: React.SyntheticEvent) {
+        if (this.props.signal.type === "close") {
+            return;
+        }
         this.setState({ visible: false });
-        if (this.props.options.onClose) {
-            this.props.options.onClose.apply(undefined, arguments);
+
+        if (this.props.signal.props.onClose) {
+            this.props.signal.props.onClose.apply(undefined, arguments);
         }
     };
 
     render() {
-        if (!this.state.visible) {
+        if (!this.state.visible || this.props.signal.type === "close") {
             return <Fragment />;
         }
 
-        const options = { ...this.props.options };
+        const options = { ...this.props.signal.props };
         delete options.onClose;
 
         return <div className="modal modal_show">

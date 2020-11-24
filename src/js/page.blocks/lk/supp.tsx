@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModalWindow, { createSignal, IModalProps } from "../../html.blocks/modal";
+import ModalWindow, { openSignal, ISignal, IModalProps, closeSignal } from "../../html.blocks/modal";
 
 
 function TechSupport(props: IProps & IModalProps) {
@@ -26,11 +26,11 @@ interface IProps {
 }
 
 export default function Support(props: Readonly<IProps>): React.ReactElement {
-    const [showSupp, setSuppShow] = useState(0);
+    const [showSupp, setSuppShow] = useState<ISignal<IProps>>(closeSignal());
 
     const hadlerSupportInfo = (e: React.MouseEvent) => {
         e.preventDefault();
-        setSuppShow(createSignal());
+        setSuppShow(openSignal());
     };
 
     const SuppLink = props.SupportLogin ? <a className="lk__link" href="#" onClick={ hadlerSupportInfo }>Данные для техподдержки 1С:</a> : '';
@@ -48,6 +48,6 @@ export default function Support(props: Readonly<IProps>): React.ReactElement {
             </div>
             { SuppLink }
         </div>
-        <ModalWindow<IProps & IModalProps> content={ TechSupport } openSignal={ showSupp } options={ props } />
+        <ModalWindow<IProps> content={ TechSupport } signal={ showSupp } />
     </div>;
 }
