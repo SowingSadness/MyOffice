@@ -30,7 +30,7 @@ export default function Support(props: Readonly<IProps>): React.ReactElement {
 
     const hadlerSupportInfo = (e: React.MouseEvent) => {
         e.preventDefault();
-        setSuppShow(openSignal());
+        setSuppShow(openSignal(props));
     };
 
     const SuppLink = props.SupportLogin ? <a className="lk__link" href="#" onClick={ hadlerSupportInfo }>Данные для техподдержки 1С:</a> : '';
