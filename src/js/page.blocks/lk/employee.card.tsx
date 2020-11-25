@@ -30,7 +30,8 @@ export default function EmployeeCard(props: IProps): React.ReactElement {
         Новый пароль
         <input name="empl-pass" type="password" className="popup__input popup__input_edit-employee"
             value={ password }
-            onChange={ (e) => setPassword(e.target.value) } />
+            onChange={ (e) => setPassword(e.target.value) }
+            autoComplete="off" />
     </label>;
 
     const onClose = (e: React.SyntheticEvent) => {
@@ -48,13 +49,15 @@ export default function EmployeeCard(props: IProps): React.ReactElement {
                 Имя сотрудника
                 <input className="popup__input popup__input_new-employee"
                     value={ name }
-                    onChange={ (e) => setName(e.target.value) } />
+                    onChange={ (e) => setName(e.target.value) }
+                    autoComplete="off"/>
             </label>
             <label className="popup__label popup__label_new-employee">
                 E-mail
                 <input name="empl-name" className="popup__input popup__input_new-employee"
                     value={ email }
-                    onChange={ (e) => setEmail(e.target.value) } />
+                    onChange={ (e) => setEmail(e.target.value) }
+                    autoComplete="off" />
             </label>
             { props?.isEditPass ? PasswordField : '' }
             <button className="popup__button popup__button_new-employee" onClick={ onClose }>Сохранить</button>

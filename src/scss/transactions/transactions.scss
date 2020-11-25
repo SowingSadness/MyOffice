@@ -3,7 +3,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  max-width: 855px;
   margin: 22px auto 0 auto;
   &__transactions {
     font-family: $font-family--montserrat;
@@ -70,7 +69,7 @@
     background: #EDF6FF;
     border: 1px solid #C8E3FF;
     box-sizing: border-box;
-    max-width: 120px;
+    max-width: 150px;
     border-radius: 3px;
     &:last-of-type {
       margin: 0;

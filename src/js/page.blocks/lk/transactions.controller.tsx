@@ -1,20 +1,8 @@
 import React from "react";
-import Request from '../../transport/request';
+import Request, { Download } from '../../transport/request';
 import Transactions, { ITransaction } from './transactions';
 
 const emptyData = [
-    {
-        "dateTime": "2020-11-05T00:00:00",
-        "desc": "Стартовый баланс",
-        "summ": "280 руб.",
-        "type": "+"
-    },
-    {
-        "dateTime": "2020-11-05T00:00:00",
-        "desc": "Оплата за пользователя user1@moiofis",
-        "type": "-",
-        "summ": "35.00 руб."
-    }
 ];
 
 interface IResponse {
@@ -25,7 +13,7 @@ export default class TransactionController extends React.Component<{ login: stri
     constructor(props: { login: string }) {
         super(props);
         this.state = {
-            todayTransactions: emptyData
+            todayTransactions: []
         };
         this.collect(props.login);
     }
@@ -45,7 +33,27 @@ export default class TransactionController extends React.Component<{ login: stri
         });
     }
 
+    onDownload(from: Date, to: Date) {
+        if (isNaN(from.valueOf())) {
+            alert("Не верная дата С");
+            return
+        }
+        if (isNaN(to.valueOf())) {
+            alert("Не верная дата ПО");
+            return;
+        }
+
+        Download({
+            "method": "private_getTransactions",
+            "params": {
+                "login": "Buh1",
+                "dateFrom": Math.round(from.valueOf() / 1000),
+                "dateTo": Math.round(to.valueOf() / 1000)
+            }
+        });
+    }
+
     render() {
-        return <Transactions data={ this.state } />;
+        return <Transactions data={ this.state } onDownload={ this.onDownload } />;
     };
 }
