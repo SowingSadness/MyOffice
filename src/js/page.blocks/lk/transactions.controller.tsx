@@ -16,6 +16,7 @@ export default class TransactionController extends React.Component<{ login: stri
             todayTransactions: []
         };
         this.collect(props.login);
+        this.onDownload = this.onDownload.bind(this);
     }
 
     collect(login: string) {
@@ -46,7 +47,7 @@ export default class TransactionController extends React.Component<{ login: stri
         Download({
             "method": "private_getTransactions",
             "params": {
-                "login": "Buh1",
+                "login": this.props.login,
                 "dateFrom": Math.round(from.valueOf() / 1000),
                 "dateTo": Math.round(to.valueOf() / 1000)
             }
