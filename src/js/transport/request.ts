@@ -14,10 +14,17 @@ export interface IRpcError {
 
 function download(data: Response): Promise<void> {
     return data.blob().then((blob: Blob) => {
-        const file = new File([blob], 'file.xlsx', { type: data.headers.get('Content-Type') });
+        let fileName = undefined;
+        if (data.headers.has('Content-Disposition')) {
+            const searchName = data.headers.get('Content-Disposition').match(/filename=\"(.+)\"/);
+            fileName = searchName.length > 1 ? searchName[1] : undefined;
+        }
 
+        const file = new File([blob], fileName, { type: data.headers.get('Content-Type') });
         const link = document.createElement('a');
-        link.setAttribute('download', file.name);
+        if (fileName) {
+            link.setAttribute('download', file.name);
+        }
         link.href = URL.createObjectURL(file);
         link.click();
         URL.revokeObjectURL(link.href);
