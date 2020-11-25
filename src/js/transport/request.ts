@@ -17,7 +17,7 @@ function download(data: Response): Promise<void> {
         const file = new File([blob], 'file.xlsx', { type: data.headers.get('Content-Type') });
 
         const link = document.createElement('a');
-        // link.setAttribute('download', undefined);
+        link.setAttribute('download', file.name);
         link.href = URL.createObjectURL(file);
         link.click();
         URL.revokeObjectURL(link.href);
