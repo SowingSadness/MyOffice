@@ -1,5 +1,5 @@
 import React from "react";
-import Request from '../../transport/request';
+import Request, { Download } from '../../transport/request';
 import PaymentAddServices, { IService } from './addservices';
 
 const emptyData: IService[] = [
@@ -14,6 +14,7 @@ export default class AddServicesController extends React.Component<{ login: stri
         super(props);
         this.state = { services: emptyData };
         this.collect(props.login);
+        this.onLoadBill = this.onLoadBill.bind(this);
     }
 
     collect(login: string) {
@@ -31,7 +32,21 @@ export default class AddServicesController extends React.Component<{ login: stri
         });
     }
 
+    onLoadBill(serviceIds: string[]) {
+        if (serviceIds.length === 0) {
+            alert("Выберите услуги");
+        }
+
+        Download({
+            "method": "private_getInvoiceAddServices",
+            "params": {
+                "login": this.props.login,
+                "IDs": serviceIds
+            }
+        });
+    }
+
     render() {
-        return <PaymentAddServices data={ this.state.services } />;
+        return <PaymentAddServices data={ this.state.services } onLoadBill={ this.onLoadBill } />;
     };
 }

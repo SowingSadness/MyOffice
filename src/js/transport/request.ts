@@ -46,7 +46,6 @@ export default function Request<T>(params: Record<string, unknown>): Promise<T> 
     });
 }
 
-
 export function Download(params: Record<string, unknown>): Promise<void> {
     params['__download'] = true;
 
