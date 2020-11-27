@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export interface IPayTariff {
+    id: number
     period: string
     summ: number
     discount: number
@@ -9,6 +10,7 @@ export interface IPayTariff {
 
 interface IProps {
     data: Readonly<IPayTariff[]>
+    onLoadBill: (id: number) => void
 }
 
 function PaymentTariff(props: IPayTariff): React.ReactElement {
@@ -25,13 +27,6 @@ function PaymentTariff(props: IPayTariff): React.ReactElement {
             <p className="lk__little-text lk__little-text_bold">Итого к оплате:</p>
             <p className="lk__little-text">{ props.summForPay } руб.</p>
         </div>
-        <div className="lk__row">
-            <button className="lk__button lk__button_pay">Оплатить онлайн</button>
-            <button className="lk__button lk__button_download">Скачать счёт</button>
-        </div>
-        <p className="lk__little-text lk__little-text_under">
-            Для оформления возврата необходимо написать на e-mail: support@moiofis.ru
-        </p>
     </React.Fragment>;
 }
 
@@ -39,13 +34,17 @@ export default function Payment(props: IProps): React.ReactElement  {
     let optionsList: Array<React.ReactElement>
     try {
         optionsList = props.data.map((item: IPayTariff) => {
-            return <option key={ item.period } className="lk__option" value={ item.period }>{ item.period }</option>
+            return <option key={ item.id } className="lk__option" value={ item.period }>{ item.period }</option>
         });
     } catch (e) {
         optionsList = [];
     }
 
-    const [tariff, setTariff] = useState(props.data[0]);
+    let [tariff, setTariff] = useState(props.data[0]);
+
+    if (!tariff) {
+        tariff = props.data[0];
+    }
 
     function periodHandler(event: React.ChangeEvent) {
         //@ts-ignore
@@ -64,6 +63,13 @@ export default function Payment(props: IProps): React.ReactElement  {
                 </select>
             </div>
             <PaymentTariff { ...tariff } />
+            <div className="lk__row">
+                <button className="lk__button lk__button_pay">Оплатить онлайн</button>
+                <button className="lk__button lk__button_download" onClick={ () => props.onLoadBill(tariff.id) }>Скачать счёт</button>
+            </div>
+            <p className="lk__little-text lk__little-text_under">
+                Для оформления возврата необходимо написать на e-mail: support@moiofis.ru
+            </p>
         </div>
     </div>;
 }
