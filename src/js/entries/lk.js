@@ -1,6 +1,7 @@
 
 import "src/scss/lk.scss";
 import LKController from "../page.blocks/lk.controller";
+import LkMenu from "../html.blocks/_header/LkMenu";
 import include_me from "src/js/router";
 
-include_me(LKController);
+include_me(LKController, LkMenu);

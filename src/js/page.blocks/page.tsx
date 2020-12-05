@@ -6,13 +6,14 @@ type TProps = {
     Header: typeof Header,
     Body: React.ComponentClass | React.FunctionComponent,
     Footer: React.FunctionComponent,
-    user?: User
+    user?: User,
+    subMenu?: React.ComponentClass | React.FunctionComponent
 };
 
 export default function Page(props: Readonly<TProps>): React.ReactElement {
     return <Fragment>
         <div id="header">
-            <props.Header user={ props.user } />
+            <props.Header user={ props.user } subMenu={ props.subMenu } />
         </div>
         <props.Body />
         <props.Footer />

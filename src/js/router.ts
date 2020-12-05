@@ -6,13 +6,15 @@ import Footer from './html.blocks/footer';
 import { Page } from "./page.blocks";
 
 
-export default function include_me(Body: React.ComponentClass | React.FunctionComponent) {
+export default function include_me(Body: React.ComponentClass | React.FunctionComponent,
+    subMenu?: React.ComponentClass | React.FunctionComponent) {
     const domPage = document.getElementById('page');
     const user = auth.get();
     render(React.createElement(Page, {
         Header,
         Body,
         Footer,
-        user
+        user,
+        subMenu
     }), domPage);
 };

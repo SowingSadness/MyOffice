@@ -6,10 +6,17 @@ import * as auth from 'src/js/auth.blocks/auth';
 import Register from 'src/js/auth.blocks/register';
 import Login from 'src/js/auth.blocks/login';
 
-export default function Header(props: Readonly<{ user?: User }>): React.ReactElement {
+interface IHeaderProps {
+    user?: User
+    subMenu?: React.ComponentClass | React.FunctionComponent
+}
+
+export default function Header(props: Readonly<IHeaderProps>): React.ReactElement {
     const [user, setUser] = useState(props.user);
     const Right = user ? <Loginned user={user} /> :
         <NotLoginned onLogined={setUser} />;
+
+    const SecondMenu = props.subMenu ? <props.subMenu /> : '';
 
     return <header className="header">
         <div className="header__upper-menu">
@@ -23,6 +30,7 @@ export default function Header(props: Readonly<{ user?: User }>): React.ReactEle
             {Right}
         </div>
         <MainMenu />
+        { SecondMenu }
     </header>;
 }
 

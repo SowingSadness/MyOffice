@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 
-export default function MainMenu(): React.ReactElement {
+export default function LkMenu(): React.ReactElement {
     return <nav className="nav-bar nav-bar_lk">
         <ul className="nav-bar__list">
             <li className="nav-bar__element">
