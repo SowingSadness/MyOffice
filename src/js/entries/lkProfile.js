@@ -1,10 +1,10 @@
 
 import "src/scss/lkProfile.scss";
-import LKController from "../page.blocks/lkprofile.controller";
+import Profile from "../page.blocks/lk/lkprofile.controller";
 import LkMenu from "../html.blocks/_header/LkMenu";
 import include_me from "src/js/router";
 
-include_me(LKController, LkMenu);
+include_me(Profile, LkMenu);
 
 // Селекторы
 
