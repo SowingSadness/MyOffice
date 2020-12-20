@@ -5,6 +5,7 @@ import type User from  '../model/User';
 import * as auth from 'src/js/auth.blocks/auth';
 import Register from 'src/js/auth.blocks/register';
 import Login from 'src/js/auth.blocks/login';
+import { openSignal, closeSignal, ISignal } from "../html.blocks/modal";
 
 interface IHeaderProps {
     user?: User
@@ -36,21 +37,21 @@ export default function Header(props: Readonly<IHeaderProps>): React.ReactElemen
 
 function NotLoginned(props: Readonly<{ onLogined: (user: User) => void }>): React.ReactElement {
     const [register, openRegister] = useState(0);
-    const [login, openLogin] = useState(0);
+    const [signalOpen, openLogin] = useState<ISignal>(closeSignal());
 
     function showReg() {
         openRegister(Math.random());
     }
 
     function showLogin() {
-        openLogin(Math.random());
+        openLogin(openSignal());
     }
 
     return <React.Fragment>
-        <button className="header__start-button" onClick={showReg}>Начать работу</button>
-        <button className="header__lk-button" onClick={showLogin}>Личный кабинет</button>
-        <Register open={register}></Register>
-        <Login open={login} onLogined={props.onLogined}></Login>
+        <button className="header__start-button" onClick={ showReg }>Начать работу</button>
+        <button className="header__lk-button" onClick={ showLogin }>Личный кабинет</button>
+        <Register open={ register }></Register>
+        <Login signal={ signalOpen } onLogined={ props.onLogined }></Login>
     </React.Fragment>;
 }
 

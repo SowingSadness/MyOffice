@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 
-export type ISignal<T = void> = IOpenSignal<T> | ICloseSignal
+export type ISignal<T = {}> = IOpenSignal<T> | ICloseSignal
 
 export interface IOpenSignal<T = void> {
     type: 'open'
@@ -28,7 +28,7 @@ export interface IModalProps {
 }
 
 interface IProps<T> {
-    content: React.ComponentClass<T> | React.FunctionComponent<T>,
+    content: React.ComponentClass<T> | React.FunctionComponent<T>
     signal: IOpenSignal<T> | ICloseSignal
 }
 
