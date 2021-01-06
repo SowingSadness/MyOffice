@@ -65,8 +65,9 @@ export default class Login extends React.PureComponent<IProps, IState> {
         }).then((response) => response.json()).then((data: any) => {
             if (!data.result) {
                 this.setState({
-                    signalLogin: openSignal({
-                        validate: data?.error?.message
+                    signalLogin: openSignal<ILoginProps>({
+                        validate: data?.error?.message,
+                        model: model
                     })
                 });
                 return;
