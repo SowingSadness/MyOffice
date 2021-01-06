@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const isDev = process.env.NODE_ENV === 'development';
 
 const config = {
-  mode: 'development',
+  mode: isDev ? 'development' : 'production',
   entry: {
     index: './src/js/entries/index.js',
     advantages: './src/js/entries/advantages.js',
@@ -32,12 +32,10 @@ const config = {
     filename: '[name].js',
     publicPath: '/static/'
   },
-  //devtool: 'source-map',
+  devtool: 'source-map',
   optimization: {
-    namedModules: true,
-    namedChunks: true,
     splitChunks: {
-      chunks: 'async'
+      chunks: 'all'
     }
   },
   resolve: {
@@ -204,8 +202,7 @@ const config = {
       template: './src/pages/lk.html',
       filename: 'lk.html',
       chunks: ['lk']
-    }),
-    new WebpackMd5Hash(),
+    })
   ]
 };
 
