@@ -18,7 +18,7 @@ interface IState {
     signalReset: ISignal
 }
 
-export default class Login extends React.Component<IProps, IState> {
+export default class Login extends React.PureComponent<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.login = this.login.bind(this);

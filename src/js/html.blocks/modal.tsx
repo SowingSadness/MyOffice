@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 type IOpenType = "open";
 type ICloseType = "close";
 type ISignalTypes = IOpenType | ICloseType;
-export type ISignal<T = {}> = IOpenSignal<T> | ICloseSignal
+export type ISignal<T = {}> = IOpenSignal<T> | ICloseSignal;
 
 export interface IAbstractSignal {
     use(): void
