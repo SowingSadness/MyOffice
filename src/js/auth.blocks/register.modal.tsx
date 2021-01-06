@@ -18,7 +18,7 @@ export default function ModalRegister(props: Readonly<IProps>): React.ReactEleme
         styles.push("modal_show");
     }
 
-    const validate = props.validate ? <span className="popup__title">{ props.validate }</span> : '';
+    const validate = props.validate ? <div className="popup__validate">{ props.validate }</div> : '';
 
     return <div className={ styles.join(" ") }>
         <div className="popup popup_reg">

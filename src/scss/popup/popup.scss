@@ -252,6 +252,17 @@
       outline: none;
     }
   }
+
+  &__validate {
+    font-family: $font-family--montserrat;
+    margin: 0 auto 16px auto;
+    max-width: 367px;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: $color-danger;
+  }
 }
 @media screen and (max-width: $screen-w--xs) {
   .popup {

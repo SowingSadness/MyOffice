@@ -5,6 +5,7 @@ import type User from  '../model/User';
 import * as auth from 'src/js/auth.blocks/auth';
 import Register from 'src/js/auth.blocks/register';
 import Login from 'src/js/auth.blocks/login';
+import { openSignal, closeSignal, ISignal } from "../html.blocks/modal";
 
 interface IHeaderProps {
     user?: User
@@ -13,8 +14,8 @@ interface IHeaderProps {
 
 export default function Header(props: Readonly<IHeaderProps>): React.ReactElement {
     const [user, setUser] = useState(props.user);
-    const Right = user ? <Loginned user={user} /> :
-        <NotLoginned onLogined={setUser} />;
+    const Right = user ? <Loginned user={ user } /> :
+        <NotLoginned onLogined={ setUser } />;
 
     const SecondMenu = props.subMenu ? <props.subMenu /> : '';
 
@@ -25,37 +26,60 @@ export default function Header(props: Readonly<IHeaderProps>): React.ReactElemen
                 <p className="header__logo-text">мой офис</p>
             </a>
             <img className="burger-menu__button" src="images/open-menu.svg" alt="скрытое меню" />
-            <BurgerMenu user={user} />
+            <BurgerMenu user={ user } />
             <a href="tel: +7 (843) 202-21-40" className="header__phone">+7 (843) 202-21-40</a>
-            {Right}
+            { Right }
         </div>
         <MainMenu />
         { SecondMenu }
     </header>;
 }
 
-function NotLoginned(props: Readonly<{ onLogined: (user: User) => void }>): React.ReactElement {
-    const [register, openRegister] = useState(0);
-    const [login, openLogin] = useState(0);
 
-    function showReg() {
-        openRegister(Math.random());
+interface INotLoginnedProps {
+    onLogined: (user: User) => unknown
+}
+
+interface IState {
+    register: number,
+    signalOpen: ISignal
+}
+
+export class NotLoginned extends React.Component<INotLoginnedProps, IState> {
+    constructor(props: INotLoginnedProps) {
+        super(props);
+        this.showReg = this.showReg.bind(this);
+        this.showLogin = this.showLogin.bind(this);
+
+        this.state = {
+            register: 0,
+            signalOpen: closeSignal()
+        };
     }
 
-    function showLogin() {
-        openLogin(Math.random());
+    showReg() {
+        this.setState({
+            register: Math.random()
+        });
     }
 
-    return <React.Fragment>
-        <button className="header__start-button" onClick={showReg}>Начать работу</button>
-        <button className="header__lk-button" onClick={showLogin}>Личный кабинет</button>
-        <Register open={register}></Register>
-        <Login open={login} onLogined={props.onLogined}></Login>
-    </React.Fragment>;
+    showLogin() {
+        this.setState({
+            signalOpen: openSignal()
+        });
+    }
+
+    render() {
+        return <React.Fragment>
+            <button className="header__start-button" onClick={ this.showReg }>Начать работу</button>
+            <button className="header__lk-button" onClick={ this.showLogin }>Личный кабинет</button>
+            <Register open={ this.state.register }></Register>
+            <Login signal={ this.state.signalOpen } onLogined={ this.props.onLogined }></Login>
+        </React.Fragment>;
+    }
 }
 
 function Loginned(props: Readonly<{ user: User }>): React.ReactElement {
-
     return <React.Fragment>
         <div className="header__lk-container">
             <div className="header__info-container">

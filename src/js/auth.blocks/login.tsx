@@ -2,46 +2,53 @@ import React, { Fragment } from "react";
 import * as auth from "./auth";
 import User from "../model/User";
 import UserLogin from "../model/UserLogin";
-import ModalLogin from "./login.modal";
-import Recover from "./recover";
+import ModalWindow, { openSignal, closeSignal, traverseSignal as traversePropsSignal, ISignal } from "../html.blocks/modal";
+import ModalLogin, { ILoginProps } from "./login.modal";
+import ModalRecovery, { IRecoveryProps } from "./recovery.modal";
+import ModalReset from "./reset.modal";
 
 interface IProps {
-    open: number
+    signal: ISignal
     validate?: boolean
     onLogined: (user: User) => unknown
 }
 interface IState {
-    showed: boolean
-    showRecover: number
-    validateError?: string
+    signalLogin: ISignal | undefined
+    signalRecover: ISignal<IRecoveryProps>
+    signalReset: ISignal
 }
 
 export default class Login extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
-        this.state = { showed: Boolean(props.open), showRecover: 0 };
         this.login = this.login.bind(this);
-        this.close = this.close.bind(this);
+        this.closeLogin = this.closeLogin.bind(this);
+        this.closeRecover = this.closeRecover.bind(this);
+        this.closeReset = this.closeReset.bind(this);
+        this.forgot = this.forgot.bind(this);
+        this.recover = this.recover.bind(this);
+
+        this.state = {
+            signalLogin: props.signal,
+            signalRecover: closeSignal(),
+            signalReset: closeSignal()
+        };
     }
 
     shouldComponentUpdate(nextProps: IProps, nextState: IState) {
-        if (nextState.showed !== this.state.showed) {
-            return true;
+        if (!nextProps.signal.isUsed()) {
+            this.setState({
+                signalLogin: undefined
+            });
         }
 
-        if (nextProps.open === this.props.open) {
-            return false;
-        }
-
-        //@ts-ignore
-        this.state.showed = Boolean(nextProps.open);
-        return true;
+        return !nextProps.signal.isUsed() ||
+            !(this.state.signalLogin && this.state.signalLogin.isUsed()) ||
+            !this.state.signalRecover.isUsed() ||
+            !this.state.signalReset.isUsed();
     }
 
-    componentDidUpdate(prevProps: IProps) {
-    }
-
-    login(e: React.MouseEvent, model: UserLogin) {
+    login(e: React.SyntheticEvent, model: UserLogin) {
         e.preventDefault();
 
         let param = {
@@ -57,38 +64,76 @@ export default class Login extends React.Component<IProps, IState> {
             body: JSON.stringify(param)
         }).then((response) => response.json()).then((data: any) => {
             if (!data.result) {
-                this.setState({ validateError: data?.error?.message })
+                this.setState({
+                    signalLogin: openSignal({
+                        validate: data?.error?.message
+                    })
+                });
                 return;
             }
             const userInfo = data.result;
             const user = new User(userInfo.login, userInfo.balance, userInfo.paidFor);
             auth.set(user);
-            this.close();
+            this.closeLogin();
             this.props.onLogined(user);
         });
     }
 
     forgot() {
-        this.setState({ showRecover: Math.random() });
+        this.setState({
+            signalLogin: closeSignal(),
+            signalRecover: openSignal({
+                onRecover: this.recover,
+                onClose: this.closeRecover
+            }),
+            signalReset: closeSignal()
+        });
     }
 
-    close() {
-        this.setState({ showed: false });
+    /**
+     * TODO нужно сделать функцию запроса
+     */
+    recover() {
+        this.setState({
+            signalLogin: closeSignal(),
+            signalRecover: closeSignal(),
+            signalReset: openSignal({
+                onClose: this.closeReset
+            })
+        });
+    }
+
+    closeLogin(e?: React.SyntheticEvent, user?: UserLogin) {
+        if (user) {
+            return this.login(e, user);
+        }
+        this.setState({
+            signalLogin: closeSignal()
+        });
+    }
+
+    closeRecover(e?: React.SyntheticEvent) {
+        this.setState({
+            signalRecover: closeSignal()
+        });
+    }
+
+    closeReset(e?: React.SyntheticEvent) {
+        this.setState({
+            signalReset: closeSignal()
+        });
     }
 
     render() {
-        if (!this.state.showed) {
-            return '';
-        }
+        const loginSignal = this.state.signalLogin || traversePropsSignal<ILoginProps>(this.props.signal, {
+            onClose: this.closeLogin,
+            onForgot: this.forgot
+        });
 
         return <Fragment>
-            <ModalLogin showed={ this.state.showed }
-                onClose={ this.close }
-                onLogin={ this.login }
-                onForgot={ this.forgot }
-                validate={ this.state.validateError }
-            />;
-            <Recover open={ this.state.showRecover } />
+            <ModalWindow<ILoginProps> content={ ModalLogin } signal={ loginSignal } />
+            <ModalWindow<IRecoveryProps> content={ ModalRecovery } signal={ this.state.signalRecover } />
+            <ModalWindow content={ ModalReset } signal={ this.state.signalReset } />
         </Fragment>;
     }
 }

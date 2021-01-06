@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .main {
   &_notFound {
     background: linear-gradient(180deg, #FAFCFF 0%, #EDF6FF 39.06%, #FAFCFF 96.35%);

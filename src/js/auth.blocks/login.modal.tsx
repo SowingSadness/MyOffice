@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import UserLogin from '../model/UserLogin';
 
-interface IProps {
+export interface ILoginProps {
     model?: UserLogin
     validate?: string
-    showed?: boolean
-    onLogin?: (e: React.MouseEvent, model: UserLogin) => void
     onForgot?: () => void
-    onClose?: () => void
 }
 
-export default function ModalLogin(props: Readonly<IProps>): React.ReactElement {
+interface IProps {
+    onClose?: (e: React.MouseEvent, model?: UserLogin) => void
+}
+
+export default function ModalLogin(props: Readonly<ILoginProps & IProps>): React.ReactElement {
     const [login, setLogin] = useState(props?.model?.name);
     const [password, setPass] = useState(props?.model?.name);
 
     const loginHandler = (e: React.MouseEvent) => {
-        props.onLogin(e, new UserLogin(login, password));
+        e.preventDefault();
+        props.onClose(e, new UserLogin(login, password));
     };
 
-    const validate = props.validate ? <span className="popup__title">{ props.validate }</span> : '';
+    const validate = props.validate ? <div className="popup__validate">{ props.validate }</div> : '';
 
     return <div className="modal modal_lk modal_show">
         <div className="popup popup_lk">
