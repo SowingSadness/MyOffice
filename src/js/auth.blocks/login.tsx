@@ -18,7 +18,7 @@ interface IState {
     signalReset: ISignal
 }
 
-export default class Login extends React.PureComponent<IProps, IState> {
+export default class Login extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.login = this.login.bind(this);
@@ -67,7 +67,9 @@ export default class Login extends React.PureComponent<IProps, IState> {
                 this.setState({
                     signalLogin: openSignal<ILoginProps>({
                         validate: data?.error?.message,
-                        model: model
+                        model: model,
+                        onClose: this.closeLogin,
+                        onForgot: this.forgot
                     })
                 });
                 return;
@@ -104,7 +106,7 @@ export default class Login extends React.PureComponent<IProps, IState> {
         });
     }
 
-    closeLogin(e?: React.SyntheticEvent, user?: UserLogin) {
+    closeLogin(e?: React.MouseEvent, user?: UserLogin) {
         if (user) {
             return this.login(e, user);
         }

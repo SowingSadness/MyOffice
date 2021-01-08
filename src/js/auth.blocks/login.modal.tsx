@@ -4,14 +4,11 @@ import UserLogin from '../model/UserLogin';
 export interface ILoginProps {
     model?: UserLogin
     validate?: string
+    onClose?: (e: React.MouseEvent, model?: UserLogin) => void
     onForgot?: () => void
 }
 
-interface IProps {
-    onClose?: (e: React.MouseEvent, model?: UserLogin) => void
-}
-
-export default function ModalLogin(props: Readonly<ILoginProps & IProps>): React.ReactElement {
+export default function ModalLogin(props: Readonly<ILoginProps>): React.ReactElement {
     const [login, setLogin] = useState(props?.model?.name);
     const [password, setPass] = useState(props?.model?.name);
 

@@ -41,7 +41,7 @@ interface INotLoginnedProps {
 }
 
 interface IState {
-    register: number,
+    registerSignal: ISignal,
     signalOpen: ISignal
 }
 
@@ -52,14 +52,14 @@ export class NotLoginned extends React.Component<INotLoginnedProps, IState> {
         this.showLogin = this.showLogin.bind(this);
 
         this.state = {
-            register: 0,
+            registerSignal: closeSignal(),
             signalOpen: closeSignal()
         };
     }
 
     showReg() {
         this.setState({
-            register: Math.random()
+            registerSignal: openSignal()
         });
     }
 
@@ -73,7 +73,7 @@ export class NotLoginned extends React.Component<INotLoginnedProps, IState> {
         return <React.Fragment>
             <button className="header__start-button" onClick={ this.showReg }>Начать работу</button>
             <button className="header__lk-button" onClick={ this.showLogin }>Личный кабинет</button>
-            <Register open={ this.state.register }></Register>
+            <Register signal={ this.state.registerSignal }></Register>
             <Login signal={ this.state.signalOpen } onLogined={ this.props.onLogined }></Login>
         </React.Fragment>;
     }

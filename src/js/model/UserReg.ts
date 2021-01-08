@@ -1,9 +1,8 @@
 export default class RegUser {
-    public phone: string = '+7123456789';
-
     constructor(
         public login = '',
         public name = '',
+        public phone = '',
         public email = '') {
     }
 
@@ -17,5 +16,9 @@ export default class RegUser {
 
     setEmail(email: string): void {
         this.email = email;
+    }
+
+    setPhone(phone: string): void {
+        this.phone = phone;
     }
 }

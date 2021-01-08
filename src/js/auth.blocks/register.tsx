@@ -1,53 +1,61 @@
 import React from "react";
+import ModalWindow, { openSignal, closeSignal, traverseSignal as traversePropsSignal, ISignal } from "../html.blocks/modal";
 import RegUser from "../model/UserReg";
-import ModalRegister from "./register.modal";
+import ModalRegister, { IProps as IRegisterProps } from "./register.modal";
 import ModalThanks from "./thanks.modal";
 
 interface IProps {
-    open: number
+    signal: ISignal
 }
+
 interface IState {
-    validate: string
-    showed: boolean
+    signal: ISignal
     registered: boolean
+    validate: string
 }
 
 export default class Register extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
-        this.state = { showed: Boolean(props.open), registered: false, validate: '' };
+        this.state = {
+            signal: props.signal,
+            registered: false,
+            validate: undefined
+        };
         this.register = this.register.bind(this);
         this.close = this.close.bind(this);
+        this.closeThanks = this.closeThanks.bind(this);
     }
 
     shouldComponentUpdate(nextProps: IProps, nextState: IState) {
-        if (nextState.showed !== this.state.showed) {
-            return true;
-        }
-
         if (nextState.registered !== this.state.registered) {
             return true;
         }
 
-        if (nextProps.open === this.props.open) {
-            return false;
+        if (!nextProps.signal.isUsed()) {
+            this.setState({
+                signal: undefined
+            });
         }
 
-        //@ts-ignore
-        this.state.showed = Boolean(nextProps.open);
-        return true;
+        return !nextProps.signal.isUsed() ||
+            !(nextState.signal && nextState.signal.isUsed());
     }
 
-    componentDidUpdate(prevProps: IProps) {
+    closeThanks() {
+        this.setState({registered: false});
     }
 
-    close() {
-        this.setState({showed: false, registered: false});
+    close(e: React.MouseEvent, model?: RegUser) {
+        if (model) {
+            return this.register(e, model);
+        }
+        this.setState({
+            signal: closeSignal()
+        });
     }
 
     register(e: React.MouseEvent, model: RegUser) {
-        e.preventDefault();
-
         let param = {
             "method": "register",
             "params": {
@@ -64,23 +72,31 @@ export default class Register extends React.Component<IProps, IState> {
             body: JSON.stringify(param)
         }).then((response) => response.json()).then((data: any) => {
             if (!data.result) {
-                this.setState({ validate: data?.error?.message })
+                this.setState({
+                    signal: openSignal<IRegisterProps>({
+                        validate: data?.error?.message,
+                        model: model,
+                        onClose: this.close
+                    })
+                });
                 return;
             }
-            this.setState({ registered: true });
+            this.setState({
+                signal: closeSignal(),
+                registered: true
+            });
         });
     }
 
     render() {
-        if (!this.state.showed) {
-            return '';
-        }
-
         if (this.state.registered) {
-            return <ModalThanks onClose={this.close} />;
+            return <ModalThanks onClose={this.closeThanks} />;
         }
 
-        return <ModalRegister showed={ this.state.showed } validate={ this.state.validate }
-            onClose={ this.close } onRegister={ this.register } />;
+        const registerSignal = this.state.signal || traversePropsSignal<IRegisterProps>(this.props.signal, {
+            onClose: this.close
+        });
+
+        return <ModalWindow<IRegisterProps> content={ ModalRegister } signal={ registerSignal } />;
     }
 }
