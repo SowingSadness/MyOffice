@@ -49,12 +49,6 @@ const config = {
     "react": "React",
     "react-dom": "ReactDOM"
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, '..', 'myoffice', 'static'),
-    compress: true,
-    writeToDisk: true,
-    open: true,
-  },
   module: {
     rules: [
       {

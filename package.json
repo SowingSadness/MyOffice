@@ -2,11 +2,9 @@
   "name": "my-office",
   "version": "0.0.1",
   "description": "site for MyOffice",
-  "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=development && webpack --mode development",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch",
-    "deploy": "cross-env NODE_ENV=production gh-pages -d dist",
+    "build": "cross-env NODE_ENV=production && webpack --mode production",
+    "build:dev": "cross-env NODE_ENV=development && webpack --mode development",
     "start": "npm run dev"
   },
   "repository": {
