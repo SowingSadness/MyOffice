@@ -6,14 +6,41 @@ interface IResponse {
     Payment: IPayTariff[]
 }
 
-export default class PaymentController extends React.Component<{ login: string }, { tariffs: IPayTariff[] }> {
+interface IPay {
+    'MerchantId': number
+    'OrderId': string
+    'Amount': number
+    'Currency': string
+    'ReturnUrl': string
+    'SecurityKey': string
+}
+
+export default class PaymentController extends React.Component<{ login: string }, { tariffs: IPayTariff[], isPayProcess: boolean }> {
+    private form: React.Ref<HTMLFormElement>;
+    private MerchantId: React.Ref<HTMLInputElement>;
+    private OrderId: React.Ref<HTMLInputElement>;
+    private Amount: React.Ref<HTMLInputElement>;
+    private Currency: React.Ref<HTMLInputElement>;
+    private ReturnUrl: React.Ref<HTMLInputElement>;
+    private SecurityKey: React.Ref<HTMLInputElement>;
+
     constructor(props: { login: string }) {
         super(props);
         this.state = {
-            tariffs: []
+            tariffs: [],
+            isPayProcess: false
         };
         this.collect(props.login);
         this.onLoadBill = this.onLoadBill.bind(this);
+        this.onPay = this.onPay.bind(this);
+
+        this.form = React.createRef();
+        this.MerchantId = React.createRef();
+        this.OrderId = React.createRef();
+        this.Amount = React.createRef();
+        this.Currency = React.createRef();
+        this.ReturnUrl = React.createRef();
+        this.SecurityKey = React.createRef();
     }
 
     collect(login: string) {
@@ -41,7 +68,36 @@ export default class PaymentController extends React.Component<{ login: string }
         });
     }
 
+    onPay(id: number) {
+        this.setState({
+            isPayProcess: true
+        });
+
+        Request<IPay>({
+            "method": "get_payonline",
+            "params": {
+                "login": this.props.login,
+                "id": id
+            }
+        }).then((res) => {
+            this.setState({
+                isPayProcess: false
+            });
+            // TODO!
+        });
+    }
+
     render() {
-        return <Payment data={ this.state.tariffs } onLoadBill={ this.onLoadBill }/>;
+        return <React.Fragment>
+            <Payment data={ this.state.tariffs } isPayProcess={ this.state.isPayProcess } onLoadBill={ this.onLoadBill } onPay={ this.onPay } />
+            <form ref={ this.form }>
+                <input type="hidden" name="MerchantId" ref={ this.MerchantId } />
+                <input type="hidden" name="OrderId" ref={ this.OrderId } />
+                <input type="hidden" name="Amount" ref={ this.Amount } />
+                <input type="hidden" name="Currency" ref={ this.Currency } />
+                <input type="hidden" name="ReturnUrl" ref={ this.ReturnUrl } />
+                <input type="hidden" name="SecurityKey" ref={ this.SecurityKey } />
+            </form>
+        </React.Fragment>;
     };
 }

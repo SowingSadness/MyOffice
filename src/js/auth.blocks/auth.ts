@@ -32,6 +32,7 @@ export function set(user: User) {
 }
 
 export function logout() {
+    authUser = undefined;
     document.cookie = 'auth.name=; Max-Age=0; expires=0;';
     document.cookie = 'auth.balance=; Max-Age=0; expires=0;';
     document.cookie = 'auth.actualDate=; Max-Age=0; expires=0;';

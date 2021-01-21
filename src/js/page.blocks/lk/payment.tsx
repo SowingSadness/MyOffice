@@ -10,6 +10,8 @@ export interface IPayTariff {
 
 interface IProps {
     data: Readonly<IPayTariff[]>
+    isPayProcess: boolean
+    onPay: (id: number) => void
     onLoadBill: (id: number) => void
 }
 
@@ -51,6 +53,10 @@ export default function Payment(props: IProps): React.ReactElement  {
         setTariff(props.data[event.target.selectedIndex]);
     }
 
+    const ButtonPay = props.isPayProcess ?
+        <button className="lk__button lk__button_pay" disabled={ true }>Оплатить онлайн</button> :
+        <button className="lk__button lk__button_pay" onClick={ () => props.onPay(tariff.id) }>Оплатить онлайн</button>;
+
     return <div className="profile-settings profile-settings_lk">
         <div className="profile-settings__title-wrapper">
             <h2 className="profile-settings__title">Оплата</h2>
@@ -64,7 +70,7 @@ export default function Payment(props: IProps): React.ReactElement  {
             </div>
             <PaymentTariff { ...tariff } />
             <div className="lk__row">
-                <button className="lk__button lk__button_pay">Оплатить онлайн</button>
+                { ButtonPay }
                 <button className="lk__button lk__button_download" onClick={ () => props.onLoadBill(tariff.id) }>Скачать счёт</button>
             </div>
             <p className="lk__little-text lk__little-text_under">
