@@ -6,23 +6,29 @@ interface IResponse {
     Payment: IPayTariff[]
 }
 
-interface IPay {
-    'MerchantId': number
-    'OrderId': string
-    'Amount': number
-    'Currency': string
-    'ReturnUrl': string
-    'SecurityKey': string
+interface IState {
+    tariffs: IPayTariff[]
+    isPayProcess: boolean
 }
 
-export default class PaymentController extends React.Component<{ login: string }, { tariffs: IPayTariff[], isPayProcess: boolean }> {
-    private form: React.Ref<HTMLFormElement>;
-    private MerchantId: React.Ref<HTMLInputElement>;
-    private OrderId: React.Ref<HTMLInputElement>;
-    private Amount: React.Ref<HTMLInputElement>;
-    private Currency: React.Ref<HTMLInputElement>;
-    private ReturnUrl: React.Ref<HTMLInputElement>;
-    private SecurityKey: React.Ref<HTMLInputElement>;
+interface IPay {
+    url: string
+    MerchantId: number
+    OrderId: string
+    Amount: string
+    Currency: string
+    ReturnUrl: string
+    SecurityKey: string
+}
+
+export default class PaymentController extends React.Component<{ login: string }, IState> {
+    private form: React.RefObject<HTMLFormElement>;
+    private MerchantId: React.RefObject<HTMLInputElement>;
+    private OrderId: React.RefObject<HTMLInputElement>;
+    private Amount: React.RefObject<HTMLInputElement>;
+    private Currency: React.RefObject<HTMLInputElement>;
+    private SecurityKey: React.RefObject<HTMLInputElement>;
+    private ReturnUrl: React.RefObject<HTMLInputElement>;
 
     constructor(props: { login: string }) {
         super(props);
@@ -39,8 +45,8 @@ export default class PaymentController extends React.Component<{ login: string }
         this.OrderId = React.createRef();
         this.Amount = React.createRef();
         this.Currency = React.createRef();
-        this.ReturnUrl = React.createRef();
         this.SecurityKey = React.createRef();
+        this.ReturnUrl = React.createRef();
     }
 
     collect(login: string) {
@@ -81,9 +87,21 @@ export default class PaymentController extends React.Component<{ login: string }
             }
         }).then((res) => {
             this.setState({
-                isPayProcess: false
+                isPayProcess: false,
             });
-            // TODO!
+
+            this.MerchantId.current.value = String(res.MerchantId);
+            this.OrderId.current.value = res.OrderId;
+            this.Amount.current.value = String(res.Amount);
+            this.Currency.current.value = res.Currency;
+            this.SecurityKey.current.value = res.SecurityKey;
+            this.ReturnUrl.current.value = res.ReturnUrl;
+            this.form.current.action = res.url;
+            this.form.current.submit();
+        }, () => {
+            this.setState({
+                isPayProcess: false,
+            });
         });
     }
 
@@ -95,8 +113,8 @@ export default class PaymentController extends React.Component<{ login: string }
                 <input type="hidden" name="OrderId" ref={ this.OrderId } />
                 <input type="hidden" name="Amount" ref={ this.Amount } />
                 <input type="hidden" name="Currency" ref={ this.Currency } />
-                <input type="hidden" name="ReturnUrl" ref={ this.ReturnUrl } />
                 <input type="hidden" name="SecurityKey" ref={ this.SecurityKey } />
+                <input type="hidden" name="ReturnUrl" ref={ this.ReturnUrl } />
             </form>
         </React.Fragment>;
     };

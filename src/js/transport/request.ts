@@ -31,8 +31,9 @@ function download(data: Response): Promise<void> {
     }).then(() => undefined);
 }
 
-export default function Request<T>(params: Record<string, unknown>): Promise<T> {
-    return fetch('/rpc', {
+export default function Request<T>(params: Record<string, unknown>, noCache: boolean = false): Promise<T> {
+    const url = noCache ? '/rpc' : '/rpc?r=' + Math.random();
+    return fetch(url, {
         method: 'POST',
         body: JSON.stringify(params)
     }).then((response: Response) => {
