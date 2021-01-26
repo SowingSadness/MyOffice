@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export interface IPayTariff {
-    id: number
+    id: string
     period: string
     summ: number
     discount: number
@@ -11,8 +11,8 @@ export interface IPayTariff {
 interface IProps {
     data: Readonly<IPayTariff[]>
     isPayProcess: boolean
-    onPay: (id: number) => void
-    onLoadBill: (id: number) => void
+    onPay: (id: string) => void
+    onLoadBill: (id: string) => void
 }
 
 function PaymentTariff(props: IPayTariff): React.ReactElement {

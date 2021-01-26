@@ -64,7 +64,7 @@ export default class PaymentController extends React.Component<{ login: string }
         });
     }
 
-    onLoadBill(id: number) {
+    onLoadBill(id: string) {
         Download({
             "method": "private_getInvoiceTariff",
             "params": {
@@ -74,7 +74,7 @@ export default class PaymentController extends React.Component<{ login: string }
         });
     }
 
-    onPay(id: number) {
+    onPay(id: string) {
         this.setState({
             isPayProcess: true
         });
@@ -107,7 +107,8 @@ export default class PaymentController extends React.Component<{ login: string }
 
     render() {
         return <React.Fragment>
-            <Payment data={ this.state.tariffs } isPayProcess={ this.state.isPayProcess } onLoadBill={ this.onLoadBill } onPay={ this.onPay } />
+            <Payment data={ this.state.tariffs } isPayProcess={ this.state.isPayProcess }
+                onLoadBill={ this.onLoadBill } onPay={ this.onPay } />
             <form ref={ this.form }>
                 <input type="hidden" name="MerchantId" ref={ this.MerchantId } />
                 <input type="hidden" name="OrderId" ref={ this.OrderId } />

@@ -9,6 +9,8 @@ export interface IService {
 
 interface IProps {
     data: Readonly<IService[]>
+    isPayProcess: boolean
+    onPay: (ids: string[]) => void
     onLoadBill: (servicesIds: string[]) => void
 }
 
@@ -45,6 +47,10 @@ export default function PaymentAddServices(props: IProps): React.ReactElement {
         items = [];
     }
 
+    const ButtonPay = props.isPayProcess ?
+        <button className="lk__button lk__button_pay" disabled={ true }>Оплатить онлайн</button> :
+        <button className="lk__button lk__button_pay" onClick={ () => props.onPay(checked) } >Оплатить онлайн</button>
+
     return <div className="profile-settings profile-settings_lk profile-settings_add">
         <div className="profile-settings__title-wrapper">
             <h2 className="profile-settings__title">Дополнительные услуги</h2>
@@ -59,7 +65,7 @@ export default function PaymentAddServices(props: IProps): React.ReactElement {
                 <input className="lk__input" disabled placeholder={ total + " руб." } />
             </div>
             <div className="lk__row lk__row_last">
-                <button className="lk__button lk__button_pay">Оплатить онлайн</button>
+                { ButtonPay }
                 <button className="lk__button lk__button_download" onClick={ () => props.onLoadBill(checked) } >Скачать счёт</button>
             </div>
         </div>
