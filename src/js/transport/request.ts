@@ -1,3 +1,5 @@
+import * as auth from "../auth.blocks/auth";
+
 interface IRpcResponse<T> {
     result: T
 }
@@ -37,6 +39,10 @@ export default function Request<T>(params: Record<string, unknown>, noCache: boo
         method: 'POST',
         body: JSON.stringify(params)
     }).then((response: Response) => {
+        if (response.status === 401) {
+            auth.logout();
+            window.location.reload();
+        }
         return response.json();
     }).then<T>((data: IRpcResponse<T> | IRpcError) => {
         if ("result" in data) {
