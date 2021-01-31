@@ -44,9 +44,9 @@ export default function MainMenu(props: Readonly<{ user?: User }>): React.ReactE
             <li className="burger-menu__element">
                 <a className="nav-bar__link nav-bar__link_mini" href="advantages.html">Возможности</a>
             </li>
-            <li className="burger-menu__element">
+            {/* <li className="burger-menu__element">
                 <a className="nav-bar__link nav-bar__link_mini" href="partners.html">Партнёрам</a>
-            </li>
+            </li> */}
             <li className="burger-menu__element">
                 <a className="nav-bar__link nav-bar__link_mini" href="support.html">Инструкции и поддержка</a>
             </li>

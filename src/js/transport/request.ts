@@ -40,8 +40,9 @@ export default function Request<T>(params: Record<string, unknown>, noCache: boo
         body: JSON.stringify(params)
     }).then((response: Response) => {
         if (response.status === 401) {
-            auth.logout();
-            window.location.reload();
+            auth.logout().then(() => {
+                window.location.reload();
+            })
         }
         return response.json();
     }).then<T>((data: IRpcResponse<T> | IRpcError) => {

@@ -12,9 +12,9 @@ export default function MainMenu(): React.ReactElement {
             <li className="nav-bar__element">
                 <a className="nav-bar__link" href="advantages.html">Возможности</a>
             </li>
-            <li className="nav-bar__element">
+            {/* <li className="nav-bar__element">
                 <a className="nav-bar__link" href="partners.html">Партрнёрам</a>
-            </li>
+            </li> */}
             <li className="nav-bar__element">
                 <a className="nav-bar__link" href="support.html">Инструкции и поддержка</a>
             </li>

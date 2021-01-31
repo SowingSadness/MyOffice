@@ -39,11 +39,11 @@ export default function Support(): React.ReactElement {
                         Для обращения в&nbsp;техническую поддержку достаточно заполнить форму.
                         Мы&nbsp;ответим в&nbsp;течение &#8470; минут в&nbsp;рабочее время.
                     </p>
-                    <button className="support__bottom-button">Связаться с поддержкой</button>
+                    {/* <button className="support__bottom-button">Связаться с поддержкой</button> */}
                     <p className="support__bottom-text">Также вы можете скачать программу удалённой поддержки:</p>
-                    <button className="support__bottom-button support__bottom-button_download">
+                    <a href="https://anydesk.com/ru/downloads" className="support__bottom-button support__bottom-button_download">
                         Скачать Anydesk
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>

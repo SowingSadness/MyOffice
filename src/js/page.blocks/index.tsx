@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import Register from "src/js/auth.blocks/register";
+import { openSignal, closeSignal, ISignal } from "src/js/html.blocks/modal";
 
 export default function Index(): React.ReactElement {
+    const [registerSignal, onSignal] = useState<ISignal>(closeSignal());
+
     return <main className="main main_index">
         <section className="rent">
             <img className="cloud__1" src={ require('src/images/clouds/cloud1.svg') } />
@@ -27,7 +31,8 @@ export default function Index(): React.ReactElement {
                             &nbsp;Автообновление программ 1C
                         </li>
                 </ul>
-                <button className="rent__try-button">Попробовать 7 дней бесплатно</button>
+                <button className="rent__try-button" onClick={ () => onSignal(openSignal()) }>Попробовать 7 дней бесплатно</button>
+                <Register signal={ registerSignal }></Register>
             </div>
             <img className="rent__image" src={ require('src/images/cloud.jpg') } alt="облако с компьютером" />
         </section>
@@ -227,7 +232,7 @@ export default function Index(): React.ReactElement {
                                 <h3 className="grid-list__title">1. зарегистрируйтесь</h3>
                                 <p className="grid-list__description">
                                     Регистрация бесплатна! Вам нужен только email и&nbsp;телефон
-                                    </p>
+                                </p>
                             </div>
                         </li>
                         <li className="grid-list__element start-work__element security__right-element">
@@ -244,7 +249,7 @@ export default function Index(): React.ReactElement {
                                 <h3 className="grid-list__title">3. Начните работу</h3>
                                 <p className="grid-list__description">
                                     Запустите программу и&nbsp;начните работу. Первые 7&nbsp;дней бесплатно!
-                                    </p>
+                                </p>
                             </div>
                         </li>
                     </ul>

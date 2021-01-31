@@ -12,6 +12,7 @@ interface IProps {
     validate?: boolean
     onLogined: (user: User) => unknown
 }
+
 interface IState {
     signalLogin: ISignal | undefined
     signalRecover: ISignal<IRecoveryProps>
@@ -79,6 +80,7 @@ export default class Login extends React.Component<IProps, IState> {
             auth.set(user);
             this.closeLogin();
             this.props.onLogined(user);
+            window.location.pathname = "/lk.html";
         });
     }
 

@@ -1,18 +1,15 @@
 import React from "react";
 
 export interface IData {
-    "name": string
-    "email": string
-    "phone": string
-    "tariffName": string
-    "balance": string
-    "dailyPaid": string
-    "users": number
-    "DiskSpace": string
-    "paidUntil": string
-    "addServices": {
-        "service": string
-        "paidUntil": string
+    tariffName: string
+    balance: string
+    dailyPaid: string
+    users: number
+    DiskSpace: string
+    paidUntil: string
+    addServices: {
+        service: string
+        paidUntil: string
     }[]
 }
 

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import Register from "src/js/auth.blocks/register"
+import { openSignal, closeSignal, ISignal } from "src/js/html.blocks/modal";
 
 export default function Аdvantages(): React.ReactElement {
+    const [registerSignal, onSignal] = useState<ISignal>(closeSignal());
+
     return <main className="main main_advantages">
         <section className="upper-block">
             <img className="gear__1" src={ require('src/images/gears/gear1.svg') } />
@@ -192,7 +196,8 @@ export default function Аdvantages(): React.ReactElement {
                     </div>
                 </li>
             </ul>
-            <button className="additional__button">начать работу</button>
+            <button className="additional__button" onClick={ () => onSignal(openSignal()) }>начать работу</button>
+            <Register signal={ registerSignal }></Register>
         </section>
     </main>;
 }

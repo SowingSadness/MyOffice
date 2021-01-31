@@ -31,9 +31,22 @@ export function set(user: User) {
     });
 }
 
-export function logout() {
+function clearCookie() {
     authUser = undefined;
     document.cookie = 'auth.name=; Max-Age=0; expires=0;';
     document.cookie = 'auth.balance=; Max-Age=0; expires=0;';
     document.cookie = 'auth.actualDate=; Max-Age=0; expires=0;';
+}
+
+export function logout() {
+    let param = {
+        "method": "logout",
+        "params": {
+        }
+    }
+
+    return fetch('/rpc', {
+        method: 'POST',
+        body: JSON.stringify(param)
+    }).then(clearCookie, clearCookie);
 }

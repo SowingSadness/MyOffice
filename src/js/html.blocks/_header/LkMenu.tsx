@@ -21,10 +21,10 @@ export default function LkMenu(): React.ReactElement {
                 <a className={ "nav-bar__link nav-bar__link_lk" + (index === 0 ? activeClass : "") }
                     href="lk.html">Личный кабинет</a>
             </li>
-            <li className="nav-bar__element">
+            {/* <li className="nav-bar__element">
                 <a className={ "nav-bar__link nav-bar__link_lk" + (index === 1 ? activeClass : "") }
                     href="lkProgram.html">Партнёрская программа</a>
-            </li>
+            </li> */}
             <li className="nav-bar__element">
                 <a className={ "nav-bar__link nav-bar__link_lk" + (index === 2 ? activeClass : "") }
                     href="lkCompany.html">Настройки компании</a>

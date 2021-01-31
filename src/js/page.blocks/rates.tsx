@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import Register from "src/js/auth.blocks/register";
+import { openSignal, closeSignal, ISignal } from "src/js/html.blocks/modal";
 
 export default function Rates(): React.ReactElement {
+    const [registerSignal, onSignal] = useState<ISignal>(closeSignal());
+
     return <main className="main main_rates">
         <img className="rates__parts rates__part1" src={ require('src/images/cloud_rates/rate1.svg') } />
         <img className="rates__parts rates__part2" src={ require('src/images/cloud_rates/rate2.svg') } />
@@ -19,6 +23,7 @@ export default function Rates(): React.ReactElement {
         <img className="rates__parts rates__part15" src={ require('src/images/cloud_rates/rate2.svg') } />
         <img className="rates__parts rates__part16" src={ require('src/images/cloud_rates/rate9.svg') } />
         <section className="rates">
+            <Register signal={ registerSignal }></Register>
             <h1 className="page-title" > Тарифы для вашего бизнеса </h1>
             <p className="rates__page-description" > Выбирайте лучшее решение для ваших бизнес - задач.</p>
             <div className="rates__prices-block" >
@@ -31,7 +36,7 @@ export default function Rates(): React.ReactElement {
                     <p className="price-block__description" > За 1 пользователя в месяц </p>
                     <p className="price-block__description" > Количество пользователей: </p>
                     <p className="price-block__amount price-block__amount_mid" > 1–2 </p>
-                    <button className="rates__to-plug" > Подключить </button>
+                    <button className="rates__to-plug" onClick={ () => onSignal(openSignal()) }> Подключить </button>
                 </div>
                 <div tabIndex={ 0 } className="price-block" >
                     <h2 className="price-block__title" > оптимальный </h2>
@@ -42,7 +47,7 @@ export default function Rates(): React.ReactElement {
                     <p className="price-block__description" > За 1 пользователя в месяц </p>
                     <p className="price-block__description" > Количество пользователей: </p>
                     <p className="price-block__amount price-block__amount_mid" > 3 - 7 </p>
-                    <button className="rates__to-plug" > Подключить </button>
+                    <button className="rates__to-plug" onClick={ () => onSignal(openSignal()) }> Подключить </button>
                 </div>
                 <div tabIndex={ 0 } className="price-block" >
                     <h2 className="price-block__title" > профессионал </h2>
@@ -53,7 +58,7 @@ export default function Rates(): React.ReactElement {
                     <p className="price-block__description" > За 1 пользователя в месяц </p>
                     <p className="price-block__description" > Количество пользователей: </p>
                     <p className="price-block__amount price-block__amount_mid" > более 8 </p>
-                    <button className="rates__to-plug" > Подключить </button>
+                    <button className="rates__to-plug" onClick={ () => onSignal(openSignal()) }> Подключить </button>
                 </div>
             </div>
         </section>

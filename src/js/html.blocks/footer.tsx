@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function Header(): React.ReactElement {
+export default function Footer(): React.ReactElement {
     return <footer className="footer">
         <a href="index.html" className="footer__logo">
             <img alt="лого сайта" className="footer__logo-image" src={ require('src/images/logo3.png') } />
@@ -42,9 +42,9 @@ export default function Header(): React.ReactElement {
                     <li className="footer-text-block__element">
                         <a className="footer-text-block__link" href="advantages.html">Возможности</a>
                     </li>
-                    <li className="footer-text-block__element">
+                    {/* <li className="footer-text-block__element">
                         <a className="footer-text-block__link" href="partners.html">Партнёрам</a>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
             <div className="footer-text-block">
